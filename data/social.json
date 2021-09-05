@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": "twitter",
+      "url": "https://twitter.com/hacksec42",
+      "image": "images/social/twitter.svg"
+    },
+    {
+      "name": "github",
+      "url": "https://github.com/hacksec-in",
+      "image": "images/social/github.svg"
+    },
+    {
+      "name": "linkedin",
+      "url": "https://www.linkedin.com/in/rishi-roy-a986381a6/",
+      "image": "images/social/linkedin.svg"
+    }
+  ]
+}
