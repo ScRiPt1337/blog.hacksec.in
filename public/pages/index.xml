@@ -1,20 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pages on Hacksec</title>
-    <link>https://blog.hacksec.in/pages/</link>
-    <description>Recent content in Pages on Hacksec</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://blog.hacksec.in/pages/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About</title>
-      <link>https://blog.hacksec.in/pages/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.hacksec.in/pages/about/</guid>
-      <description>Welcome to hacksec We develop tools and software for making pentesting easy and securing your network. Founded in 2021 by script1337, We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don’t hesitate to contact us.
-Why choose hacksec?  Our services are free for individuals. Hacksec is more than just a pentesting lab Our real-life inspired labs will help you to get better at finding bugs and write your exploits,scripts and tools to exploit them you will learn about the latest exploitation tools and techniques.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Hacksec</title><link>https://blog.hacksec.in/pages/</link><description>Recent content in Pages on Hacksec</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://blog.hacksec.in/pages/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://blog.hacksec.in/pages/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.hacksec.in/pages/about/</guid><description>Welcome to hacksec We develop tools and software for making pentesting easy and securing your network. Founded in 2021 by script1337, We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don’t hesitate to contact us.
+Why choose hacksec? Our services are free for individuals. Hacksec is more than just a pentesting lab Our real-life inspired labs will help you to get better at finding bugs and write your exploits,scripts and tools to exploit them you will learn about the latest exploitation tools and techniques.</description></item></channel></rss>

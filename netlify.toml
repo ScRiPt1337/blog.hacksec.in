@@ -1,6 +1,0 @@
-[build]
-  publish = "exampleSite/public"
-  command = "cd exampleSite && hugo --gc --themesDir ../.. -t repo --baseURL https://blog_hacksec.netlify.com/"
-
-[build.environment]
-  HUGO_VERSION = "0.53"
