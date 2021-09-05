@@ -1,1 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://blog.hacksec.in/posts/</loc><lastmod>2019-02-24T00:00:00+00:00</lastmod></url><url><loc>https://blog.hacksec.in/</loc><lastmod>2019-02-24T00:00:00+00:00</lastmod></url><url><loc>https://blog.hacksec.in/posts/destruction-of-words/</loc><lastmod>2018-10-30T00:00:00+00:00</lastmod></url><url><loc>https://blog.hacksec.in/pages/about/</loc></url><url><loc>https://blog.hacksec.in/categories/</loc></url><url><loc>https://blog.hacksec.in/pages/</loc></url><url><loc>https://blog.hacksec.in/tags/</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://blog.hacksec.in/posts/</loc>
+    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.hacksec.in/</loc>
+    <lastmod>2019-02-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.hacksec.in/posts/destruction-of-words/</loc>
+    <lastmod>2018-10-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.hacksec.in/pages/about/</loc>
+  </url><url>
+    <loc>https://blog.hacksec.in/categories/</loc>
+  </url><url>
+    <loc>https://blog.hacksec.in/pages/</loc>
+  </url><url>
+    <loc>https://blog.hacksec.in/tags/</loc>
+  </url>
+</urlset>

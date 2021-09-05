@@ -2,11 +2,17 @@
   {{ if .Site.Data.social.links }}
   <div class="footer-social">
     {{ range .Site.Data.social.links }}
-      <span class="social-icon social-icon-{{ .name | urlize }}">
-        <a href="{{ .url }}" title="{{ .name }}" target="_blank" rel="noopener">
-          <img src="{{ .image | relURL }}" width="24" height="24" alt="{{ .name }}"/>
-        </a>
-      </span>
+    <span class="social-icon social-icon-{{ .name | urlize }}">
+      <a href="{{ .url }}" title="{{ .name }}" target="_blank" rel="noopener">
+        <img
+          src="{{ .image | relURL }}"
+          width="24"
+          height="24"
+          alt="{{ .name }}"
+          style="background-color: white"
+        />
+      </a>
+    </span>
     {{ end }}
   </div>
   {{ end }}

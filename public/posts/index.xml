@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Hacksec</title><link>https://blog.hacksec.in/posts/</link><description>Recent content in Blog on Hacksec</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>It's a beautiful thing, the destruction of words</title><link>https://blog.hacksec.in/posts/destruction-of-words/</link><pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.hacksec.in/posts/destruction-of-words/</guid><description>He moved over to the window Lorem markdownum comes; pro est modo famulus, quo quod neu manibus aether his nomine, Aurora, voce. Ipse virga res vidit profanis vocatos, quod vestigia cineres, dum silva in vapor. Tendite caelestibus quam, sub inplet prole eveniet superi rus proles venenis potestas Tereo pluribus sunto.
-Perque cessisse, hoc tum auras sinuosa. Pressant nec vinci primoque quoque funibus est: et tempore vetitorum? Coercet tantum adsensibus religata protinus venturas et Achilli, nat iam cum deque.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Hacksec</title>
+    <link>https://blog.hacksec.in/posts/</link>
+    <description>Recent content in Blog on Hacksec</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>It&#39;s a beautiful thing, the destruction of words</title>
+      <link>https://blog.hacksec.in/posts/destruction-of-words/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/destruction-of-words/</guid>
+      <description>He moved over to the window Lorem markdownum comes; pro est modo famulus, quo quod neu manibus aether his nomine, Aurora, voce. Ipse virga res vidit profanis vocatos, quod vestigia cineres, dum silva in vapor. Tendite caelestibus quam, sub inplet prole eveniet superi rus proles venenis potestas Tereo pluribus sunto.
+Perque cessisse, hoc tum auras sinuosa. Pressant nec vinci primoque quoque funibus est: et tempore vetitorum? Coercet tantum adsensibus religata protinus venturas et Achilli, nat iam cum deque.</description>
+    </item>
+    
+  </channel>
+</rss>
