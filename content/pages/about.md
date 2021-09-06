@@ -14,7 +14,7 @@ We develop tools and software for making pentesting easy and securing your netwo
 
 > Our services are free for individuals.
 > Hacksec is more than just a pentesting lab
-> Our real-life inspired labs will help you to get better at finding bugs and write your exploits,scripts and tools to exploit them you will learn about the latest exploitation tools and techniques.
+> Our real-life inspired labs will help you to get better at finding bugs and write your exploits,scripts and tools. You will learn about the latest exploitation tools and techniques.
 
 ## Our Mission
 

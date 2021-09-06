@@ -8,13 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>It&#39;s a beautiful thing, the destruction of words</title>
-      <link>https://blog.hacksec.in/posts/destruction-of-words/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      <title>Find me writeup | web-lab hacksec</title>
+      <link>https://blog.hacksec.in/posts/_findme/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.hacksec.in/posts/destruction-of-words/</guid>
-      <description>He moved over to the window Lorem markdownum comes; pro est modo famulus, quo quod neu manibus aether his nomine, Aurora, voce. Ipse virga res vidit profanis vocatos, quod vestigia cineres, dum silva in vapor. Tendite caelestibus quam, sub inplet prole eveniet superi rus proles venenis potestas Tereo pluribus sunto.
-Perque cessisse, hoc tum auras sinuosa. Pressant nec vinci primoque quoque funibus est: et tempore vetitorum? Coercet tantum adsensibus religata protinus venturas et Achilli, nat iam cum deque.</description>
+      <guid>https://blog.hacksec.in/posts/_findme/</guid>
+      <description>Web-Lab information Find ME          Point: 30+   Level: MEDIUM   Target: http://machine4.hacksec.in   First ownby: H3X1337   Created by: SCRIPT1337X    let&amp;rsquo;s start First of all, let&amp;rsquo;s see what we have to work on by opening the URL. Reconnaissance Ok so now we start our reconnaissance, first we try to find all the hidden folders of the website using Dirb with default wordlist common.</description>
     </item>
     
   </channel>

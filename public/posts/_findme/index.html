@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Find me writeup | web-lab hacksec - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.2da0bf8b448c926665830eab626f386e48371c2bc5277577882890752ab1cac0.css">
+  
+
+  
+    <meta name="description" content="Hello guys script is here and today we will learn in this post how we can own find me web-lab"/>
+    <meta property="og:title" content="Find me writeup | web-lab hacksec"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/_findme/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/find_me/photo-1514168757508-07ffe9ae125b.jpg"/>
+    <meta property="og:description" content="Hello guys script is here and today we will learn in this post how we can own find me web-lab"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>Find me writeup | web-lab hacksec<span class="dot">.</span></h1>
+      
+      <img src="/images/find_me/photo-1514168757508-07ffe9ae125b.jpg" />
+      
+    </div>
+    <div class="content">
+      <h2 id="web-lab-information">Web-Lab information</h2>
+<h3 id="find-me">Find ME</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Point:</td>
+<td>30+</td>
+</tr>
+<tr>
+<td>Level:</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Target:</td>
+<td><a href="http://machine4.hacksec.in">http://machine4.hacksec.in</a></td>
+</tr>
+<tr>
+<td>First ownby:</td>
+<td><a href="https://www.app.hacksec.in/profile/63">H3X1337</a></td>
+</tr>
+<tr>
+<td>Created by:</td>
+<td><a href="https://www.app.hacksec.in/profile/1">SCRIPT1337X</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lets-start">let&rsquo;s start</h2>
+<p>First of all, let&rsquo;s see what we have to work on by opening the URL.
+<img src="/images/find_me/Home.PNG" alt="HomePage"></p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>Ok so now we start our reconnaissance, first we try to find all the hidden folders of the website using Dirb with default wordlist common.txt</p>
+<p><img src="/images/find_me/Dirb.PNG" alt="Dirb_result"></p>
+<p>We get .git/HEAD shortly after we run dirb but it only had ref: refs/heads/main in the file: .git/HEAD . But it means there is a git repo in the root directory of this website. Inside the .git folder, there is a file named config in which the url of the git repo is given.So let&rsquo;s try to access the .git/config file of Find_me server repo.
+<img src="/images/find_me/config.PNG" alt="config"></p>
+<p>We got the URL of the repo of GitHub from the .git/config file inside the repo.</p>
+<h3 id="finding-vulnerabilities-in-repo">Finding vulnerabilities in repo</h3>
+<p>So in this repo, there is a fast API application that is running on port 8000 according to the comments and this application contains some interesting endpoint like /playlist/upload/ and /playlist/load. pickle.load() is used to load python objects from pickle file and its vulnerable to deserialization attack. you can google to know more about this.</p>
+<p><img src="/images/find_me/Source_code.PNG" alt="config"></p>
+<h2 id="write-exploit">Write exploit</h2>
+<p><img src="/images/find_me/example_code.PNG" alt="example_code"></p>
+<p>okay now we can run shell command using pickle exploit but still, we can&rsquo;t get the output of the command.
+so what we can do we will send the command output to <a href="https://webhook.site">https://webhook.site</a>.</p>
+<p><img src="/images/find_me/exploit.PNG" alt="exploit"></p>
+<h2 id="read-hashtxt">Read hash.txt</h2>
+<p>it&rsquo;s a fast API application and documentation is not disabled thats means we can access the doc at <a href="http://machine4.hacksec.in:8000/docs">http://machine4.hacksec.in:8000/docs</a>. Upload the exploit at <a href="http://machine4.hacksec.in:8000/playlist/load">http://machine4.hacksec.in:8000/playlist/load</a></p>
+<p><img src="/images/find_me/upload_exploit.PNG" alt="exploit"></p>
+<p><img src="/images/find_me/hash.PNG" alt="exploit"></p>
+<h4 id="and-we-got-the-hash">And we got the hash</h4>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>
