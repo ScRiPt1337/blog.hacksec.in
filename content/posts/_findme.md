@@ -2,7 +2,7 @@
 title: Find me writeup | web-lab hacksec
 date: 2021-08-06
 description: "Hello guys script is here and today we will learn in this post how we can own find me web-lab"
-image: images/find_me/photo-1514168757508-07ffe9ae125b.jpg
+image: images/find_me/Yellow Magenta Black White Neon Scifi YouTube Channel Art (2).png
 ---
 
 ## Web-Lab information
