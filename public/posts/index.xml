@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>How to use hacksec-cli | hacksec</title>
+      <link>https://blog.hacksec.in/posts/hacksec_cli/</link>
+      <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/hacksec_cli/</guid>
+      <description>What is hacksec-cli hacksec-CLI is a command-line tool written in python3 which allow you to access all hacksec services directly from your command-line.
+Requirement  python3 git  How to install in linux command : curl -s -L https://raw.githubusercontent.com/hacksec-in/hacksec-cli/main/install.sh | bash How to install in windows  git clone https://github.com/hacksec-in/hacksec-cli cd hacksec-cli python3 install.py  Why hacksec-cli This is the beta version of hacksec-cli. Soon we will add more features like one-click lab deployment in your local machines and we will add our tools.</description>
+    </item>
+    
+    <item>
       <title>Find me writeup | web-lab hacksec</title>
       <link>https://blog.hacksec.in/posts/_findme/</link>
       <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
