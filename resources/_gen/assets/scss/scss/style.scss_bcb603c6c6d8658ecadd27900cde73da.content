@@ -39,11 +39,8 @@ h1, h2, h3 {
     margin-right: 30px; }
 
 .menu-main {
-  display: none;
+  display: block;
   flex: 0; }
-  @media (min-width: 767px) {
-    .menu-main {
-      display: block; } }
   .menu-main > ul {
     display: flex;
     align-items: center;

@@ -16,11 +16,11 @@
 }
 
 .menu-main {
-  display: none;
+  display: block;
   flex: 0;
-  @include breakpoint('small') {
-    display: block;
-  }
+  // @include breakpoint('small') {
+  //   display: block;
+  // }
   > ul {
     display: flex;
     align-items: center;

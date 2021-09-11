@@ -1,6 +1,6 @@
 ---
-title: How to use hacksec-cli | hacksec
-date: 2021-08-07
+title: hacksec-cli
+date: 2021-09-07
 description: "Access all our services and features directly from your command-line"
 image: images/hacksec-cli/Yellow Magenta Black White Neon Scifi YouTube Channel Art.png
 ---

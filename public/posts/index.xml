@@ -8,9 +8,22 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to use hacksec-cli | hacksec</title>
+      <title>Recon</title>
+      <link>https://blog.hacksec.in/posts/getting_started_with_recon/</link>
+      <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/getting_started_with_recon/</guid>
+      <description>Reconnaissance So here is our another article regarding recon&amp;hellip;
+Reconnaissance attacks are general knowledge gathering attacks
+Google dork A Google query, sometimes just referred to as a dork, is a search string that uses advanced search operators to find information that is not readily available on a website
+Some google dork example   site:&amp;quot;.uk&amp;quot; intitle:&amp;ldquo;admin login&amp;rdquo; [Pages Containing Login Portals]
+  &amp;ldquo;Not for Public Release&amp;rdquo; + &amp;ldquo;Confidential&amp;rdquo; ext:pdf | ext:doc | ext:xlsx [Files Containing Juicy Info]</description>
+    </item>
+    
+    <item>
+      <title>hacksec-cli</title>
       <link>https://blog.hacksec.in/posts/hacksec_cli/</link>
-      <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.hacksec.in/posts/hacksec_cli/</guid>
       <description>What is hacksec-cli hacksec-CLI is a command-line tool written in python3 which allow you to access all hacksec services directly from your command-line.
@@ -18,9 +31,9 @@ Requirement  python3 git  How to install in linux command : curl -s -L https://r
     </item>
     
     <item>
-      <title>Find me writeup | web-lab hacksec</title>
+      <title>Find me writeup</title>
       <link>https://blog.hacksec.in/posts/_findme/</link>
-      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.hacksec.in/posts/_findme/</guid>
       <description>Web-Lab information Find ME          Point: 30+   Level: MEDIUM   Target: http://machine4.hacksec.in   First ownby: H3X1337   Created by: SCRIPT1337X    let&amp;rsquo;s start First of all, let&amp;rsquo;s see what we have to work on by opening the URL. Reconnaissance Ok so now we start our reconnaissance, first we try to find all the hidden folders of the website using Dirb with default wordlist common.</description>
