@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>nmap - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.6bf25c2ea4bd742a664298251a15461d2aaff7187782de0ffd27dd0ee0e162ec.css">
+  
+
+  
+    <meta name="description" content="Deep Dive Into Nmap Scan Techniques and Complete Guide to Nmap | Nmap Tutorial"/>
+    <meta property="og:title" content="nmap"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/nmap/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/nmap/Green%20and%20Black%20Geometric%20Techno%20Technology%20YouTube%20Channel%20Art.png"/>
+    <meta property="og:description" content="Deep Dive Into Nmap Scan Techniques and Complete Guide to Nmap | Nmap Tutorial"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>nmap<span class="dot">.</span></h1>
+      
+      <img src="/images/nmap/Green%20and%20Black%20Geometric%20Techno%20Technology%20YouTube%20Channel%20Art.png" />
+      
+    </div>
+    <div class="content">
+      <h3 id="what-is-nmap">What is NMAP</h3>
+<p>Nmap is a free and open-source network scanner created by Gordon Lyon. Nmap is used to discover hosts and services on a computer network by sending packets and analyzing the responses. Nmap provides a number of features for probing computer networks, including host discovery and service and operating system detection.</p>
+<h3 id="what-does-nmap-do">What Does Nmap Do?</h3>
+<p>Nmap (Network Mapper) is an open source and free security scanner used for network discovery and security auditing. During a scan, Nmap sends specially crafted packets to the target host and then analyzes the responses. It is capable of
+Host DiscoveryPort ScanningService Name and Version DetectionOS DetectionThe typical uses of Nmap include:Security Audits Of A Firewall / HostOpen Port IdentificationNetwork Security AuditNetwork Mapping, Network Inventory, Asset ManagementVulnerability Detection &amp; ExploitationHost / Service Uptime MonitoringNmap can work on Linux, Unix, BSDs, MacOS X and Windows.</p>
+<h3 id="how-to-install-nmap">How To Install Nmap</h3>
+<p><em>To install NMAP on Ubuntu, run the command.</em></p>
+<ul>
+<li>sudo apt-get install nmap</li>
+</ul>
+<p><em>To install NMAP on Arch, run the command.</em></p>
+<ul>
+<li>sudo pacman -S nmap</li>
+</ul>
+<p><em>Here are the steps to install Nmap on Windows:</em></p>
+<ol>
+<li>Browse to  <a href="https://nmap.org/download.html">https://nmap.org/download.html</a>  and download the latest self-installer:</li>
+<li>Run the downloaded <em>.exe</em> file. In the window that opens, accept the license terms:</li>
+<li>Choose the components to install. By default, the <em>Zenmap GUI</em> will be installed:</li>
+<li>Select the install location and click <em>Install</em>:</li>
+<li>The installation should be completed in a couple of minutes.</li>
+</ol>
+<p><em>Install nmap on Mac OSX</em></p>
+<ol>
+<li>Press  <code>Command+Space</code>  and type  <em>Terminal</em>  and press <em>enter/return</em>  key.</li>
+<li>Run in Terminal app: <code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 2&gt; /dev/null</code> and press  <em>enter/return</em>  key. If you are prompted to enter your Mac&rsquo;s user password, enter it (when you type it, you wont see it on your screen/terminal.app but it would accept the input; this is to ensure no one can see your password on your screen while you type it. So just type password and press enter, even if you dont see it on your screen). Then wait for the command to finish.</li>
+<li>Run:   <code>brew install nmap</code></li>
+</ol>
+<p>Done! You can now use  <code>nmap</code>.</p>
+<h3 id="how-to-use-nmap">How to use NMAP</h3>
+<p><em>NMAP Target Selection</em></p>
+<ul>
+<li>Scan a single IP  <strong>nmap 192.168.1.1</strong></li>
+<li>Scan a host <strong>nmap <a href="http://www.hacksec.in">www.hacksec.in</a></strong></li>
+<li>Scan a range of IPs <strong>nmap 192.168.1.1-20</strong></li>
+<li>Scan a subnet <strong>nmap 192.168.1.0/24</strong></li>
+<li>Scan targets from a text file <strong>nmap -iL list-of-ips.txt</strong></li>
+</ul>
+<p>These are all default scans, which will scan 1000 TCP ports. Host discovery will take place.</p>
+<p><em>NMAP Port Selection</em></p>
+<ul>
+<li>Scan a single Port <strong>nmap -p 22 192.168.1.1</strong></li>
+<li>Scan a range of ports <strong>nmap -p 1-100 192.168.1.1</strong></li>
+<li>Scan 100 most common ports (Fast) <strong>nmap -F 192.168.1.1</strong></li>
+<li>Scan all 65535 ports <strong>nmap -p- 192.168.1.1</strong></li>
+</ul>
+<p><em>Nmap Port Scan types</em></p>
+<ul>
+<li>Scan using TCP connect <strong>nmap -sT 192.168.1.1</strong></li>
+<li>Scan using TCP SYN scan (default) <strong>nmap -sS 192.168.1.1</strong></li>
+<li>Scan UDP ports <strong>nmap -sU -p 123,161,162 192.168.1.1</strong></li>
+<li>Scan selected ports - ignore discovery <strong>nmap -Pn -F 192.168.1.1</strong></li>
+</ul>
+<p>Privileged access is required to perform the default  <code>SYN</code>  scans. If privileges are insufficient a TCP connect scan will be used. A TCP connect requires a full TCP connection to be established and therefore is a slower scan. Ignoring discovery is often required as many firewalls or hosts will not respond to  <code>PING</code>, so could be missed unless you select the  <code>-Pn</code>  parameter. Of course this can make scan times much longer as you could end up sending scan probes to hosts that are not there.</p>
+<p><em>Service and OS Detection</em></p>
+<ul>
+<li>Detect OS and Services <strong>nmap -A 192.168.1.1</strong></li>
+<li>Standard service detection <strong>nmap -sV 192.168.1.1</strong></li>
+<li>More aggressive Service Detection <strong>nmap -sV &ndash;version-intensity 5 192.168.1.1</strong></li>
+<li>Lighter banner grabbing detection <strong>nmap -sV &ndash;version-intensity 0 192.168.1.1</strong></li>
+</ul>
+<p>Service and OS detection rely on different methods to determine the operating system or service running on a particular port. The more aggressive service detection is often helpful if there are services running on unusual ports. On the other hand the lighter version of the service will be much faster as it does not really attempt to detect the service simply grabbing the banner of the open service.</p>
+<p><em>Nmap Output Formats</em></p>
+<ul>
+<li>Save default output to file <strong>nmap -oN outputfile.txt 192.168.1.1</strong></li>
+<li>Save results as XML <strong>nmap -oX outputfile.xml 192.168.1.1</strong></li>
+<li>Save results in a format for grep <strong>nmap -oG outputfile.txt 192.168.1.1</strong></li>
+<li>Save in all formats <strong>nmap-oA outputfile 192.168.1.1</strong></li>
+</ul>
+<p>The default format could also be saved to a file using a simple file redirect <code>command &gt; file</code>. Using the <code>-oN</code> option allows the results to be saved but also can be monitored in the terminal as the scan is under way.</p>
+<p><em>Deeper  scan with NSE Scripts</em></p>
+<ul>
+<li>Scan using default safe scripts <strong>nmap -sV -sC 192.168.1.1</strong></li>
+<li>Get help for a script <strong>nmap &ndash;script-help=ssl-heartbleed</strong></li>
+<li>Scan using a specific NSE script <strong>nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1</strong></li>
+<li>Scan with a set of scripts <strong>nmap -sV &ndash;script=smb 192.168.1.1</strong>*</li>
+</ul>
+<p>According to my Nmap install there are currently  <em>581 NSE scripts</em>. The scripts are able to perform a wide range of security related testing and discovery functions. If you are serious about your network scanning you really should take the time to get familiar with some of them.</p>
+<p>The option  <code>--script-help=$scriptname</code>  will display help for the individual scripts. To get an easy list of the installed scripts try  <code>locate nse | grep script</code>.</p>
+<p>You will notice I have used the  <code>-sV</code>  service detection parameter. Generally most NSE scripts will be more effective and you will get better coverage by including service detection.</p>
+<p><em>A scan to search for DDOS reflection UDP services</em></p>
+<ul>
+<li>Scan for UDP DDOS reflectors  <strong>nmap –sU –A –PN –n –pU:19,53,123,161 –script=ntp-monlist,dns-recursion,snmp-sysdescr 192.168.1.0/24</strong></li>
+</ul>
+<p>UDP based DDOS reflection attacks are a common problem that network defenders come up against. This is a handy Nmap command that will scan a target list for systems with open UDP services that allow these attacks to take place</p>
+<p><em>HTTP Service Information</em></p>
+<ul>
+<li>Gather page titles from HTTP services <strong>nmap &ndash;script=http-title 192.168.1.0/24</strong></li>
+<li>Get HTTP headers of web services <strong>nmap &ndash;script=http-headers 192.168.1.0/24</strong></li>
+<li>Find web apps from known paths <strong>nmap &ndash;script=http-enum 192.168.1.0/24</strong></li>
+</ul>
+<p>There are many HTTP information gathering scripts, here are a few that are simple but helpful when examining larger networks. Helps in quickly identifying what the HTTP service that is running on the open port. Note the <code>http-enum</code> script is particularly noisy. It is similar to Nikto in that it will attempt to enumerate known paths of web applications and scripts. This will inevitably generated hundreds of <code>404 HTTP responses</code> in the web server error and access logs.</p>
+<p><em>Detect Heartbleed SSL Vulnerability</em></p>
+<ul>
+<li>Heartbleed Testing <strong>nmap -sV -p 443 &ndash;script=ssl-heartbleed 192.168.1.0/24</strong></li>
+</ul>
+<p>Heartbleed detection is one of the available SSL scripts. It will detect the presence of the well known Heartbleed vulnerability in SSL services. Specify alternative ports to test SSL on mail and other protocols.</p>
+<p><em>IP Address information</em></p>
+<p>Find Information about IP address
+<strong>nmap &ndash;script=asn-query,whois,ip-geolocation-maxmind 192.168.1.0/24</strong></p>
+<p>Gather information related to the IP address and netblock owner of the IP address. Uses ASN, whois and geoip location lookups.</p>
+<h3 id="remote-scanning">Remote Scanning</h3>
+<p>Testing your network perimeter from an external perspective is key when you wish to get the most accurate results. By assessing your exposure from the attackers perspective you can validate firewall rule audits and understand exactly what is allowed into your network. To enable remote scanning easily and effectively because anyone who has played with  <code>shodan.io</code>  knows very well how badly people test their perimeter networks.</p>
+<p><em>NMAP ping sweep</em></p>
+<p>Nmap “ping sweep”  is a method to discover connected devices in a network using the nmap security scanner, for a device to be discovered we only need it to be turned on and connected to the network. We can tell nmap to discover all devices in the network or define ranges. In contrast to other types of scanning ping sweep is not an aggressive scan as these we previously explained on LinuxHint to scan for services and vulnerabilities using nmap, for ping sweep we can skip some of nmap’s regular stages in order to discover hosts only and make harder for the target to detect the scan.</p>
+<p><em>Getting started with ping sweep</em></p>
+<p>First of all let’s know about our network by typing <em>ifconfig</em>:</p>
+<ul>
+<li>ifconfig enp2s0</li>
+</ul>
+<p>Now let’s say we want to discover all hosts available after 172.31.X.X, nmap allows us to define IP ranges and to define sub ranges within each octet. For this we’ll use nmap’s old flag (parameter) -sP, the parameter is still useful but was replaced for <em>-sn</em> which will be explained later.</p>
+<ul>
+<li>nmap  -sP 172.31.1-255.1-255</li>
+</ul>
+<p><em>-sP</em>: tells nmap no to do a port scan after host discovery.</p>
+<p>As you can see nmap returns the available hosts and their IP and MAC addresses but no information on ports.</p>
+<p>We can also try it with the last octet:</p>
+<ul>
+<li>nmap  -sP 172.31.1.1-255</li>
+</ul>
+<p>The flag <em>-sn</em> (No port scan) replaces the <em>-sP</em> you just tried.</p>
+<ul>
+<li>nmap -sn 172.31.1.1-255</li>
+</ul>
+<p>As you can see the output is similar to the previous scan, no information on ports.</p>
+<p>The parameter  <em>-Pn</em> (no ping) will scan ports of the network or provided range without checking if the device is online, it wont ping and won’t wait for replies. This shouldn’t be called ping sweep but it is useful to discover hosts, In the terminal type:</p>
+<ul>
+<li>nmap -Pn 172.31.1.1-255</li>
+</ul>
+<p><em>Note:</em>  if you want nmap to scan the whole range of an octet you can replace 1-255 for wildcard (*).</p>
+<p>The parameter -sL (List scan) is the less offensive one, it enumerates the IP addresses in the network and tries to resolve through reverse-DNS lookup (resolve from ip to host) to know the hosts are there. This command is useful to print a list of hosts, In the terminal type:</p>
+<ul>
+<li>nmap -sL 172.31.1.1-255</li>
+</ul>
+<p>Now let’s assume we want to scan the whole network with <em>NO PORT SCAN</em> excluding a specific device, run:</p>
+<ul>
+<li>nmap  -sn 172.31.1.1-255  &ndash;exclude 172.31.124.141</li>
+</ul>
+<p>In this network we have only two devices with IP 172.31.124.X, nmap scanned the whole network finding only one and excluding the second according to the passed instruction <em>–exclude. As you see with the ping response the IP <em>172.31.124.142</em></em> is available despite being undetected by nmap.</p>
+<h2 id="discovery-options">Discovery Options</h2>
+<p><em>TCP SYN Ping</em></p>
+<p>Short for synchronize, SYN is <em>a TCP packet sent to another computer requesting that a connection be established between them</em>. If the SYN is received by the second machine, an SYN/ACK is sent back to the address requested by the SYN.</p>
+<ul>
+<li>TCP SYN Ping <strong>nmap -PS 192.168.0.1</strong></li>
+</ul>
+<p><em>TCP ACK Ping</em></p>
+<p>Similar to the TCP SYN ping scan, the TCP ACK ping scan is <em>used to determine if a host is responding</em>. It can be used to detect hosts that block SYN packets or ICMP echo requests, but it will most likely be blocked by modern firewalls that track connection states.</p>
+<ul>
+<li>TCP ACK ping <strong>nmap -PA 192.168.0.1</strong></li>
+</ul>
+<p><em>UDP Ping</em></p>
+<p>Ping scans are used to determine if a host is responding and can be considered online. UDP ping scans have the advantage of being capable of detecting systems behind firewalls with strict TCP filtering leaving the UDP traffic forgotten.</p>
+<ul>
+<li>UDP ping <strong>nmap -PU 192.168.0.1</strong></li>
+</ul>
+<p><em>SCTP INIT Ping</em></p>
+<p>SCTP packets can be used to determine if a host is online by sending SCTP INIT packets and looking for ABORT or INIT ACK responses. Nmap implements this effective technique named SCTP INIT ping scan.</p>
+<ul>
+<li>SCTP INIT Ping <strong>nmap -PY 192.168.0.1</strong></li>
+</ul>
+<p><em>ICMP Echo Ping</em></p>
+<p>Ping works by <em>sending an Internet Control Message Protocol (ICMP) Echo Request to a specified interface on the network and waiting for a reply</em>. When a ping command is issued, a ping signal is sent to a specified address. When the target host receives the echo request, it responds by sending an echo reply packet.</p>
+<ul>
+<li>IMCP echo ping <strong>nmap -PE 192.168.0.1</strong></li>
+</ul>
+<p><em>ICMP Timestamp Ping</em></p>
+<p>Ping sends ICMP <em>Echo Request messages once a second</em>. A ping packet also includes a timestamp from the sending host. When an Echo Reply is received the round-trip time is calculated and displayed. Ping is your first tool to determine if a network layer path exists between two hosts.</p>
+<ul>
+<li>ICMP Timestamp Ping <strong>nmap -PP 192.168.0.1</strong></li>
+</ul>
+<p><em>IP Protocol Ping</em></p>
+<p>Ping is a computer network administration software utility used to test the reachability of a host on an Internet Protocol (IP) network.Ping measures the <em>round-trip time for messages</em> sent from the originating host to a destination computer that are echoed back to the source.</p>
+<ul>
+<li>IP Protocol Ping <strong>nmap -PO 192.168.0.1</strong></li>
+</ul>
+<p><em>ARP Ping</em></p>
+<p>ARP stands for <em>Address Resolution Protocol</em>. When you try to ping an IP address on your local network, say 192.168. 1.1, your system has to turn the IP address 192.168. 1.1 into a MAC address. This involves using ARP to resolve the address, hence its name.</p>
+<ul>
+<li>ARP Ping <strong>nmap -PR 192.168.0.1</strong></li>
+</ul>
+<p><em>Traceroute</em></p>
+<p>The option –traceroute is <em>used to trace all hops or intermediating routers</em>. The column RTT (Round Trip Time or latency) shows the speed in milliseconds for each hop including return from that HOP, this is especially useful to diagnose connection issues.</p>
+<ul>
+<li>Traceroute <strong>nmap –traceroute 192.168.0.1</strong></li>
+</ul>
+<p><em>Force Reverse DNS Resolution</em></p>
+<p>In computer networks, a reverse DNS lookup or reverse DNS resolution (rDNS) is <em>the querying technique of the Domain Name System (DNS) to determine the domain name associated with an IP address</em> – the reverse of the usual &ldquo;forward&rdquo; DNS lookup of an IP address from a domain name.</p>
+<ul>
+<li>Force Reverse DNS Resolution <strong>nmap -R 192.168.0.1</strong></li>
+</ul>
+<p><em>Alternative DNS Lookup</em></p>
+<p>The <em>–system-dns</em> option instructs Nmap to use the host system’s DNS resolver instead of its own internal method.</p>
+<ul>
+<li>Alternative DNS Lookup <strong>nmap –system-dns 192.168.0.1</strong></li>
+</ul>
+<p><em>Manually Specify DNS Server(s)</em></p>
+<p>The <em>–dns-servers</em> option is used to manually specify DNS servers to be queried when scanning.
+The <em>–dns-servers</em> option allows you to specify one or more alternative servers for Nmap to query. This can be useful for systems that do not have DNS configured or if you want to prevent your scan lookups from appearing in your locally configured DNS server’s log file.</p>
+<ul>
+<li>Manually Specify DNS Server <strong>nmap –dns-servers 201.56.212.54 192.168.0.1</strong></li>
+</ul>
+<p><em>Create a Host List</em></p>
+<p>The <em>-sL</em> option will display a list and performs a reverse DNS lookup of the specified IP addresses.</p>
+<ul>
+<li>Create a Host List <strong>nmap -sL 192.168.0.1/24</strong></li>
+</ul>
+<h2 id="advanced-scanning-options">Advanced Scanning Options</h2>
+<p><em>TCP SYN Scan</em></p>
+<p>For scan advanced TCP SYN scan you can use cmnd given below:-</p>
+<ul>
+<li>TCP SYN scan <strong>nmap -sS 192.168.0.1</strong></li>
+</ul>
+<p><em>TCP Connect Scan</em></p>
+<p>For advanced use of TCP Connect Scan cmnd given below:-</p>
+<ul>
+<li>TCP Connect Scan <strong>nmap -sT 192.168.0.1</strong></li>
+</ul>
+<p><em>UDP Scan</em></p>
+<p>For advanced use for UDP scan cmnd given below:-</p>
+<ul>
+<li>UDP scan <strong>nmap -sU 192.168.0.1</strong></li>
+</ul>
+<p><em>TCP NULL Scan</em></p>
+<p>Description. An adversary uses a TCP NULL scan <em>to determine if ports are closed on the target machine</em>. This scan type is accomplished by sending TCP segments with no flags in the packet header, generating packets that are illegal based on RFC 793.</p>
+<ul>
+<li>TCP Null Scan <strong>nmap -sN 192.168.0.1</strong></li>
+</ul>
+<p><em>TCP FIN Scan</em></p>
+<p>An adversary uses a TCP FIN scan to determine if ports are closed on the target machine. This scan type is accomplished by sending TCP segments with the FIN bit set in the packet header. The RFC 793 expected behavior is that any TCP segment with an out-of-state Flag sent to an open port is discarded, whereas segments with out-of-state flags sent to closed ports should be handled with a RST in response.</p>
+<ul>
+<li>TCP FIN Scan <strong>nmap -sF 192.168.0.1</strong></li>
+</ul>
+<p><em>Xmas Scan</em></p>
+<p>Xmas scans derive <em>their name from the set of flags that are turned on within a packet</em>. These scans are designed to manipulate the PSH, URG and FIN flags of the TCP header.</p>
+<ul>
+<li>Xmas Scan <strong>nmap -sX 192.168.0.1</strong></li>
+</ul>
+<p><em>TCP ACK Scan</em></p>
+<p>This type of scanning is rarely useful alone, but when combined with SYN scanning, gives a more complete picture of the type of firewall rules that are present. When a TCP ACK segment is sent to a closed port, or sent out-of-sync to a listening port, the RFC 793 expected behavior is for the device to respond with a RST.</p>
+<ul>
+<li>TCP ACK Scan <strong>nmap -sA 192.168.0.1</strong></li>
+</ul>
+<p><em>Custom TCP Scan</em></p>
+<p>Truly advanced Nmap users need not limit themselves to the canned scanned types. The <code>--scanflags</code> option allows you to design your own scan by specifying arbitrary TCP flags.</p>
+<ul>
+<li>Custom TCP Scan <strong>nmap –scanflags SYNFIN 192.168.0.1</strong></li>
+</ul>
+<p><em>IP Protocol Scan</em></p>
+<p>Internet Protocol Scan – <em>a process of probing a server or host looking for any open ports</em>. IP scans are typically precursors to attacks, as they identify which hosts are running which services that may be vulnerable to attacks.</p>
+<ul>
+<li>IP Protocol Scan <strong>nmap -sO 192.168.0.1</strong></li>
+</ul>
+<p><em>Send Raw Ethernet Packets</em></p>
+<p>A raw socket is used to receive raw packets. This means <em>packets received at the Ethernet layer will directly pass to the raw socket</em>. Stating it precisely, a raw socket bypasses the normal TCP/IP processing and sends the packets to the specific user application.</p>
+<ul>
+<li>Send Raw Ethernet Packets <strong>nmap –send-eth 192.168.0.1</strong></li>
+</ul>
+<p><em>Send IP Packets</em></p>
+<p>A network packet is a small amount of data sent over <em>Transmission Control Protocol/Internet Protocol</em> (TCP/IP) networks. A packet is the unit of data routed between an origin and a destination on the internet or other packet-switched network &ndash; or networks that ship data around in small packets.</p>
+<ul>
+<li>Send Ip Packets <strong>nmap –send-ip 192.168.0.1</strong></li>
+</ul>
+<h2 id="port-scanning-options">Port Scanning Options</h2>
+<p><em>Perform a Fast Scan</em></p>
+<p>Nmap can reveal open services and ports by IP address as well as by domain name. If you need to perform a scan quickly, you can use <em>the “-F” flag</em>. The “-F” flag will list ports on the nmap-services files. Because the -F “Fast Scan” flag does not scan as many ports, it isn&rsquo;t as thorough.</p>
+<ul>
+<li>Perform a fast scan <strong>nmap -F 192.168.0.1</strong></li>
+</ul>
+<p><em>Scan Specific Ports</em></p>
+<p>command given below will initiate a default scan against the target host and look for port 80-25,80,139,8080</p>
+<ul>
+<li>Scan Specific Ports <strong>nmap -p 80-25,80,139,8080 192.168.1.1</strong></li>
+</ul>
+<p><em>Scan Ports by Name</em></p>
+<p>Command given below will initiate a scan against the target host looking for ports associated with specified service names.</p>
+<ul>
+<li>Scan ports by name <strong>nmap -p ftp,http 192.168.0.1</strong>*</li>
+</ul>
+<p><em>Scan Ports by Protocol</em></p>
+<p>In computer networking, a protocol <em>defines a standard way for computers to exchange information</em>. &hellip; Network clients use different ports (or channels) to transfer this data. Generally one port is used to send data and another to receive it, so packets don&rsquo;t collide.</p>
+<ul>
+<li>Scan ports by protocol <strong>nmap -sU -sT -p U:53,111,137,T:21- 25,80,139,8080 192.168.0.1</strong></li>
+</ul>
+<p><em>Scan All Ports</em></p>
+<p>The command given below will initiate a scan against the target host looking for all ports (1-65535).</p>
+<ul>
+<li>Scan all posts <strong>nmap -p ‘’ 192.168.0.1</strong>*</li>
+</ul>
+<p><em>Scan Top Ports</em></p>
+<p>The –top-ports option lets you specify the number of ports you wish to scan in each protocol, and will pick the most popular ports for you based on the new frequency data. For both TCP and UDP, the top 10 ports gets you roughly half of the open ports.</p>
+<ul>
+<li>Scan top ports <strong>nmap –top-ports 10 192.168.0.1</strong></li>
+</ul>
+<p><em>Perform a Sequential Port Scan</em></p>
+<p>By default, Nmap randomizes the scanned port order (except that certain commonly accessible ports are moved near the beginning for efficiency reasons). This randomization is normally desirable, but you can specify <code>-r</code> for sequential (sorted from lowest to highest) port scanning instead.</p>
+<ul>
+<li>Perform a Sequential Port Scan <strong>nmap -r 192.168.0.1</strong></li>
+</ul>
+<h2 id="version-detection">Version Detection</h2>
+<p><em>Operating System Detection</em></p>
+<p>One of Nmap&rsquo;s best-known features is remote OS detection using TCP/IP stack fingerprinting. Nmap sends a series of TCP and UDP packets to the remote host and examines practically every bit in the responses. After performing dozens of tests such as TCP ISN sampling, TCP options support and ordering, IP ID sampling, and the initial window size check, Nmap compares the results to its <code>nmap-os-db</code> database of more than 2,600 known OS fingerprints and prints out the OS details if there is a match.</p>
+<ul>
+<li>Operating System Detection <strong>nmap -O 192.168.0.1</strong></li>
+</ul>
+<p><em>Attempt to Guess an Unknown OS</em></p>
+<p>If Nmap says there are no matches close enough to print, something is probably wrong. Maybe a firewall or NAT box in the way is modifying the probe or response packets. This can cause a hybrid situation where one group of tests look like they are from one OS, while another set look completely different. Adding the <code>--osscan-guess</code> may give more clues as to what is running.</p>
+<ul>
+<li>Attempt to Guess an Unknown OS <strong>nmap -O –osscan-guess 192.168.0.1</strong></li>
+</ul>
+<p><em>Service Version Detection</em></p>
+<p>Version detection is enabled and controlled with the following options:</p>
+<p><code>-sV</code>  (Version detection)</p>
+<ul>
+<li>Version detection <strong>nmap -sV 192.168.0.1</strong></li>
+</ul>
+<p><em>Troubleshooting Version Scans</em></p>
+<p>This causes Nmap to print out extensive debugging info about what version scanning is doing. It is a subset of what you get with.</p>
+<ul>
+<li>Troubleshooting Version Scans <strong>nmap -sV –version-trace 192.168.0.1</strong></li>
+</ul>
+<p><em>Perform a RPC Scan</em></p>
+<p>An adversary scans for RPC services listing on a Unix/Linux host. This type of scan can be obtained via native operating system utilities or via port scanners like nmap. When performed by a scanner, an RPC datagram is sent to a list of UDP ports and the response is recorded. Particular types of responses can be indicative of well-known RPC services running on a UDP port. Direct RPC scans that bypass portmapper/sunrpc are typically slow compare to other scan types, are easily detected by IPS/IDS systems, and can only detect open ports when an RPC service responds.</p>
+<ul>
+<li>Perform a RPC Scan <strong>nmap -sR 192.168.0.1</strong></li>
+</ul>
+<h2 id="firewall-evasion-techniques">Firewall Evasion Techniques</h2>
+<p><em>Augment Packets</em></p>
+<p>The <code>-f</code> option causes the requested scan (including host discovery scans) to use tiny fragmented IP packets. The idea is to split up the TCP header over several packets to make it harder for packet filters, intrusion detection systems, and other annoyances to detect what you are doing. Be careful with this! Some programs have trouble handling these tiny packets.</p>
+<ul>
+<li>Augment Packets <strong>nmap -f 192.168.0.1</strong></li>
+</ul>
+<p><em>Pacify a Specific MTU</em></p>
+<p>Don&rsquo;t also specify <code>-f</code> if you use <code>--mtu</code>. The offset must be a multiple of eight. While fragmented packets won&rsquo;t get by packet filters and firewalls that queue all IP fragments, such as the <code>CONFIG_IP_ALWAYS_DEFRAG</code> option in the Linux kernel, some networks can&rsquo;t afford the performance hit this causes and thus leave it disabled. Others can&rsquo;t enable this because fragments may take different routes into their networks. Some source systems defragment outgoing packets in the kernel.</p>
+<ul>
+<li>Pacify a Specific MTU <strong>nmap –mtu 32 192.168.0.1</strong></li>
+</ul>
+<p><em>Use a Decoy</em></p>
+<p>Causes a decoy scan to be performed, which makes it appear to the remote host that the host(s) you specify as decoys are scanning the target network too. Thus their IDS might report 5–10 port scans from unique IP addresses, but they won&rsquo;t know which IP was scanning them and which were innocent decoys. While this can be defeated through router path tracing, response-dropping, and other active mechanisms, it is generally an effective technique for hiding your IP address.</p>
+<ul>
+<li>Use a decoy <strong>nmap -D RND:10 192.168.0.1</strong></li>
+</ul>
+<p><em>Zombie Scan</em></p>
+<p>Attackers can actually scan a target without sending a single packet to the target from their own IP address! Instead, a clever side-channel attack allows for the scan to be bounced off a dumb “zombie host”. Intrusion detection system (IDS) reports will finger the innocent zombie as the attacker. Besides being extraordinarily stealthy, this scan type permits discovery of IP-based trust relationships between machines.</p>
+<ul>
+<li>Zombie scan <strong>nmap -sI 192.168.0.38</strong></li>
+</ul>
+<p><em>Manually Specify a Source Port</em></p>
+<p>Nmap offers the -g and &ndash;source-port options (they are equivalent) to exploit these weaknesses. Simply provide a port number, and Nmap will send packets from that port where possible. Nmap must use different port numbers for certain OS detection tests to work properly. Most TCP scans, including SYN scan, support the option completely, as does UDP scan.</p>
+<ul>
+<li>Manually Specify a Source Port <strong>nmap –source-port 10 192.168.0.1</strong></li>
+</ul>
+<p><em>Randomize Target Scan Order</em></p>
+<p>Nmap offers the &ndash;randomize-hosts option which <em>splits up the target networks into blocks of 16384 IPs</em>, then randomizes the hosts in each block. If you are scanning a huge network, such as class B or larger, you may get better (more stealthy) results by randomizing larger blocks.</p>
+<ul>
+<li>Randomize Target Scan Order <strong>nmap –randomize-hosts 192.168.0.1-20</strong></li>
+</ul>
+<p><em>Spoof MAC Address</em></p>
+<p>MAC spoofing can allow us to fake the origin of our connections and can be helpful to evade IDS systems. It is possible to spoof your MAC address while performing an ARP ping scan. Use &ndash;spoof-mac to set a new MAC address:</p>
+<ul>
+<li>Spoof MAC address <strong>nmap -sn -PR &ndash;spoof-mac <!-- raw HTML omitted --> 192.168.0.1</strong></li>
+</ul>
+<p><em>Send Bad Checksums</em></p>
+<p>Asks Nmap to use an invalid TCP, UDP or SCTP checksum for packets sent to target hosts. Since virtually all host IP stacks properly drop these packets, any responses received are likely coming from a firewall or IDS that didn&rsquo;t bother to verify the checksum.</p>
+<ul>
+<li>Send bad checksums <strong>nmap –badsum 192.168.0.1</strong></li>
+</ul>
+<h2 id="troubleshooting-and-debugging">Troubleshooting And Debugging</h2>
+<p><em>Display Nmap Version</em></p>
+<p>Increases the verbosity level, causing Nping to print more information during its execution. There are 9 levels of verbosity (-4 to 4). Every instance of  <code>-v</code>  increments the verbosity level by one (from its default value, level 0). Every instance of option  <code>-q</code>  decrements the verbosity level by one. Alternatively you can specify the level directly, as in  <code>-v3</code>  or  <code>-v-1</code>. These are the available levels:</p>
+<p>Level -4</p>
+<p>No output at all. In some circumstances you may not want Nping to produce any output (like when one of your work mates is watching over your shoulder). In that case level -4 can be useful because although you won&rsquo;t see any response packets, probes will still be sent.</p>
+<p>Level -3</p>
+<p>Like level -4 but displays fatal error messages so you can actually see if Nping is running or it failed due to some error.</p>
+<p>Level -2</p>
+<p>Like level -3 but also displays warnings and recoverable errors.</p>
+<p>Level -1</p>
+<p>Displays traditional run-time information (version, start time, statistics, etc.) but does not display sent or received packets.</p>
+<p>Level 0</p>
+<p>This is the default verbosity level. It behaves like level -1 but also displays sent and received packets and some other important information.</p>
+<p>Level 1</p>
+<p>Like level 0 but it displays detailed information about timing, flags, protocol details, etc.</p>
+<p>Level 2</p>
+<p>Like level 1 but displays very detailed information about sent and received packets and other interesting information.</p>
+<p>Level 3</p>
+<p>Like level 2 but also displays the raw hexadecimal dump of sent and received packets.</p>
+<p>Level 4 and higher</p>
+<p>Same as level 3.</p>
+<ul>
+<li>Nmap Version <strong>nmap -V</strong></li>
+</ul>
+<p><em>Debugging</em></p>
+<p>When even verbose mode doesn&rsquo;t provide sufficient data for you, debugging is available to flood you with much more! As with the <code>-v</code>, debugging is enabled with a command-line flag <code>-d</code> and the debug level can be increased by specifying it multiple times. There are 7 debugging levels (0 to 6). Every instance of <code>-d</code> increments debugging level by one. Provide an argument to <code>-d</code> to set the level directly; for example <code>-d4</code>.</p>
+<ul>
+<li>Debugging nmap -d 192.168.0.1</li>
+</ul>
+<p><em>Only Display Open Ports</em></p>
+<p>Nmap has the option <em>&ndash;open</em> , which will filter out all the other potential states. If you are scanning under Linux, you could also use grep to achieve a very similar result.</p>
+<ul>
+<li>Nmap display open ports <strong>nmap –open 192.168.0.1</strong></li>
+</ul>
+<p><em>Trace Packets</em></p>
+<p>Technique Involves in packet-tracing via nmap</p>
+<p>The nmap module is an interface with nmap&rsquo;s internal functions and data structures. The API offers target host information such as port states and version detection results. It also provides an interface to the Nsock library for effective network I/O.</p>
+<ul>
+<li>Trace Packets <strong>nmap –packet-trace 192.168.0.1</strong></li>
+</ul>
+<h2 id="nmap-scripting-engine">NMAP Scripting Engine</h2>
+<p><em>Execute Individual Scripts</em></p>
+<p>While NSE has a complex implementation for efficiency, it is strikingly easy to use. Simply specify <code>-sC</code> to enable the most common scripts. Or specify the <code>--script</code> option to choose your own scripts to execute by providing categories, script file names, or the name of directories full of scripts you wish to execute.</p>
+<ul>
+<li>Individual Scripts <strong>nmap –script banner.nse 192.168.0.1</strong></li>
+</ul>
+<p><em>Execute Multiple Scripts</em></p>
+<p>Loads all scripts whose name starts with <code>http-</code>, such as <code>http-auth</code> and <code>http-open-proxy</code>. The argument to <code>--script</code> had to be in quotes to protect the wildcard from the shell.</p>
+<ul>
+<li>Nmap multiple script <strong>nmap –script ‘http-’ 192.168.0.1</strong>*</li>
+</ul>
+<p><em>Script Categories</em></p>
+<p>NSE scripts define a list of categories they belong to. Currently defined categories are <code>auth</code>, <code>broadcast</code>, <code>brute</code>, <code>default</code>. <code>discovery</code>, <code>dos</code>, <code>exploit</code>, <code>external</code>, <code>fuzzer</code>, <code>intrusive</code>, <code>malware</code>, <code>safe</code>, <code>version</code>, and <code>vuln</code>. Category names are not case sensitive.</p>
+<ul>
+<li>Execute Scripts by Category <strong>nmap –script ‘not intrusive’ 192.168.0.1</strong></li>
+</ul>
+<p><em>Execute Multiple Script Categories</em></p>
+<p>Nmap Execute more than one script in same time</p>
+<ul>
+<li>Multiple Script Categories <strong>nmap –script ‘default or safe’ 192.168.0.1</strong></li>
+</ul>
+<p><em>Troubleshoot Scripts</em></p>
+<p>This option is similar to <code>--packet-trace</code>, but works at the application level rather than packet by packet. If this option is specified, all incoming and outgoing communication performed by scripts is printed. The displayed information includes the communication protocol, source and target addresses, and the transmitted data. If more than 5% of transmitted data is unprintable, hex dumps are given instead. Specifying <code>--packet-trace</code> enables script tracing too</p>
+<ul>
+<li>Troubleshoot Scripts <strong>nmap –script banner.nse –script-trace 192.168.0.1</strong></li>
+</ul>
+<p><em>Update the Script Database</em></p>
+<p>This option updates the script database found in <code>scripts/script.db</code> which is used by Nmap to determine the available default scripts and categories. It is only necessary to update the database if you have added or removed NSE scripts from the default <code>scripts</code> directory or if you have changed the categories of any script. This option is used by itself without arguments:</p>
+<ul>
+<li><em>nmap &ndash;script-updatedb</em>.</li>
+</ul>
+<h3 id="thanks-for-reading">Thanks for reading</h3>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>

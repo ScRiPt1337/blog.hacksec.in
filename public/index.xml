@@ -6,7 +6,17 @@
     <description>Recent content in hack computer systems like black hat on Hacksec</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nmap</title>
+      <link>https://blog.hacksec.in/posts/nmap/</link>
+      <pubDate>Sun, 12 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/nmap/</guid>
+      <description>What is NMAP Nmap is a free and open-source network scanner created by Gordon Lyon. Nmap is used to discover hosts and services on a computer network by sending packets and analyzing the responses. Nmap provides a number of features for probing computer networks, including host discovery and service and operating system detection.
+What Does Nmap Do? Nmap (Network Mapper) is an open source and free security scanner used for network discovery and security auditing.</description>
+    </item>
+    
     <item>
       <title>Recon</title>
       <link>https://blog.hacksec.in/posts/getting_started_with_recon/</link>
