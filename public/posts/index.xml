@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Shodan</title>
+      <link>https://blog.hacksec.in/posts/shodan/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/shodan/</guid>
+      <description>Shodan Use In Bug Bounty What is shodan Shodan is a search engine that lets users search for various types of servers (webcams, routers, servers, etc.) connected to the internet using a variety of filters. Some have also described it as a search engine of service banners, which are metadata that the server sends back to the client. This can be information about the server software, what options the service supports, a welcome message or anything else that the client can find out before interacting with the server.</description>
+    </item>
+    
+    <item>
       <title>nmap</title>
       <link>https://blog.hacksec.in/posts/nmap/</link>
       <pubDate>Sun, 12 Sep 2021 00:00:00 +0000</pubDate>

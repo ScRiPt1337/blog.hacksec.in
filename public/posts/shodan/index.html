@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Shodan - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.6bf25c2ea4bd742a664298251a15461d2aaff7187782de0ffd27dd0ee0e162ec.css">
+  
+
+  
+    <meta name="description" content="Complete Guide to Shodan | Shodan Tutorial"/>
+    <meta property="og:title" content="Shodan"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/shodan/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/shodan/Purple%20Blue%20Abstract%20Gamer%20YouTube%20Channel%20Art.png"/>
+    <meta property="og:description" content="Complete Guide to Shodan | Shodan Tutorial"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>Shodan<span class="dot">.</span></h1>
+      
+      <img src="/images/shodan/Purple%20Blue%20Abstract%20Gamer%20YouTube%20Channel%20Art.png" />
+      
+    </div>
+    <div class="content">
+      <h2 id="shodan-use-in-bug-bounty">Shodan Use In Bug Bounty</h2>
+<h3 id="what-is-shodan">What is shodan</h3>
+<p>Shodan is a search engine that lets users search for various types of servers (webcams, routers, servers, etc.) connected to the internet using a variety of filters. Some have also described it as a search engine of service banners, which are metadata that the server sends back to the client. This can be information about the server software, what options the service supports, a welcome message or anything else that the client can find out before interacting with the server.</p>
+<h2 id="why-shodan-is-better-than-google">Why Shodan is better than Google?</h2>
+<p>The search engine crawlers browse the web and when it finds a device, it collect metadata about the device.  Unlike Google, crawls the internet looking for websites, Shodan navigates the Internet’s back channels.</p>
+<p>It keeps looking for the servers, printers, routers, webcams, and all the other stuff that is connected to and makes up the Internet.  The basic thing is Shodan searches for devices those have a web interface. Shodan is also called dark Google, scariest search engine ever and  ‘hacker’s search engine at the same time.</p>
+<h2 id="how-to-use-shodan">How to use Shodan?</h2>
+<p>Shodan does not allow you to fetch all data free of cost. If you search about ‘camera’, it will display 323,647 results. However, you can access to only 10 of them and after that you need to login.</p>
+<h2 id="shodan-dork">Shodan dork</h2>
+<h3 id="server">Server</h3>
+<p>Find the devices or servers that contain a specific server header flag. You can research vulnerable servers.</p>
+<p><code>server: &quot;apache 2.2.3&quot;</code></p>
+<p>or you can use directly the flag</p>
+<p><code>apache 2.2.3</code></p>
+<h3 id="hostname">hostname:</h3>
+<p>Find devices with specific hostname worldwide. The hostname is a label that’s assigned to a device connected to a network that is used to spot the device in various kinds of transmission, like the World Wide Web. You can use multiple filters altogether included in the shodan cheat sheet to narrow your search.</p>
+<p><code>server: &quot;apache&quot; hostname:&quot;google&quot;</code></p>
+<h3 id="net">Net:</h3>
+<p>Find devices or machines based on an IP address or /x CIDR. This filter can also be used to find the IP range or certain IP addresses and subnet masks.</p>
+<p><code>net:34.98.0.0/16</code></p>
+<h3 id="databases">Databases:</h3>
+<p>Databases often hold critical bits of information. When exposed to the public internet—whether for ease of development access or simply due to misconfiguration—can open up a huge security hole.
+To find MongoDB database servers which have open authentication over the public internet within Shodan, the following search query can be used:</p>
+<p><code>&quot;MongoDB Server Information&quot; port:27017 -authentication</code></p>
+<p>MongoDB also has a web management application similar to phpMyAdmin called Mongo Express Web GUI, which we can find with the following query:</p>
+<p><code>&quot;Set-Cookie: mongo-express=&quot; &quot;200 OK&quot;</code></p>
+<p>Similarly, to find MySQL-powered databases:</p>
+<p><code>mysql port:&quot;3306&quot;</code></p>
+<p>And to look up PostgreSQL databases:</p>
+<p><code>port:5432 PostgreSQL</code></p>
+<h3 id="port">Port:</h3>
+<p>Searching for services running on open port saccessible on the public internet—like FTP servers, SSH servers and others—is possible by using the following queries.</p>
+<p>For FTP, querying for proftpd, a popular FTP server:</p>
+<p><code>proftpd port:21</code></p>
+<p>To look for FTP servers that allow anonymous logins:</p>
+<p><code>&quot;220&quot; &quot;230 Login successful.&quot; port:21</code></p>
+<p>To query for OpenSSH, a popular SSH server:</p>
+<p><code>openssh port:22</code></p>
+<p>To look up EXIM-powered mail servers on port 25:</p>
+<p><code>port:&quot;25&quot; product:&quot;exim&quot;</code></p>
+<p>Memcached, commonly seen on port 11211, has been a major source of UDP amplification attacks leading to huge DDoS attacks. Services running Memcached available on the public internet are often exploited for these attacks:</p>
+<p><code>port:&quot;11211&quot; product:&quot;Memcached&quot;</code></p>
+<p>Jenkins is a popular automated build, deploy and test tool, often the starting point of any software being built for release. It can be found via the following query:</p>
+<p><code>&quot;X-Jenkins&quot; &quot;Set-Cookie: JSESSIONID&quot; http.title:&quot;Dashboard&quot;</code></p>
+<h3 id="dns-servers">DNS servers</h3>
+<p>DNS servers with recursion enabled can be a huge source of  network threats. To find these servers, one can use the query:</p>
+<p><code>&quot;port: 53&quot; Recursion: Enabled</code></p>
+<h3 id="network-infrastructure">Network infrastructure</h3>
+<p>To find devices running a specific version of a RouterOS operating system that powers routers, switches and other networking equipment from the company MikroTik, we use the following search query:</p>
+<p><code>port:8291 os:&quot;MikroTik RouterOS 6.45.9&quot;</code></p>
+<p>This allows us to find those switches, routers and other networking gear running an older and possibly vulnerable version of the RouterOS operating system which runs on port number 8291, used for the web management UI.</p>
+<h3 id="web-servers">Web servers</h3>
+<p>Shodan makes it possible to find and filter out web server versions as well. For example, we’ll use this to find IPs that host a specific version of the popular web server Apache:</p>
+<p><code>product:&quot;Apache httpd&quot; port:&quot;80&quot;</code></p>
+<p>With the above query, we can find Apache web servers on port 80, the most common port for web servers.</p>
+<p>Similarly, to look up Microsoft IIS-powered websites and web servers:</p>
+<p><code>product:&quot;Microsoft IIS httpd&quot;</code></p>
+<p>To look up Nginx-powered websites and web servers:</p>
+<p><code>product:&quot;nginx&quot;</code></p>
+<p>The above product query can be combined with the “port” option too. For example, if you wish to lookup Nginx-powered web servers on port 8080:</p>
+<p><code>&quot;port: 8080&quot; product:&quot;nginx&quot;</code></p>
+<h3 id="operating-systems">Operating systems</h3>
+<p>Querying for older and possibly end-of-life operating systems like Windows 7 is also possible in Shodan, by using the following query:</p>
+<p><code>os:&quot;windows 7&quot;</code></p>
+<p>Similarly, to look up specific build versions of Windows 10, the following query can be used, wherein we look up Windows 10 Home edition with build version 19041:</p>
+<p><code>os:&quot;Windows 10 Home 19041&quot;</code></p>
+<p>To filter and find Linux-based devices, the following query can be used:</p>
+<p><code>os:&quot;Linux&quot;</code></p>
+<h3 id="location">location</h3>
+<p>At certain points of time, the amount of data returned by Shodan might be a bit too much. To make things easier to filter, the Country or City filter can be applied:</p>
+<p>For example, if you wish to filter by country:</p>
+<p><code>country:&quot;IN&quot;</code></p>
+<p>To filter by city:</p>
+<p><code>&quot;city: DELHI&quot;</code></p>
+<p>Last but not least, you can even look up via GPS coordinates of a region or city:</p>
+<p><code>geo:&quot;61.5274, 0.XXXX&quot;</code></p>
+<p>This location filter can be combined with other filters as well. For example, if you wish to find Windows 7 devices in the United Kingdom, the following query can be used:</p>
+<p><code>os:&quot;windows 7&quot; country:&quot;IN&quot;</code></p>
+<h3 id="ssl-certificates">SSL certificates</h3>
+<p>Another advantage of Shodan is that it can be used to  find SSL certificates that are expired or self-signed &ldquo;Dangers of Using Self-Signed Certificates&rdquo;).</p>
+<p>To find self-signed certificates, the following query can be used:</p>
+<p><code>ssl.cert.issuer.cn:example.com ssl.cert.subject.cn:example.com</code></p>
+<p>To find expired SSL certificates, this query can be used:</p>
+<p><code>ssl.cert.expired:true</code></p>
+<h3 id="beforeafter">before/after:</h3>
+<p>The ‘after’ and ‘before’ filter helps you to devices after and before a particular date.</p>
+<p>The format allowed is dd/mm/yyyy</p>
+<p><code>nginx before:13/04/2021 after:13/04/2017</code></p>
+<h3 id="citrix">Citrix:</h3>
+<p>Find Citrix Gateway.</p>
+<p><code>title:&quot;citrix gateway&quot;</code></p>
+<h3 id="misconfigured-wordpress-sites">Misconfigured WordPress Sites:</h3>
+<p>The wp-config.php if accessed can give out the database credentials.</p>
+<p><code>http.html:&quot;* The wp-config.php creation script uses this file&quot;</code></p>
+<p>You can access the main WordPress configuration file and capture sensitive information like credentials or AUTH_KEY of misconfigured sites.</p>
+<h3 id="jenkins">Jenkins:</h3>
+<p>Find for all Jenkins Unrestricted Dashboard</p>
+<p><code>x-jenkins 200</code></p>
+<h2 id="dorks-for-iot-device-intelligence">dorks for IoT device intelligence</h2>
+<h3 id="industrial-control-systems">Industrial control systems</h3>
+<p><a href="https://www.shodan.io/explore/category/industrial-control-systems" title="Shodan Industrial Control Systems">Industrial control systems</a>  run some of the most complex machinery seen in modern times. With uses ranging from power generation to manufacturing, control systems can be as simple as basic temperature sensors to complex machinery that controls the whole plant.</p>
+<p>For example, to find XZERES Wind Turbines:</p>
+<p><code>title:&quot;xzeres wind&quot;</code></p>
+<p>And for Mitsubishi Electric, the MELSEC-Q protocol is commonly used by control system machines/networks:</p>
+<p><code>port:5006,5007 product:mitsubishi</code></p>
+<p>We can also find electric vehicle chargers on Shodan, with the following query:</p>
+<p><code>&quot;Server: gSOAP/2.8&quot; &quot;Content-Length: 583&quot;</code></p>
+<h3 id="remote-desktop">Remote Desktop</h3>
+<p>Remote Desktop, commonly known as RDP, is a service used to remotely access Windows-based machines. These devices often run older or out-of-date Windows patches, allowing them to be exploitable.</p>
+<p>To look up open Windows Remote Desktop ports, use:</p>
+<p><code>remote desktop &quot;port:3389&quot;</code></p>
+<p>Looking at the Linux side of things, we commonly see VNC being used. Devices with VNC available without authentication can be found with the following query:</p>
+<p><code>&quot;authentication disabled&quot; &quot;RFB 003.008&quot;</code></p>
+<h3 id="nas-accesses">NAS accesses</h3>
+<p>NAS, or network attached storage devices, often carry or hold a lot of data. Leaving them exposed to the public internet without authentication can lead to data theft, data loss and  ransomware attacks.
+Samba is a popular networking protocol which provides file and print services for Windows based devices. The following query allows us to find devices running on the Samba protocol on port 445 with authentication disabled:</p>
+<p><code>&quot;Authentication: disabled&quot; port:445</code></p>
+<p>For media devices, Plex is a popular media management device used to manage photos, movies and music. Plex devices can be found with the following filter:</p>
+<p><code>&quot;X-Plex-Protocol&quot; &quot;200 OK&quot; port:32400</code></p>
+<p>Some NAS devices have FTP-based services running on them. They can be found via the following query:</p>
+<p><code>&quot;220&quot; &quot;230 Login successful.&quot; port:21</code></p>
+<h3 id="printers-and-copiers">Printers and copiers</h3>
+<p>With nearly all modern printers and copiers having networking capabilities, and some even with WiFi abilities, it’s critical to secure them.</p>
+<p>To find HP-powered printers, the following query can be used:</p>
+<p><code>&quot;Serial Number:&quot; &quot;Built:&quot; &quot;Server: HP HTTP&quot;</code></p>
+<p>Similarly, to find EPSON powered printers:</p>
+<p><code>&quot;SERVER: EPSON_Linux UPnP&quot; &quot;200 OK&quot;</code></p>
+<p>Xerox printers and copiers often seen at workplaces are easily found via the following query, which pulls identifiable information from its SSL certificate:</p>
+<p><code>ssl:&quot;Xerox Generic Root&quot;</code></p>
+<h2 id="shodan-command-line-interface">Shodan Command-Line Interface</h2>
+<p>The <em>shodan</em> command-line interface (CLI) is a command-line library for the Shodan IoT search engine. You can install using this simple python’s pip command,</p>
+<p><code>$  pip install shodan</code></p>
+<p>Once the shodan tool is installed you need to initialize the environment variable with the private API key, you can get form shodan account settings.</p>
+<p><code>$  shodan init PRIVATE_API_KEY</code></p>
+<p>Now you can run just the shodan command to get the help.</p>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>
