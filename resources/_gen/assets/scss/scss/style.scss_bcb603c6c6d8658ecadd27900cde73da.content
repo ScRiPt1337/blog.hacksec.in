@@ -143,6 +143,7 @@ ul {
     list-style: disc; }
     .content ul li,
     .content ol li {
+      list-style: white;
       font-size: 18px;
       line-height: 20px;
       margin-bottom: 10px;

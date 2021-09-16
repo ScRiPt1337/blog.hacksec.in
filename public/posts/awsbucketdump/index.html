@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>AWSBucketDump - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.716f2dd87366be75c50babe0495f6f831c4925ca6f6a0c66c83ac32c4a258f16.css">
+  
+
+  
+    <meta name="description" content="Deep Dive Into AWSBucketDump | AWSBucketDump Tutorial"/>
+    <meta property="og:title" content="AWSBucketDump"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/awsbucketdump/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/hacksec-cli/Yellow%20Magenta%20Black%20White%20Neon%20Scifi%20YouTube%20Channel%20Art.png"/>
+    <meta property="og:description" content="Deep Dive Into AWSBucketDump | AWSBucketDump Tutorial"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>AWSBucketDump<span class="dot">.</span></h1>
+      
+      <img src="/images/hacksec-cli/Yellow%20Magenta%20Black%20White%20Neon%20Scifi%20YouTube%20Channel%20Art.png" />
+      
+    </div>
+    <div class="content">
+      <h1 id="awsbucketdump">AWSBucketDump</h1>
+<h3 id="why-this-tool">Why this tool?</h3>
+<p>AWSBucketDump is a security tool to find interesting files in AWS S3 buckets that are part of Amazon cloud services. These storage containers may have interesting files, which a tool like AWSBucketDump can discover.</p>
+<h3 id="how-it-works">How it works</h3>
+<p>AWSBucketDump is using a Python script to parse a list of names. Using that list it tries to guess valid bucket names. Using a keywords list the most interesting items can be filtered from the results.</p>
+<h3 id="usage-and-audience">Usage and audience</h3>
+<p>AWSBucketDump is commonly used for <strong>configuration audit</strong>, <strong>discovery of sensitive information</strong>, or <strong>security assessment</strong>. Target users for this tool are security professionals.</p>
+<h4 id="awsbucketdump-is-a-tool-to-quickly-enumerate-aws-s3-buckets-to-look-for-loot-its-similar-to-a-subdomain-bruteforcer-but-is-made-specifically-for-s3-buckets-and-also-has-some-extra-features-that-allow-you-to-grep-for-delicious-files-as-well-as-download-interesting-files-if-youre-not-afraid-to-quickly-fill-up-your-hard-drive">AWSBucketDump is a tool to quickly enumerate AWS S3 buckets to look for loot. It&rsquo;s similar to a subdomain bruteforcer but is made specifically for S3 buckets and also has some extra features that allow you to grep for delicious files as well as download interesting files if you&rsquo;re not afraid to quickly fill up your hard drive.</h4>
+<p>This is a tool that enumerates Amazon S3 buckets and looks for interesting files.
+I have example wordlists but I haven&rsquo;t put much time into refining them.
+<a href="https://github.com/danielmiessler/SecLists">https://github.com/danielmiessler/SecLists</a> will have all the word lists you need. If you are targeting a specific company, you will likely want to use jhaddix&rsquo;s enumall tool which leverages recon-ng and Alt-DNS.
+<a href="https://github.com/jhaddix/domain">https://github.com/jhaddix/domain</a> &amp;&amp; <a href="https://github.com/infosec-au/altdns">https://github.com/infosec-au/altdns</a>
+As far as word lists for grepping interesting files, that is completely up to you. The one I provided has some basics and yes, those word lists are based on files that I personally have found with this tool.
+Using the download feature might fill your hard drive up, you can provide a max file size for each download at the command line when you run the tool. Keep in mind that it is in bytes.
+I honestly don&rsquo;t know if Amazon rate limits this, I am guessing they do to some point but I haven&rsquo;t gotten around to figuring out what that limit is. By default there are two threads for checking buckets and two buckets for downloading.</p>
+<h3 id="awsbucketdump-use-install">AWSBucketDump use install</h3>
+<h4 id="step-1--go-to-the-awsbucketdump-github-and-clone-the-repo">Step 1:- Go to the AWSBucketDump [github] and clone the repo.</h4>
+<ul>
+<li>git clone <a href="https://github.com/jordanpotti/AWSBucketDump.git">https://github.com/jordanpotti/AWSBucketDump.git</a>
+<img src="https://i.postimg.cc/tRMjxBMM/aws11.png" alt="aws"></li>
+</ul>
+<h4 id="step-2--now-go-to-the-folder-name-awsbucketdump-and-run-cmd-below-">Step 2:- Now go to the folder name AWSBucketDump and run cmd below:-</h4>
+<ul>
+<li>python AWSBucketDump.py -h
+<img src="https://i.postimg.cc/T1Dfwmfw/aws2222.png" alt="help"></li>
+</ul>
+<h4 id="step-3--after-check-all-the-cmnd-of-awsbucketdup-now-run-the-cmnd-given-below-">Step 3:- after check all the cmnd of awsbucketdup now run the cmnd given below:-</h4>
+<p>-python AWSBucketDump.py -l BucketNames.txt -g interesting_Keywords.txt -D -m 500000 -d 1</p>
+<h3 id="some-dork-for-find-aws-delicious-files">Some dork for find aws delicious files</h3>
+<p>-site:s3.amazonaws.com filetype:txt username
+<img src="https://i.postimg.cc/rwJHnVdb/log.png" alt="username"></p>
+<ul>
+<li>site:s3.amazonaws.com password filetype:xls
+<img src="https://i.postimg.cc/QdQDXZFk/2.png" alt="pass"></li>
+<li>site:s3.amazonaws.com logs filetype:txt
+<img src="https://i.postimg.cc/yNJ8sbzV/loggg.png" alt="logss"></li>
+</ul>
+<h3 id="thanks-for-reading">Thanks for reading</h3>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>

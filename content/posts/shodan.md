@@ -273,3 +273,5 @@ Once the shodan tool is installed you need to initialize the environment variabl
 `$  shodan init PRIVATE_API_KEY`
 
 Now you can run just the shodan command to get the help.
+
+### Thanks for reading

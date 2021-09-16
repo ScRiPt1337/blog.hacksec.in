@@ -6,7 +6,17 @@
     <description>Recent content in hack computer systems like black hat on Hacksec</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWSBucketDump</title>
+      <link>https://blog.hacksec.in/posts/awsbucketdump/</link>
+      <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/awsbucketdump/</guid>
+      <description>AWSBucketDump Why this tool? AWSBucketDump is a security tool to find interesting files in AWS S3 buckets that are part of Amazon cloud services. These storage containers may have interesting files, which a tool like AWSBucketDump can discover.
+How it works AWSBucketDump is using a Python script to parse a list of names. Using that list it tries to guess valid bucket names. Using a keywords list the most interesting items can be filtered from the results.</description>
+    </item>
+    
     <item>
       <title>Shodan</title>
       <link>https://blog.hacksec.in/posts/shodan/</link>
