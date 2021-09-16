@@ -94,26 +94,30 @@ A frequent misconception is that a CNAME record must always resolve to the same 
 <li>Auto Command Line Updater</li>
 </ul>
 <h4 id="how-to-install-subdover">How To Install subdover</h4>
-<p>Step 1:- Before installing the subdover you need to install <a href="https://github.com/Findomain/Findomain">Findomain</a> and <a href="https://github.com/projectdiscovery/httpx">Httpx</a>
-Step 2:- After installing Findomain and Httpx git clone subdover:-</p>
+<p>Step 1:- Before installing the subdover you need to install <a href="https://github.com/Findomain/Findomain">Findomain</a> and <a href="https://github.com/projectdiscovery/httpx">Httpx</a></p>
+<p>Step 2:- After installing Findomain and Httpx git clone subdover:-</p>
 <ul>
-<li>git clone <a href="https://github.com/PushpenderIndia/subdover.git">https://github.com/PushpenderIndia/subdover.git</a>
-Step 3: after that run the cmd given below:-
+<li>git clone <a href="https://github.com/PushpenderIndia/subdover.git">https://github.com/PushpenderIndia/subdover.git</a></li>
+</ul>
+<p>Step 3: after that run the cmd given below:-</p>
 <blockquote>
 <p>sudo python3 subdover.py -d target.com
 <img src="https://i.postimg.cc/43HZfqZG/subdover.jpg" alt="takeover">
 Step 3:- Since the CNAME record is not deleted from
 target.com DNS zone, anyone who registers <em>anotherdomain.com</em> has full control over sub.example.com until the DNS record is present.
-<img src="https://i.postimg.cc/Ls0XvwBg/found.jpg" alt="found"> &gt; <img src="https://i.postimg.cc/mrbcD7VV/not-found.jpg" alt="not found">
-Step 4:- Now go to the aws to create the s3 bucket by filling bucket name and AWS region.
-<img src="https://i.postimg.cc/449stmKg/cr-bucket.jpg" alt="bucket">
-Step 5:- Now its time to upload the index file.
-<img src="https://i.postimg.cc/pXdNCrrr/upload-in.jpg" alt="index">
+<img src="https://i.postimg.cc/Ls0XvwBg/found.jpg" alt="found">
+<img src="https://i.postimg.cc/mrbcD7VV/not-found.jpg" alt="not found"></p>
+</blockquote>
+<p>Step 4:- Now go to the aws to create the s3 bucket by filling bucket name and AWS region.</p>
+<blockquote>
+<p><img src="https://i.postimg.cc/449stmKg/cr-bucket.jpg" alt="bucket"></p>
+</blockquote>
+<p>Step 5:- Now its time to upload the index file.</p>
+<blockquote>
+<p><img src="https://i.postimg.cc/pXdNCrrr/upload-in.jpg" alt="index">
 Lets check the sub domain after uploading index file
 <img src="https://i.postimg.cc/gcQySBkh/poc.jpg" alt="poc"></p>
 </blockquote>
-</li>
-</ul>
 <h3 id="thanks-for-reading">Thanks for reading</h3>
 
     </div>

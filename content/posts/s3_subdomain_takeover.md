@@ -46,18 +46,23 @@ I am using Subdover tool for takeover the subdomain
 #### How To Install subdover
 
 Step 1:- Before installing the subdover you need to install [Findomain](https://github.com/Findomain/Findomain) and [Httpx](https://github.com/projectdiscovery/httpx)
+
 Step 2:- After installing Findomain and Httpx git clone subdover:-
 
 - git clone https://github.com/PushpenderIndia/subdover.git
-  Step 3: after that run the cmd given below:-
+
+Step 3: after that run the cmd given below:-
   > sudo python3 subdover.py -d target.com
   > ![takeover](https://i.postimg.cc/43HZfqZG/subdover.jpg)
   > Step 3:- Since the CNAME record is not deleted from
   > target.com DNS zone, anyone who registers _anotherdomain.com_ has full control over sub.example.com until the DNS record is present.
-  > ![found](https://i.postimg.cc/Ls0XvwBg/found.jpg) > ![not found](https://i.postimg.cc/mrbcD7VV/not-found.jpg)
-  > Step 4:- Now go to the aws to create the s3 bucket by filling bucket name and AWS region.
+  > ![found](https://i.postimg.cc/Ls0XvwBg/found.jpg) 
+  > ![not found](https://i.postimg.cc/mrbcD7VV/not-found.jpg)
+
+Step 4:- Now go to the aws to create the s3 bucket by filling bucket name and AWS region.
   > ![bucket](https://i.postimg.cc/449stmKg/cr-bucket.jpg)
-  > Step 5:- Now its time to upload the index file.
+  
+Step 5:- Now its time to upload the index file.
   > ![index](https://i.postimg.cc/pXdNCrrr/upload-in.jpg)
   > Lets check the sub domain after uploading index file
   > ![poc](https://i.postimg.cc/gcQySBkh/poc.jpg)
