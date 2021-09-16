@@ -1,11 +1,11 @@
 ---
-title: AWSBucketDump
+title: AWS Bucket Dump
 date: 2021-09-16
 description: "Deep Dive Into AWSBucketDump | AWSBucketDump Tutorial"
 image: images/awsbucketdump/Pink and Maroon Neon Noir  Vaporwave Action  Adventure YouTube Channel Art.png
 ---
 
-# AWSBucketDump
+# AWS Bucket Dump
 
 ### Why this tool?
 
@@ -33,7 +33,7 @@ I honestly don't know if Amazon rate limits this, I am guessing they do to some 
 
 #### Step 1:- Go to the AWSBucketDump [github] and clone the repo.
 
-- git clone https://github.com/jordanpotti/AWSBucketDump.git
+- git clone https://github.com/jordanpotti/AWSBucketDump
   ![aws](https://i.postimg.cc/tRMjxBMM/aws11.png)
 
 #### Step 2:- Now go to the folder name AWSBucketDump and run cmd below:-
