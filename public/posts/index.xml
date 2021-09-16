@@ -18,6 +18,15 @@ How it works AWSBucketDump is using a Python script to parse a list of names. Us
     </item>
     
     <item>
+      <title>Subdomain Takeover on AWS S3</title>
+      <link>https://blog.hacksec.in/posts/s3_subdomain_takeover/</link>
+      <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/s3_subdomain_takeover/</guid>
+      <description>Subdomain Takeover on AWS S3 What Is Sub domain Takeover: When an attacker is able to gain control of a company’s subdomain hosted on a cloud service such as AWS, github etc. because of the DNS entries pointing to that service is not being removed. This allows attacker to set up a phishing page on that sub-domain or serve malicious content. Disadvantage: · Attacker can misuse company’s reputation by send phishing emails from the legitimate domain, perform XSS, phishing, stealing cookies and more.</description>
+    </item>
+    
+    <item>
       <title>Shodan</title>
       <link>https://blog.hacksec.in/posts/shodan/</link>
       <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Subdomain Takeover on AWS S3 - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.716f2dd87366be75c50babe0495f6f831c4925ca6f6a0c66c83ac32c4a258f16.css">
+  
+
+  
+    <meta name="description" content="Subdomain Takeover on AWS S3 using Subdover Tutorial"/>
+    <meta property="og:title" content="Subdomain Takeover on AWS S3"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/s3_subdomain_takeover/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/s3_subdomain_takeover/Green%20and%20Black%20Geometric%20Techno%20Technology%20YouTube%20Channel%20Art.png"/>
+    <meta property="og:description" content="Subdomain Takeover on AWS S3 using Subdover Tutorial"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>Subdomain Takeover on AWS S3<span class="dot">.</span></h1>
+      
+      <img src="/images/s3_subdomain_takeover/Green%20and%20Black%20Geometric%20Techno%20Technology%20YouTube%20Channel%20Art.png" />
+      
+    </div>
+    <div class="content">
+      <h1 id="subdomain-takeover-on-aws-s3">Subdomain Takeover on AWS S3</h1>
+<h4 id="what-is-sub-domain-takeover">What Is Sub domain Takeover:</h4>
+<p>When an attacker is able to gain control of a company’s subdomain hosted on a cloud service such as AWS, github etc. because of the DNS entries pointing to that service is not being removed. This allows attacker to set up a phishing page on that sub-domain or serve malicious content.
+<strong>Disadvantage:</strong>
+· Attacker can misuse company’s reputation by send phishing emails from the legitimate domain, perform XSS, phishing, stealing cookies and more.
+<strong>What is S3(Simple Storage Service):</strong> S3 buckets are scalable , high speed , data availability web based cloud storage service designed to use read private, public content or upload content to the buckets. You can also host your webpage on it and can render the contents of this on any of your subdomain using the CNAME DNS entry</p>
+<h4 id="subdomain-takeover-in-amazon-s3">Subdomain takeover in amazon s3:</h4>
+<p>Each bucket pointing to a specific domain or subdomain. So sometimes, when s3 buckets is no longer in use customer delete them from their Amazon account, but forgets to remove the DNS entry pointing to that subdomain it may escalate to a subdomain takeover because amazon allow non existing bucket names to be claimed again on any other account.</p>
+<h2 id="what-is-a-dns-cname-record">What is a DNS CNAME record?</h2>
+<p>The ‘canonical name’ (CNAME) record is used in lieu of an A record, when a domain or subdomain is an alias of another domain. All CNAME records must point to a domain, never to an IP address. Imagine a scavenger hunt where each clue points to another clue, and the final clue points to the treasure. A domain with a CNAME record is like a clue that can point you to another clue (another domain with a CNAME record) or to the treasure (a domain with an A record).
+For example, suppose blog.example.com has a CNAME record with a value of ‘example.com’ (without the ‘blog’). This means when a DNS server hits the DNS records for blog.example.com, it actually triggers another DNS lookup to example.com, returning example.com’s IP address via its A record. In this case we would say that example.com is the canonical name (or true name) of blog.example.com.
+Oftentimes, when sites have subdomains such as blog.example.com or shop.example.com, those subdomains will have CNAME records that point to a root domain (example.com). This way if the IP address of the host changes, only the DNS A record for the root domain needs to be updated and all the CNAME records will follow along with whatever changes are made to the root.
+A frequent misconception is that a CNAME record must always resolve to the same website as the domain it points to, but this is not the case. The CNAME record only points the client to the same IP address as the root domain. Once the client hits that IP address, the web server will still handle the URL accordingly. So for instance, blog.example.com might have a CNAME that points to example.com, directing the client to example.com’s IP address. But when the client actually connects to that IP address, the web server will look at the URL, see that it is blog.example.com, and deliver the blog page rather than the home page.</p>
+<h2 id="exploitation">Exploitation:</h2>
+<p>I am using Subdover tool for takeover the subdomain
+<strong>Subdover</strong> is a <em>MultiThreaded</em> Subdomain Takeover Vulnerability Scanner <em>Written In Python3</em>, Which has more than <em>70+ Fingerprints</em> of potentially vulnerable services. Uses <em>CNAME record</em> for verification of findings.</p>
+<ul>
+<li>
+<h3 id="features">Features</h3>
+</li>
+<li>More than 70+ Fingerprints of potentially vulnerable services</li>
+<li>Uses CNAME record for verification of findings</li>
+<li>Built-in Subdomain Enumeration Method [<strong>Used findomain for Subdomain Enum</strong>]</li>
+<li>Can Scan targets from subdomain list</li>
+<li>Can Test Single Target for Subdomain Takeover</li>
+<li>MultiThread, Extermely Fast Scanner [<strong>Default Threads: 10</strong>]</li>
+<li>You can choose number of threads</li>
+<li>You can save result in TXT file</li>
+<li>Extremely Clean Output</li>
+<li>OS Independent [<strong>Can be used on any OS which supports Python3</strong>]</li>
+<li>Auto Command Line Updater</li>
+</ul>
+<h4 id="how-to-install-subdover">How To Install subdover</h4>
+<p>Step 1:- Before installing the subdover you need to install <a href="https://github.com/Findomain/Findomain">Findomain</a> and <a href="https://github.com/projectdiscovery/httpx">Httpx</a>
+Step 2:- After installing Findomain and Httpx git clone subdover:-</p>
+<ul>
+<li>git clone <a href="https://github.com/PushpenderIndia/subdover.git">https://github.com/PushpenderIndia/subdover.git</a>
+Step 3: after that run the cmd given below:-
+<blockquote>
+<p>sudo python3 subdover.py -d target.com
+<img src="https://i.postimg.cc/43HZfqZG/subdover.jpg" alt="takeover">
+Step 3:- Since the CNAME record is not deleted from
+target.com DNS zone, anyone who registers <em>anotherdomain.com</em> has full control over sub.example.com until the DNS record is present.
+<img src="https://i.postimg.cc/Ls0XvwBg/found.jpg" alt="found"> &gt; <img src="https://i.postimg.cc/mrbcD7VV/not-found.jpg" alt="not found">
+Step 4:- Now go to the aws to create the s3 bucket by filling bucket name and AWS region.
+<img src="https://i.postimg.cc/449stmKg/cr-bucket.jpg" alt="bucket">
+Step 5:- Now its time to upload the index file.
+<img src="https://i.postimg.cc/pXdNCrrr/upload-in.jpg" alt="index">
+Lets check the sub domain after uploading index file
+<img src="https://i.postimg.cc/gcQySBkh/poc.jpg" alt="poc"></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="thanks-for-reading">Thanks for reading</h3>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>

@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://blog.hacksec.in/posts/s3_subdomain_takeover/</loc>
+    <lastmod>2021-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hacksec.in/posts/shodan/</loc>
     <lastmod>2021-09-13T00:00:00+00:00</lastmod>
   </url>
