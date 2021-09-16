@@ -2,7 +2,7 @@
 title: AWSBucketDump
 date: 2021-09-16
 description: "Deep Dive Into AWSBucketDump | AWSBucketDump Tutorial"
-image: images/hacksec-cli/Yellow Magenta Black White Neon Scifi YouTube Channel Art.png
+image: images/awsbucketdump/Pink and Maroon Neon Noir  Vaporwave Action  Adventure YouTube Channel Art.png
 ---
 
 # AWSBucketDump
