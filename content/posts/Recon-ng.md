@@ -57,7 +57,7 @@ The interactive console provides a number of helpful features, such as command c
 
 - Recon-ng is a complete package (TOOL) for information gathering. This tool is free and Open Source.
 
-- Recon-ng subdomain finder modules is used to find subdomains of a singer domain.
+- Recon-ng subdomain finder modules is used to find subdomains of a single domain.
 
 - Recon-ng can be used to find robots.txt file of a website.
 
