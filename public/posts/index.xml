@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>How to use Recon-ng</title>
+      <link>https://blog.hacksec.in/posts/recon-ng/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/recon-ng/</guid>
+      <description>Recon-ng use in bug bounty In this recon-ng tutorial, discover open source intelligence and how to easily pivot to new results. Find targets and move to discovering vulnerabilities.
+What is Recon-ng? Recon-ng is a reconnaissance tool with an interface similar to Metasploit. Running recon-ng from the command line, you enter a shell like environment where you can configure options, perform recon and output results to different report types.
+The interactive console provides a number of helpful features, such as command completion and contextual help.</description>
+    </item>
+    
+    <item>
       <title>AWS Bucket Dump</title>
       <link>https://blog.hacksec.in/posts/awsbucketdump/</link>
       <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
@@ -27,7 +38,7 @@ How it works AWSBucketDump is using a Python script to parse a list of names. Us
     </item>
     
     <item>
-      <title>Shodan</title>
+      <title>how to use Shodan</title>
       <link>https://blog.hacksec.in/posts/shodan/</link>
       <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -36,7 +47,7 @@ How it works AWSBucketDump is using a Python script to parse a list of names. Us
     </item>
     
     <item>
-      <title>nmap</title>
+      <title>how to use nmap</title>
       <link>https://blog.hacksec.in/posts/nmap/</link>
       <pubDate>Sun, 12 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -46,7 +57,7 @@ What Does Nmap Do? Nmap (Network Mapper) is an open source and free security sca
     </item>
     
     <item>
-      <title>Recon</title>
+      <title>How to Recon</title>
       <link>https://blog.hacksec.in/posts/getting_started_with_recon/</link>
       <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -59,7 +70,7 @@ Some google dork example   site:&amp;quot;.uk&amp;quot; intitle:&amp;ldquo;admin
     </item>
     
     <item>
-      <title>hacksec-cli</title>
+      <title>how to use hacksec-cli</title>
       <link>https://blog.hacksec.in/posts/hacksec_cli/</link>
       <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       

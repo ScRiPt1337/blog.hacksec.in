@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.hacksec.in/posts/awsbucketdump/</loc>
-    <lastmod>2021-09-16T00:00:00+00:00</lastmod>
+    <loc>https://blog.hacksec.in/</loc>
+    <lastmod>2021-09-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.hacksec.in/</loc>
+    <loc>https://blog.hacksec.in/posts/recon-ng/</loc>
+    <lastmod>2021-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.hacksec.in/posts/awsbucketdump/</loc>
     <lastmod>2021-09-16T00:00:00+00:00</lastmod>
   </url>
   

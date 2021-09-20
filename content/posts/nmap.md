@@ -1,5 +1,5 @@
 ---
-title: nmap
+title: how to use nmap
 date: 2021-09-12
 description: "Deep Dive Into Nmap Scan Techniques and Complete Guide to Nmap | Nmap Tutorial"
 image: images/nmap/Green and Black Geometric Techno Technology YouTube Channel Art.png

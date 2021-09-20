@@ -1,5 +1,5 @@
 ---
-title: Shodan
+title: how to use Shodan
 date: 2021-09-13
 description: "Complete Guide to Shodan | Shodan Tutorial"
 image: images/shodan/Purple Blue Abstract Gamer YouTube Channel Art.png

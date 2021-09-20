@@ -1,5 +1,5 @@
 ---
-title: Recon
+title: How to Recon
 date: 2021-09-11
 description: "Hello guys today we will learn about reconnaissance"
 image: images/recon/Pink and Maroon Neon Noir  Vaporwave Action  Adventure YouTube Channel Art.png
