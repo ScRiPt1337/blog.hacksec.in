@@ -3,6 +3,7 @@ title: Subdomain Takeover on AWS S3
 date: 2021-09-16
 description: "Subdomain Takeover on AWS S3 using Subdover Tutorial"
 image: images/s3_subdomain_takeover/Green and Black Geometric Techno Technology YouTube Channel Art.png
+alt: Subdomain Takeover on AWS S3
 ---
 
 # Subdomain Takeover on AWS S3

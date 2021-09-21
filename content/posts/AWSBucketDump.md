@@ -3,6 +3,7 @@ title: AWS Bucket Dump
 date: 2021-09-16
 description: "Deep Dive Into AWSBucketDump | AWSBucketDump Tutorial"
 image: images/awsbucketdump/Pink and Maroon Neon Noir  Vaporwave Action  Adventure YouTube Channel Art.png
+alt: AWS Bucket Dump
 ---
 
 # AWS Bucket Dump

@@ -3,6 +3,7 @@ title: How to use Recon-ng
 date: 2021-09-20
 description: "Recon-ng Information gathering tool in Parrot OS"
 image: images/Recon-ng/Game Youtube Channel Art.png
+alt: Recon-ng
 ---
 
 ## Recon-ng use in bug bounty

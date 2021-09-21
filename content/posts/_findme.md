@@ -3,6 +3,7 @@ title: Find me writeup
 date: 2021-09-06
 description: "Hello guys script is here and today we will learn in this post how we can own find me web-lab"
 image: images/find_me/Yellow Magenta Black White Neon Scifi YouTube Channel Art (2).png
+alt: Find me
 ---
 
 ## Web-Lab information
