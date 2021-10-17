@@ -98,6 +98,17 @@ Requirement  python3 git  How to install in linux command : curl -s -L https://r
     </item>
     
     <item>
+      <title></title>
+      <link>https://blog.hacksec.in/posts/sqli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/sqli/</guid>
+      <description>What is an SQL injection attack SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses.
+Effective SQLi assaults permit aggressors to change data set data, access delicate information, execute administrator assignments on the data set, and recuperate documents from the framework. At times aggressors can give orders to the basic information base working framework.
+How do SQL injection attacks work? Most applications permit their clients to include information somehow, and web applications are the same.</description>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>https://blog.hacksec.in/pages/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
