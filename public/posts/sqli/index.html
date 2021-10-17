@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title> - Hacksec</title>
+  <title>SQL injection (SQLi) - Hacksec</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
   <link rel="icon" href="https://blog.hacksec.infavicon.png">
@@ -15,12 +15,12 @@
   
 
   
-    
-    <meta property="og:title" content=""/>
+    <meta name="description" content="SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses."/>
+    <meta property="og:title" content="SQL injection (SQLi)"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://blog.hacksec.in/posts/sqli/"/>
-    
-    
+    <meta property="og:image" content="https://blog.hacksec.in/images/sqli/banner.png"/>
+    <meta property="og:description" content="SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses."/>
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@hacksec42"/>
     <meta name="twitter:creator" content="@hacksec42"/>
@@ -56,7 +56,9 @@
   <div class="blog">
     
     <div class="intro">
-      <h1><span class="dot">.</span></h1>
+      <h1>SQL injection (SQLi)<span class="dot">.</span></h1>
+      
+      <img src="/images/sqli/banner.png" alt="SQL injection (SQLi)"/>
       
     </div>
     <div class="content">
@@ -104,7 +106,7 @@
 <p>$statement = &ldquo;SELECT * FROM users WHERE username = &lsquo;$user&rsquo; AND password= &lsquo;$password&rsquo;&quot;;</p>
 <p>An attacker can, without much of a stretch, supplement any unique SQL linguistic structure inside the statement if the application doesn&rsquo;t disinfect the info:</p>
 <p>$statement = &ldquo;SELECT * FROM users WHERE username = &lsquo;admin&rsquo;; &ndash; ' AND password= &lsquo;anything&rsquo;&quot;;= &lsquo;anything&rsquo;&quot;;</p>
-<p>What&rsquo;s going on here?  (admin&rsquo;; &ndash;) is the aggressor&rsquo;s feedback, which contains two new, extraordinary characters:</p>
+<p>What&rsquo;s going on here? (admin&rsquo;; &ndash;) is the aggressor&rsquo;s feedback, which contains two new, extraordinary characters:</p>
 <ul>
 <li>
 <p>; (semicolon) is utilized for training the SQL parser that the current assertion has finished (excessive much of the time).</p>

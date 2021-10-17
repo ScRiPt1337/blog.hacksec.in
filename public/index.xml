@@ -6,7 +6,18 @@
     <description>Recent content in hack computer systems like black hat on Hacksec</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL injection (SQLi)</title>
+      <link>https://blog.hacksec.in/posts/sqli/</link>
+      <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/sqli/</guid>
+      <description>What is an SQL injection attack SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses.
+Effective SQLi assaults permit aggressors to change data set data, access delicate information, execute administrator assignments on the data set, and recuperate documents from the framework. At times aggressors can give orders to the basic information base working framework.
+How do SQL injection attacks work? Most applications permit their clients to include information somehow, and web applications are the same.</description>
+    </item>
+    
     <item>
       <title>Precognition writeup</title>
       <link>https://blog.hacksec.in/posts/precognition/</link>
@@ -95,17 +106,6 @@ Requirement  python3 git  How to install in linux command : curl -s -L https://r
       
       <guid>https://blog.hacksec.in/posts/_findme/</guid>
       <description>Web-Lab information Find ME          Point: 30+   Level: MEDIUM   Target: http://machine4.hacksec.in   First ownby: H3X1337   Created by: SCRIPT1337X    let&amp;rsquo;s start First of all, let&amp;rsquo;s see what we have to work on by opening the URL. Reconnaissance Ok so now we start our reconnaissance, first we try to find all the hidden folders of the website using Dirb with default wordlist common.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://blog.hacksec.in/posts/sqli/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.hacksec.in/posts/sqli/</guid>
-      <description>What is an SQL injection attack SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses.
-Effective SQLi assaults permit aggressors to change data set data, access delicate information, execute administrator assignments on the data set, and recuperate documents from the framework. At times aggressors can give orders to the basic information base working framework.
-How do SQL injection attacks work? Most applications permit their clients to include information somehow, and web applications are the same.</description>
     </item>
     
     <item>
