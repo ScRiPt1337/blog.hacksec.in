@@ -14,7 +14,7 @@ Effective SQLi assaults permit aggressors to change data set data, access delica
 
 ## How do SQL injection attacks work?
 
-Most applications permit their clients to include information somehow, and web applications are the same. Vindictive people can manhandle those information entering components in manners that meddle with the age of SQL inquiries.
+Most applications permit their clients to include information somehow, and web applications are the same. Vindictive people can manhandle those information entering components in manners that meddle with the generation of SQL inquiries.
 
 The things I call "information entering systems" are how clients input information into the application. More often than not, these future structure fields and URL boundaries. By fiddling with those components perfectly, assailants can infuse—consequently the name—extra SQL orders, which get executed.
 
