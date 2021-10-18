@@ -66,8 +66,6 @@ As you would have seen, the assertion contains some new, unique characters:
 
 - = (equal ) is guidance for the SQL data set return esteems that match the looked through h string.
 
-Mr.Bl@ck_H3x, [18.10.21 01:47]
-
 - ' (single statement mark) is utilized to tell the SQL information base where the pursuit string starts or closures
 
 Presently consider the accompanying model where a site client can change the upsides of '$user' and '$password, for example, in a login structure:
