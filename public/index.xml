@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SQL injection (SQLi)</title>
+      <title>SQL injection (SQLi) | part 1</title>
       <link>https://blog.hacksec.in/posts/sqli/</link>
       <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
       

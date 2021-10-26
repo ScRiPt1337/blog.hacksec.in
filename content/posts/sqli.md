@@ -1,5 +1,5 @@
 ---
-title: SQL injection (SQLi)
+title: SQL injection (SQLi) | part 1
 date: 2021-10-17
 description: "SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses."
 image: images/sqli/banner.png
