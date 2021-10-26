@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>SQL injection (SQLi) | part 2</title>
+      <link>https://blog.hacksec.in/posts/sqli2/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/sqli2/</guid>
+      <description>SQL Injection Part 2 In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point.</description>
+    </item>
+    
+    <item>
       <title>SQL injection (SQLi) | part 1</title>
       <link>https://blog.hacksec.in/posts/sqli/</link>
       <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
