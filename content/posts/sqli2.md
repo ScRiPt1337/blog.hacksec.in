@@ -1,13 +1,13 @@
 ---
-title: SQL injection (SQLi) | part 2
+title:  WAF bypass | SQL injection part 2
 date: 2021-10-25
 description: "In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point."
-image: images/sqli/banner.png
-alt: SQL injection (SQLi) | part 2
+image: images/sqli_part2/Green Modern Technology & Gaming Logo.png
+alt: SQL injection (SQLi WAF bypass) | WAF bypass part 2
 ---
 
 
-# SQL Injection Part 2
+# WAF bypass | SQL Injection Part 2
 
 In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point.
 
@@ -36,19 +36,19 @@ WAFs are ordinarily sent in a type of intermediary design before web application
 
 There are many devices and contents which can recognize and finger impression WAF presence over an Application, which incorporates however not restricted to 
 
-- [WAFW00F](https://github.com/EnableSecurity/wafw00f) 
+ 1. [WAFW00F](https://github.com/EnableSecurity/wafw00f) 
 
 ![enter image description here](https://i.postimg.cc/mkKyGbp2/waf.png)
 
--  [identYwaf](https://github.com/stamparm/identYwaf)
+ 2. [identYwaf](https://github.com/stamparm/identYwaf)
 
 ![enter image description here](https://i.postimg.cc/1XX71GwG/waf2.png)
 
-- [WhatWaf](https://github.com/Ekultek/WhatWaf)
+ 3. [WhatWaf](https://github.com/Ekultek/WhatWaf)
 
 ![enter image description here](https://i.postimg.cc/jjFr14Wb/3-waf.png)
 
-- Nmap
+ 4. [Nmap](https://nmap.org/download.html)
 
 ![enter image description here](https://i.postimg.cc/mDgtYwvW/4-waf.png)
 

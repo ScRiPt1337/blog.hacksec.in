@@ -4,22 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>SQL injection (SQLi) | part 2 - Hacksec</title>
+  <title>WAF bypass | SQL injection part 2 - Hacksec</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
   <link rel="icon" href="https://blog.hacksec.infavicon.png">
 
   
   
-  <link rel="stylesheet" href="/css/style.min.58ab05db0962441a608730392bd8bbf94bcdbad06af3b3e704d59819a713d42a.css">
+  <link rel="stylesheet" href="/css/style.min.f6834210b158b37840587b4b3cbcb145c0077b3030705e7bfb3e19fca4a613bd.css">
   
 
   
     <meta name="description" content="In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point."/>
-    <meta property="og:title" content="SQL injection (SQLi) | part 2"/>
+    <meta property="og:title" content="WAF bypass | SQL injection part 2"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://blog.hacksec.in/posts/sqli2/"/>
-    <meta property="og:image" content="https://blog.hacksec.in/images/sqli/banner.png"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/sqli_part2/Green%20Modern%20Technology%20&%20Gaming%20Logo.png"/>
     <meta property="og:description" content="In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point."/>
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@hacksec42"/>
@@ -56,13 +56,13 @@
   <div class="blog">
     
     <div class="intro">
-      <h1>SQL injection (SQLi) | part 2<span class="dot">.</span></h1>
+      <h1>WAF bypass | SQL injection part 2<span class="dot">.</span></h1>
       
-      <img src="/images/sqli/banner.png" alt="SQL injection (SQLi) | part 2"/>
+      <img src="/images/sqli_part2/Green%20Modern%20Technology%20&amp;%20Gaming%20Logo.png" alt="SQL injection (SQLi WAF bypass) | WAF bypass part 2"/>
       
     </div>
     <div class="content">
-      <h1 id="sql-injection-part-2">SQL Injection Part 2</h1>
+      <h1 id="waf-bypass--sql-injection-part-2">WAF bypass | SQL Injection Part 2</h1>
 <p>In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point.</p>
 <h2 id="what-is-firewall">What is Firewall</h2>
 <p>A firewall is an organization security gadget that screens approaching and active organization traffic and allows or hinders information parcels dependent on many safety rules. Its motivation is to build a boundary between your inward organization and approaching traffic from external sources (like the web) to impede malignant traffic like hackers.</p>
@@ -76,21 +76,21 @@
 <p>WAFs are ordinarily sent in a type of intermediary design before web applications, so they don&rsquo;t see all traffic on our organizations. By observing the traffic before it arrives at the web application, WAFs can dissect demands before passing them on. This is the thing that gives them such a benefit over IPSs. Since IPSs are intended to grill all organization traffic, they can&rsquo;t investigate the application layer as thoroughly as WAF.</p>
 <h2 id="detecting-the-waf">Detecting the WAF</h2>
 <p>There are many devices and contents which can recognize and finger impression WAF presence over an Application, which incorporates however not restricted to</p>
-<ul>
+<ol>
 <li><a href="https://github.com/EnableSecurity/wafw00f">WAFW00F</a></li>
-</ul>
+</ol>
 <p><img src="https://i.postimg.cc/mkKyGbp2/waf.png" alt="enter image description here"></p>
-<ul>
+<ol start="2">
 <li><a href="https://github.com/stamparm/identYwaf">identYwaf</a></li>
-</ul>
+</ol>
 <p><img src="https://i.postimg.cc/1XX71GwG/waf2.png" alt="enter image description here"></p>
-<ul>
+<ol start="3">
 <li><a href="https://github.com/Ekultek/WhatWaf">WhatWaf</a></li>
-</ul>
+</ol>
 <p><img src="https://i.postimg.cc/jjFr14Wb/3-waf.png" alt="enter image description here"></p>
-<ul>
-<li>Nmap</li>
-</ul>
+<ol start="4">
+<li><a href="https://nmap.org/download.html">Nmap</a></li>
+</ol>
 <p><img src="https://i.postimg.cc/mDgtYwvW/4-waf.png" alt="enter image description here"></p>
 <h2 id="online-service-for-detecting-web-application-firewalls">Online service for detecting Web Application Firewalls</h2>
 <p>I have gathered every one of the considered apparatuses on the page of one web-based WAF (Web Application Firewall) location and distinguishing proof help: <a href="https://w-e-b.site/?act=wafw00f">https://w-e-b.site/?act=wafw00f</a>.</p>

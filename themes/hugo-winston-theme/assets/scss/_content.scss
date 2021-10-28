@@ -130,6 +130,7 @@ ul {
   }
   code,
   pre {
+    overflow-wrap: break-word;
     font-family: var(--font-family-monospace);
   }
   .highlight {

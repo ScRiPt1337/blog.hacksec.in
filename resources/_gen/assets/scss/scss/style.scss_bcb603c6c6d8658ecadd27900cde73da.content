@@ -184,6 +184,7 @@ ul {
         margin: 0; }
   .content code,
   .content pre {
+    overflow-wrap: break-word;
     font-family: var(--font-family-monospace); }
   .content .highlight {
     background-color: #1e272e; }
