@@ -11,7 +11,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/style.min.f6834210b158b37840587b4b3cbcb145c0077b3030705e7bfb3e19fca4a613bd.css">
+  <link rel="stylesheet" href="/css/style.min.a75e1a4efee9f30f3681c1ba91f1f81341fa2d3bdc2fb313c005c638b4c783d7.css">
   
 
   
@@ -120,21 +120,9 @@ the key is the domain name&rsquo;s md5 value and the value will be $authpass</p>
 <h3 id="lets-exploit-this">let&rsquo;s exploit this</h3>
 <p>so let&rsquo;s set this values by our self and refresh the webpage</p>
 <p>when we create an MD5 hash of machine10.hacksec.in  we got 7c49dcdf7703c31eacb2b6f730ffcb48</p>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>7c49dcdf7703c31eacb2b6f730ffcb48</td>
-<td>5c43208be18a43f4b3dd3f5b162d881a</td>
-</tr>
-</tbody>
-</table>
-<p><img src="/images/backdoor/2021-10-30-234357_1366x768_scrot.png" alt="cookies"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">key = 7c49dcdf7703c31eacb2b6f730ffcb48
+value = 5c43208be18a43f4b3dd3f5b162d881a
+</code></pre></div><p><img src="/images/backdoor/2021-10-30-234357_1366x768_scrot.png" alt="cookies"></p>
 <h4 id="bingo">BINGO</h4>
 <p>We get access to the webshell
 <img src="/images/backdoor/2021-10-30-234627_1366x768_scrot.png" alt="cookies"></p>

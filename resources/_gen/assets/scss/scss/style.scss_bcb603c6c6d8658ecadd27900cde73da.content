@@ -73,6 +73,7 @@ h1, h2, h3 {
         opacity: 0.7; }
 
 a {
+  overflow-wrap: break-word;
   color: var(--highlight-color);
   text-decoration: none; }
   a:hover {

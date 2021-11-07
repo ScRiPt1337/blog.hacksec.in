@@ -56,9 +56,10 @@ so let's set this values by our self and refresh the webpage
 
 when we create an MD5 hash of machine10.hacksec.in  we got 7c49dcdf7703c31eacb2b6f730ffcb48
 
-|    key       |        value                                        |
-| ------------ | --------------------------------------------------- |
-| 7c49dcdf7703c31eacb2b6f730ffcb48| 5c43208be18a43f4b3dd3f5b162d881a |
+```
+key = 7c49dcdf7703c31eacb2b6f730ffcb48
+value = 5c43208be18a43f4b3dd3f5b162d881a
+```
 
 ![cookies](/images/backdoor/2021-10-30-234357_1366x768_scrot.png)
 
