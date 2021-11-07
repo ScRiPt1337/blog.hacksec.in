@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>BACKDOOR writeup - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.f6834210b158b37840587b4b3cbcb145c0077b3030705e7bfb3e19fca4a613bd.css">
+  
+
+  
+    <meta name="description" content="Hello guys script is here and today we will learn in this post how we can own backdoor web-lab"/>
+    <meta property="og:title" content="BACKDOOR writeup"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/backdoor/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/backdoor/Green%20Modern%20Technology%20&%20Gaming%20Logo.png"/>
+    <meta property="og:description" content="Hello guys script is here and today we will learn in this post how we can own backdoor web-lab"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>BACKDOOR writeup<span class="dot">.</span></h1>
+      
+      <img src="/images/backdoor/Green%20Modern%20Technology%20&amp;%20Gaming%20Logo.png" alt="Find me"/>
+      
+    </div>
+    <div class="content">
+      <h2 id="web-lab-information">Web-Lab information</h2>
+<h3 id="backdoor">BACKDOOR</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Point:</td>
+<td>20+</td>
+</tr>
+<tr>
+<td>Level:</td>
+<td>EASY</td>
+</tr>
+<tr>
+<td>Target:</td>
+<td><a href="http://machine10.hacksec.in">http://machine10.hacksec.in</a></td>
+</tr>
+<tr>
+<td>First ownby:</td>
+<td>NONE</td>
+</tr>
+<tr>
+<td>Created by:</td>
+<td><a href="https://www.app.hacksec.in/profile/1">SCRIPT1337X</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lets-start">let&rsquo;s start</h2>
+<p>First of all, let&rsquo;s see what we have to work on by opening the URL.
+<img src="/images/backdoor/2021-10-30-231640_1366x768_scrot.png" alt="HomePage"></p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>Ok so now we start our reconnaissance, first, we try to find all the hidden files of the website. Here we will need a little bit of guessing.The box name is backdoor so we can try PHP backdoor&rsquo;s names.
+When we try to visit <a href="http://machine10.hacksec.in/wso.php">http://machine10.hacksec.in/wso.php</a> we get a login page so it&rsquo;s a wso web shell.
+<img src="/images/backdoor/2021-10-30-232355_1366x768_scrot.png" alt="LoginPage"></p>
+<p>and web shell&rsquo;s source code is also given <a href="https://gist.github.com/ScRiPt1337/0137d1a115d2055ecbefefc46a462ec8">https://gist.github.com/ScRiPt1337/0137d1a115d2055ecbefefc46a462ec8</a>.
+<img src="/images/backdoor/2021-10-30-233010_1366x768_scrot.png" alt="SourceCode"></p>
+<h3 id="finding-vulnerabilities-in-web-shell">Finding vulnerabilities in web shell</h3>
+<p>We need to bypass this login page this is the vulnerable function
+<img src="/images/backdoor/2021-10-30-233128_1366x768_scrot.png" alt="vulnerableCode"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$auth_pass</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;pass&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;pass&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nv">$auth_pass</span><span class="p">))</span>
+        <span class="nx">WSOsetcookie</span><span class="p">(</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="p">]),</span> <span class="nv">$auth_pass</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="p">])])</span> <span class="o">||</span> <span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="nx">md5</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="p">])]</span> <span class="o">!=</span> <span class="nv">$auth_pass</span><span class="p">))</span>
+        <span class="nx">wsoLogin</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><h4 id="what-this-code-is-doing">What this code is doing?</h4>
+<p>if the password is not empty it will check if the password hash in ==  to $authpass
+then it will set cookies with key and value
+the key is the domain name&rsquo;s md5 value and the value will be $authpass</p>
+<h3 id="lets-exploit-this">let&rsquo;s exploit this</h3>
+<p>so let&rsquo;s set this values by our self and refresh the webpage</p>
+<p>when we create an MD5 hash of machine10.hacksec.in  we got 7c49dcdf7703c31eacb2b6f730ffcb48</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7c49dcdf7703c31eacb2b6f730ffcb48</td>
+<td>5c43208be18a43f4b3dd3f5b162d881a</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/backdoor/2021-10-30-234357_1366x768_scrot.png" alt="cookies"></p>
+<h4 id="bingo">BINGO</h4>
+<p>We get access to the webshell
+<img src="/images/backdoor/2021-10-30-234627_1366x768_scrot.png" alt="cookies"></p>
+<h2 id="read-hashtxt">Read hash.txt</h2>
+<p>Hash.txt is at /var/www/hash.txt
+<img src="/images/backdoor/2021-10-30-234754_1366x768_scrot.png" alt="hash"></p>
+<h3 id="thanks-for-reading">Thanks for reading</h3>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>
