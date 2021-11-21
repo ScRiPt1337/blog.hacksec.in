@@ -2,7 +2,7 @@
 title: Blind sqli | SQL Injection Part 3
 date: 2021-11-21
 description: "In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point."
-image: images/sqli_part2/Green Modern Technology & Gaming Logo.png
+image: images/blind_sqli/Game Youtube Channel Art (1).png
 alt: SQL injection (SQLi WAF bypass) | WAF bypass part 2
 ---
 
