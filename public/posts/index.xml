@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Blind sqli | SQL Injection Part 3</title>
+      <link>https://blog.hacksec.in/posts/blind_sql/</link>
+      <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/blind_sql/</guid>
+      <description>SQL Injection Part 3 Blind SQL Injection SQL Injection (Blind), visually impaired SQL injection, the distinction from a general injection is that the overall injection attacker can see the execution aftereffect of the injection articulation on the page. At the same time, as a rule, the assailant can&amp;rsquo;t get it from the showed page during the blind injection. Even if the injection proclamation is executed, the execution result is obscure, so the trouble of visually impaired injection is more serious than a typical injection.</description>
+    </item>
+    
+    <item>
       <title>BACKDOOR writeup</title>
       <link>https://blog.hacksec.in/posts/backdoor/</link>
       <pubDate>Sat, 30 Oct 2021 00:00:00 +0000</pubDate>
