@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Cross Site scripting attack (XSS) - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.a75e1a4efee9f30f3681c1ba91f1f81341fa2d3bdc2fb313c005c638b4c783d7.css">
+  
+
+  
+    <meta name="description" content="A cross Site scripting attack is a malicious code injection executed in the victim&#39;s browser."/>
+    <meta property="og:title" content="Cross Site scripting attack (XSS)"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/xss/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/xss/banner.png"/>
+    <meta property="og:description" content="A cross Site scripting attack is a malicious code injection executed in the victim&#39;s browser."/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>Cross Site scripting attack (XSS)<span class="dot">.</span></h1>
+      
+      <img src="/images/xss/banner.png" alt="Cross-Site Scripting attack (XSS)"/>
+      
+    </div>
+    <div class="content">
+      <h2 id="introduction-to-xss-vulnerability">Introduction to XSS Vulnerability</h2>
+<p>A cross-Site Scripting attack is a malicious code injection executed in the victim&rsquo;s browser. Likewise, it can be performed with different strategies - with practically no saved script in the webserver.</p>
+<p>The fundamental motivation behind this attack is to take the other client&rsquo;s character information - cookies, session tokens and other data. This attack is being utilized to accept the other individual&rsquo;s cookies. As we probably are aware, cookies assist us with signing in naturally. In this manner, we can sign in with different characters with taken cookies. What&rsquo;s more, this is one reason why this attack is viewed as perhaps the most dangerous attack.</p>
+<p>An XSS attack is being performed on the client-side. This attack can be performed with various client-side programming languages. Be that as it may, most frequently, this attack is performed with Javascript and HTML.</p>
+<h3 id="how-is-xss-being-performed">How is XSS Being Performed?</h3>
+<p>Cross-Site Scripting attack implies sending and injection malicious code or content. Malicious code is typically composed of client-side programming languages like Javascript, HTML, VBScript, Flash, etc. Be that as it may, Javascript and HTML are generally used to play out this attack.</p>
+<p>This attack can be executed in various ways. Contingent on the kind of XSS attack, the destructive content might be reflected on the clint&rsquo;s browser or stored in database and executed without fail when the client calls the fitting capacity.</p>
+<p>The principle justification for this attack is improper input validation approval, where malicious info can get into the result. A malicious client can enter content injected into the site&rsquo;s code. Then, at that point, the program can&rsquo;t know whether the executed code is malicious or not.</p>
+<p>Consequently, destructive content is being executed on the casualty&rsquo;s program, or any faked structure is being shown for the clients. There are a few structures wherein XSS attack can happen.</p>
+<h4 id="primary-types-of-cross-site-scripting-are-as-per-the-following-">Primary types of Cross-Site Scripting are as per the following:-</h4>
+<ol>
+<li>Cross-Site Scripting can happen on the destructive content executed at the client-side.</li>
+<li>The counterfeit page or structure showed to the client (where the casualty types qualifications or snaps a malicious connection)</li>
+</ol>
+<h3 id="types-of-xss">Types Of XSS</h3>
+<p>There are three sorts of cross-site prearranging, specifically:-</p>
+<ol>
+<li>Reflected XSS</li>
+<li>Stored XSS</li>
+<li>Dom-based XSS</li>
+</ol>
+<h3 id="1-what-is-a-reflected-xss-attack">1. What is a reflected XSS attack?</h3>
+<p>Reflected XSS attacks, otherwise called non-persistent attacks, happen when harmful content is reflected off a web application to the victim&rsquo;s browser.</p>
+<p>The script is activated through a connection which sends the request to a site with a vulnerability that empowers the execution of malicious script. The vulnerability is usually an aftereffect of approaching requests not being sufficiently sanitized, which takes into the account control of a web application&rsquo;s capacities and the activation of the malicious script.</p>
+<p>To disperse the malicious link, a culprit regularly inserts it into an email or third party site (e.g., in a remark area or social media).
+The connection is inserted inside an anchor text that incites the client to tap on it, which starts the XSS request to take advantage of the site, reflecting the attack to the client.</p>
+<h4 id="reflected-xss-attack-example">Reflected XSS attack example</h4>
+<p>Example: Consider we have a site with a search field.</p>
+<p><img src="https://i.postimg.cc/LsYQg8Ng/11.png" alt="xss">
+Suppose the search query field is vulnerable. When the client enters any script, it will be executed.</p>
+<p>Consider, a client enters a basic script as displayed underneath:</p>
+<ul>
+<li>
+<!-- raw HTML omitted -->
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/L8fNmbXj/22.png" alt="enter image description here"></p>
+<p>Then,  after clicking the &ldquo;Search&rdquo; button, the entered script will be executed.</p>
+<p><img src="https://i.postimg.cc/44S5VgHz/xss.png" alt="enter image description here"></p>
+<p>As we find in the Example, the script composed into the query field gets executed. This shows the vulnerability of the XSS attack. Notwithstanding, a more unsafe script might also be consistent.</p>
+<p>Many analyzers stir up Cross-Site Scripting attacks with Javascript Injection, likewise performed on the client-side. In both, the malicious attacks script is being injected. Be that as it may, in the XSS attack case <!-- raw HTML omitted --> labels are not essential to execute the script.</p>
+<h3 id="how-to-test-against-xss">How to Test Against XSS?</h3>
+<p>First, to test against XSS attacks, black box testing can be performed.
+That is to say, and it very well may be tried without a code review. Notwithstanding, code review is consistently a suggested practice, and it also brings more dependable outcomes.
+From my software testing experience, I might want to add that if a decent black box testing strategy is chosen and performed precisely, this should be enough.</p>
+<p>While beginning testing, an analyzer consider which site&rsquo;s parts are vulnerable against the possible XSS attack.</p>
+<p>It is better to list them in any testing record, and this way, we will be sure that nothing will be missed. Then, at that point, the analyzer should anticipate what code or script information fields must be checked. It is critical to recall, what results mean, that application is vulnerable, and it breaks down the outcomes completely.</p>
+<p>While testing for possible attacks, it is essential to check how it reacts to the composed scripts and if that script is executed or not etc.</p>
+<h2 id="2-what-is-a-stored-xss-attack">2. What is a Stored XSS attack?</h2>
+<p>Persistent XSS attacks are an exceptionally critical danger since they can have a wide-running reach and don&rsquo;t need a social engineering phase (like Reflected XSS attacks.
+which we&rsquo;ll cover in our next portion of this series) to get clients to make a particular move, like clicking a connection.</p>
+<p>Anyway, how precisely do Stored XSS attacks work? What are the consequences of a successful attack? How treats an actual attack situation resemble? What&rsquo;s more, above all, how might you secure against them?</p>
+<p>How about we work it out.</p>
+<h3 id="how-do-stored-xss-attacks-work">How Do Stored XSS Attacks Work?</h3>
+<p>Persistent cross-site scripting attacks can happen when sites or web applications. Permit client input yet doesn&rsquo;t as properly sanitize or limit its substance. This considers malicious code to be entered as input, which is stored on the server and shown to unsuspecting site visitors.</p>
+<p>For example, suppose a hacker can consist of a malicious script while posting a comment on a famous weblog. In that case, all of us who examine that weblog article could be exposed to the malicious script. The attacker&rsquo;s code is incorrectly handled as valid input by way of the website online in question and doesn&rsquo;t get well encoded as a result.</p>
+<p><img src="https://i.postimg.cc/XYWsCv91/sample.png" alt="enter image description here">An example of a textual content enter field that could be vulnerable to stored XSS attack.</p>
+<p>Textual content input fields are the usual maximum area for the injection to arise; however, places that don&rsquo;t usually incorporate scripts (like picture tags or event attributes) are also prime goals. Any detail that isn&rsquo;t concerned to enter validation, encoding, or filtering can likely be taken advantage of by an attacker.</p>
+<p><img src="https://i.postimg.cc/pXPwNxdj/done.png" alt="done"></p>
+<p>However, Stored XSS is somewhat simple for hackers to pull off. After observing a vulnerable site, all they need to do is inject their malicious code and wait for victims to visit (hackers will promote their quality through spam messages or web-based media posts). Finding the target site itself is the most complex piece of the cycle.</p>
+<h4 id="the-interaction-for-observing-a-vulnerable-objective-typically-goes-as-follows-">The interaction for observing a vulnerable objective typically goes as follows:-</h4>
+<ol>
+<li>An attacker observes a site that might be vulnerable.</li>
+<li>They test it by storing a script on the server and taking advantage of the vulnerability.</li>
+<li>They explore the page that would convey the malicious code.</li>
+<li>They verify whether the script executes.</li>
+</ol>
+<h4 id="the-primary-targets-of-stored-xss-attacks">The Primary Targets of Stored XSS Attacks</h4>
+<p>Any site that considers the sharing of content by clients is a possible objective for a Persistent XSS attack. Think of any place with remark fields or text boxes for client inputs and destinations where that information is stored and shown to different clients. Common targets include:-</p>
+<ol>
+<li>Person to person communication destinations.</li>
+<li>Remark areas of sites, for example, sites or video-     sharing platforms.</li>
+<li>CRM/ERP system.</li>
+<li>Email server consoles.</li>
+</ol>
+<p>Stored XSS attacks succeed due to the client&rsquo;s confidence in real sites - the site ends up having a vulnerability that can be taken advantage of through XSS.</p>
+<h2 id="what-is-dom-based-xss">What is DOM Based XSS?</h2>
+<p>As per different exploration and studies, up to half of sites are vulnerable against DOM Based XSS vulnerabilities. Security analysts detected DOM XSS issues in high profile web organizations like Google, Yahoo, and Amazon.</p>
+<p>DOM-based XSS, also called Type-0 XSS, is an XSS attack in which the attack payload is executed by adjusting the DOM in the casualty&rsquo;s program. This makes the customer run code without the client&rsquo;s information or consent. The actual page (for example, the HTTP response) won&rsquo;t change, yet a malicious change in the DOM climate will cause the customer code contained in the page to execute alternately.</p>
+<p>This varies from reflected or stored XSS attacks, which place the attack payload into the response page because of server-side vulnerabilities. DOM XSS is a weakness on the client-side.</p>
+<h3 id="how-do-dom-xss-attacks-work">How Do DOM XSS Attacks Work?</h3>
+<p>DOM XSS assaults commonly follow this cycle:-</p>
+<ol>
+<li>The victim&rsquo;s browser gets a connection and sends an HTTP request to hacksec.in, and receives a static HTML page.</li>
+<li>The victim&rsquo;s browser then, at that point, begins parsing this HTML into DOM. The DOM contains an article called document, which includes a property called URL,  this property is populated with URL of the current page as a feature of DOM creation..</li>
+<li>When the parser processes Javascript code, it executes it and changes the raw HTML of the page. For this situation, the code references document.URL, thus, a piece of this string is implanted at parsing time in the HTML.</li>
+<li>The string is then parsed, and Javascript code is executed with regards to a similar page, resulting in XSS.</li>
+</ol>
+<p>The logic behind DOM XSS is that input from the client - source - goes to an execution point - sink. In the past models, our source was document.write and the sink was alert(document.cookie).</p>
+<p>After the site executes the malicious code, attackers can steal the cookies of the client&rsquo;s program or change the behaviour of the page on the web application.</p>
+<h3 id="how-do-attackers-exploit-dom-xss-vulnerabilities">How Do Attackers Exploit DOM XSS Vulnerabilities?</h3>
+<p>How about we jump a piece further to understand the potential sources or passage focuses, the attacks can perform DOM XSS attacks, and the &ldquo;sinks&rdquo; or DOM objects in which they can execute malicious code.</p>
+<h3 id="source">Source</h3>
+<p>A source is a JavaScript property that contains information that an attacker might actually control:</p>
+<p>document.URL<br>
+document.referrer<br>
+location<br>
+location.href<br>
+location.search<br>
+location.hash<br>
+location.pathname</p>
+<h3 id="sink">Sink</h3>
+<p>A sink is a DOM  function that permits JavaScript code execution or HTML rendering.</p>
+<p>eval<br>
+setTimeout<br>
+setInterval<br>
+document.write<br>
+element.innerHTML</p>
+<p>Any application is vulnerable against DOM-based cross-site scripting, assuming there is an executable way to create information from source to sink.</p>
+<p>Various sources and sinks have different properties and behaviours that can affect exploitability and determine what strategies are utilized. Furthermore, the application&rsquo;s contents may execute approval or another handling of information that should be obliged when intending to take advantage of a vulnerability.</p>
+<h3 id="thanks-for-reading">Thanks for reading</h3>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>

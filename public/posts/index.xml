@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Cross Site scripting attack (XSS)</title>
+      <link>https://blog.hacksec.in/posts/xss/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/xss/</guid>
+      <description>Introduction to XSS Vulnerability A cross-Site Scripting attack is a malicious code injection executed in the victim&amp;rsquo;s browser. Likewise, it can be performed with different strategies - with practically no saved script in the webserver.
+The fundamental motivation behind this attack is to take the other client&amp;rsquo;s character information - cookies, session tokens and other data. This attack is being utilized to accept the other individual&amp;rsquo;s cookies. As we probably are aware, cookies assist us with signing in naturally.</description>
+    </item>
+    
+    <item>
       <title>Blind sqli | SQL Injection Part 3</title>
       <link>https://blog.hacksec.in/posts/blind_sql/</link>
       <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
