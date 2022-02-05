@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>CSRF Vulnerability - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.a75e1a4efee9f30f3681c1ba91f1f81341fa2d3bdc2fb313c005c638b4c783d7.css">
+  
+
+  
+    <meta name="description" content="Today in this article, we&#39;ll get familiar with the fundamental ideas about CSRF attack or how an attacker powers the client to execute a few undesirable activities that they(user) never planned to."/>
+    <meta property="og:title" content="CSRF Vulnerability"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/csrf/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/csrf/banner.jpeg"/>
+    <meta property="og:description" content="Today in this article, we&#39;ll get familiar with the fundamental ideas about CSRF attack or how an attacker powers the client to execute a few undesirable activities that they(user) never planned to."/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>CSRF Vulnerability<span class="dot">.</span></h1>
+      
+      <img src="/images/csrf/banner.jpeg" alt="CSRF Vulnerability"/>
+      
+    </div>
+    <div class="content">
+      <h1 id="csrf-vulnerability">CSRF Vulnerability</h1>
+<p>Today in this article, we&rsquo;ll get familiar with the fundamental ideas about CSRF attack or how an attacker powers the client to execute a few undesirable activities that they(user) never planned to.</p>
+<p>Before starting the CSRF vulnerability, let&rsquo;s learn some basic work-over flow how it works.</p>
+<h2 id="cookies">Cookies</h2>
+<p>Cookies are fundamentally some small text documents with a limit of size 4KB that are put away over on the client&rsquo;s browser as name-value pair. Cookies are used to track or monitor the customer&rsquo;s actions on the web application and even store a few touchy information, such as username, sessions Id&rsquo;s, secret password preference, and so forth, which can be sent back to the server for a validation request.</p>
+<h2 id="session-ids">Session ID’s</h2>
+<p>A session ID is a unique number that a Web web page&rsquo;s server allocates to a particular client for the term of that client&rsquo;s visit (session). The session ID can be stored as a cookie, structure field, or URL (Uniform Resource Locator).
+A few Web servers produce session IDs by basically increasing static numbers. In any case, most servers use more complicated calculations, such as figuring in the date and season of the visit alongside different factors that the server administrator characterises.</p>
+<p>Each time an Internet client visits a particular Web website, another session ID is allowed. Shutting a browser and afterwards resuming and revisiting the site produces another session ID. Be that as it may, a similar session ID is now and then kept up with as long as the browser is open, regardless of whether the client leaves the site being referred to and returns. Now and again, Web servers end a session and allot another session ID following a couple of moments of inactivity.</p>
+<h2 id="what-is-an-same-origin-policy">What is an Same-Origin Policy</h2>
+<p>SOP is a shortening for the Same-Origin Policy, which is one of the main ideas in the web application security model. Under this approach, an internet browser grants scripts contained in a first site page to get to the information on a subsequent page; however, this happens when both the site pages are running over on a similar port, protocol and origin.</p>
+<p>For Ex. :-</p>
+<blockquote>
+<p>Say the page &ldquo;<a href="https://www.hacksec.in/ceh/module.pdf%22">https://www.hacksec.in/ceh/module.pdf&quot;</a> can directly get to the content at &ldquo;<a href="https://www.hacksec.in/network/module7.docx%22">https://www.hacksec.in/network/module7.docx&quot;</a>.</p>
+</blockquote>
+<blockquote>
+<p>However, it can not get information from &ldquo;<a href="https://www.hacksec.in:8080/xss.pdf%22">https://www.hacksec.in:8080/xss.pdf&quot;</a> the port has been changed between the two at this point.</p>
+</blockquote>
+<h2 id="introduction-to-csrf-attack">Introduction to CSRF Attack</h2>
+<p>CSRF is a kind of attack that tricks the victim into doing a malicious task on a victim authenticated web application for the attacker&rsquo;s interests. The level of the attack depends on the level of privileges or honours that the victim had.</p>
+<p>Since the attacker will utilize authentication gained in the current session to do the malicious assignment, this attack was named Session Riding. CSRF attack will take advantage of the idea that assuming the client is verified, every one of the requests from that client should be started by the client. The attacker will take advantage of this idea by recognizing the session cookie and sending his payload to run on the application.</p>
+<h2 id="how-csrf-works">How CSRF works?</h2>
+<p>CSRF will possibly work assuming the potential victim is authenticated. A CSRF attacker can bypass the authentication process to enter a web application when a victim with extra privileges performs activities that are not available to everybody, which is when CSRF attacks are used. Like web-based financial situations.</p>
+<p>There are two principal parts to executing a Cross-Site Request Forgery (CSRF) attack.</p>
+<ul>
+<li>
+<p>The first part is to fool the victim into clicking a link or loading up a page. This is normally done through social engineering. An attacker will lure the client into tapping the link by utilizing social engineering strategies.</p>
+</li>
+<li>
+<p>Another part is to send a &ldquo;forged&rdquo; or made up request to the client&rsquo;s browser. This connection will send an authentic-looking request to web application. The request will be sent with values that the attacker needs. Aside from them, this request will include any client&rsquo;s cookies related to that site. As cookies are sent, the web application realizes that this client can play out specific activities on the web-site based upon the authorization level of the victim. The web applications will think about these requests as unique. However, the victim would send the request at the attacker&rsquo;s command. A CSRF attack essentially exploits how the browser sends the cookies to the web application consequently with every single request.</p>
+</li>
+</ul>
+<h3 id="as-we-briefly-understand-csrf-we-should-break-down-the-accompanying-situations">As we briefly understand CSRF, we should break down the accompanying situations.</h3>
+<h2 id="csrf-get-request">CSRF GET Request</h2>
+<p>The simplest CSRF attack is basically to fool a client into making a GET request to a particular URL. This can be done by placing the URL into a deceptively named link. The connection could be placed in a blog comment (bunches of WordPress exploits have utilized this procedure), a post on a web forum, or a phishing email.</p>
+<p><!-- raw HTML omitted -->View PDF<!-- raw HTML omitted --></p>
+<p>The link hides its actual activity and might trick a few clients. Be that as it may, it&rsquo;s anything but an exceptionally modern attack since it requires the client to tap the connection to actuate the activity.</p>
+<p>A more refined adaptation puts the URL someplace that obviates the requirement for client activity, for example, the picture source attribute of an image tag.</p>
+<!-- raw HTML omitted -->
+<p>When a page is stacked, the browser naturally makes individual requests to retrieve all images in the HTML. When a client sees a gathering page with the above image in a client post, the browser requests that URL. The client doesn&rsquo;t have to click any link; the damage is done during the time spent in the browser interpreting the HTML.</p>
+<h2 id="csrf-get-request-with-authentication">CSRF GET Request with Authentication</h2>
+<p>The most significant risk from a CSRF attack comes when the target URL links to a page on a site that requires client confirmation, and the client&rsquo;s program holds its past authentication state. The attacker exploits the browser&rsquo;s authenticated state.</p>
+<p>Imagine that a client signs in to their bank site. The bank site sets a cookie in the client&rsquo;s browser to show that their entrance has been approved. Requests to any page on the bank&rsquo;s site will include that Cookie as evidence of authorization.</p>
+<p>It works like going to a show and getting a wristband when you pay or present a ticket. The wristband demonstrates your approved status—wristband: authorized to be inside. No wristband: not authorized, should not be granted access.</p>
+<p>Imagine that when the client is finished with their banking, they close the program window, yet they don&rsquo;t click &ldquo;Log out&rdquo;. The client&rsquo;s browser has the bank approval cookie - - it&rsquo;s wearing the wristband.</p>
+<p>If an attacker can fool the client into requesting the bank&rsquo;s site, that request will send the cookie with the approval and the request be thought of as validated. As may be obvious, this is simply one more request from the client&rsquo;s program.</p>
+<!-- raw HTML omitted -->
+<p>Assuming that a client stacks a page with the above image tag, it will trigger a &lsquo;GET&rsquo; request to the URL determined in &lsquo;src&rsquo;. In this situation, an unauthenticated client will get &lsquo;axisbank.com&rsquo;s&rsquo; login page. In any case, a formerly confirmed client could gain admittance on the off chance that the request is acknowledged by &lsquo;axisbank.com&rsquo;.</p>
+<p>There are many activities that a CSRF attack can take. A portion of the more common ones are:-</p>
+<ul>
+<li>Change password</li>
+<li>Change email address</li>
+<li>Login to a site</li>
+<li>Transfer funds</li>
+<li>Download malware</li>
+</ul>
+<h2 id="csrf-get-request-preventions">CSRF GET Request Preventions</h2>
+<p>The best safeguard against CSRF attacks that appear as GET requests is to disallow GET requests for key activities, particularly activities that &ldquo;change state&rdquo; somehow or another.</p>
+<p>It is viewed as a best practice just to utilize GET requests for recovering information, not really for activities that make changes. Utilize POST requests (like structure entries) for activities that make changes.</p>
+<p>Link and image tag sources are generally GET request. Making all GET requests harmless eliminates a significant pathway for CSRF attacks.</p>
+<h2 id="csrf-post-request-attack">CSRF POST Request Attack</h2>
+<p>GET requests are not by any means the only method for setting off a CSRF attack. An attacker can forge a structure. Strolling through it bit by bit will assist with clarifying how such an attack is organized.</p>
+<p>Let&rsquo;s try to understand this method with the actual website.</p>
+<p>First, I have created an attacker account and filled out all the forms; check Account Detail info and visit the change email page.</p>
+<p><img src="https://i.postimg.cc/1RBjxVnK/1.png" alt="1"></p>
+<p>After visiting the change email page, change the mail id, capture the request, and create a CSRF Exploit.</p>
+<p><img src="https://i.postimg.cc/brZCH3yN/3.png" alt="2"></p>
+<p>The CSRF Exploit looks like as given below. I have replaced the email value to setafa3370@sdysofa.com and submitted a request in the victim’s account.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>In the following stage, I just forwarded the above request and the exploit worked, so by this exploit changed my email to the victim&rsquo;s email and by using the forgot password method to retrieve the password reset link to my email, and I have complete control over the victim&rsquo;s account.</p>
+<h2 id="methods-to-bypass-csrf-protection">Methods to bypass CSRF protection</h2>
+<h3 id="utilizing-a-csrf-token-across-accounts">Utilizing a CSRF token across accounts</h3>
+<p>The easiest and deadliest CSRF sidestep is the point at which an application doesn&rsquo;t approve if the CSRF token is attached to a particular account or not and approves the calculation. To approve this</p>
+<pre><code>Login to an application from Account A
+
+Go to its password change page
+
+Catch the CSRF token utilizing burp intermediary
+
+Logout and Login utilizing Account B
+
+Go to the password change page and catch that request
+
+replace the CSRF token
+</code></pre>
+<h3 id="supplanting-worth-of-same-length">Supplanting worth of same length</h3>
+<p>Another method is that you track down the length of that token; for example, it is an alphanumeric badge of 32 characters under the variable authenticity_token, you supplant a similar variable with some other 32 character value.</p>
+<p>For example the token is ud019eh10923213213123, you replace it with a badge of a similar worth.</p>
+<h3 id="removing-the-csrf-token-from-requests-entirely">Removing the CSRF token from requests entirely</h3>
+<p>This strategy works typically on account of erasing functions where token isn&rsquo;t checked at all, giving the attacker an edge to erase the record of any client through CSRF.In any case, I have discovered that it might work on different functionalities also. It is straightforward, you block the request with burpsuite and eliminate the token from the, 40% of the applications I have tried were viewed as helpless against this method</p>
+<h3 id="decoding-csrf-tokens">Decoding CSRF tokens</h3>
+<p>One more strategy to sidestep CSRF is to recognize the calculation of the CSRF token. As far as I can tell CSRF tokens are either MD5 or Base64 encoded qualities. You can interpret that worth and encode the following one in that calculation and utilize that token. For example &ldquo;a0a080f42e6f13b3a2df133f073095dd&rdquo; is MD5(122). You can correspondingly scramble the following worth MD5(123) to for CSRF token bypass.</p>
+<h3 id="extracting-token-via-html-injection">Extracting token via HTML injection</h3>
+<p>This procedure uses HTML injection vulnerability utilizing which an attacker can establish a logger to extract the CSRF token from that page and utilize that token. An attacker can establish a link, for example,</p>
+<!-- raw HTML omitted -->
+<h3 id="using-only-the-static-parts-of-the-token">Using only the static parts of the token</h3>
+<p>It is generally expected seen that the CSRF token is made out of two sections. A static part and a unique part. Consider two CSRF tokens hacksec742498h989889 and hacksec7424ashda099sss. For the most part, assuming you utilize the static piece of the token as hacksec77424 you can utilize that token</p>
+<p>There are numerous alternative ways of bypassing CSRF protection, yet I have for the most part experienced these in my bug hunting vocation.</p>
+<h3 id="thanks-for-reading">Thanks for reading</h3>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>
