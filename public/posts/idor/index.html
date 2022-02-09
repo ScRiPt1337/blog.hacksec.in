@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>IDOR Vulnerabilities - Hacksec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="yandex-verification" content="e598ba3f5d83f9cd" />
+  <link rel="icon" href="https://blog.hacksec.infavicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.a75e1a4efee9f30f3681c1ba91f1f81341fa2d3bdc2fb313c005c638b4c783d7.css">
+  
+
+  
+    <meta name="description" content="Perhaps the most significant Vulnerability recorded in the top 10 of OWASP is Insecure Direct Object Reference Vulnerability (IDOR Vulnerability)"/>
+    <meta property="og:title" content="IDOR Vulnerabilities"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://blog.hacksec.in/posts/idor/"/>
+    <meta property="og:image" content="https://blog.hacksec.in/images/idor/banner.jpeg"/>
+    <meta property="og:description" content="Perhaps the most significant Vulnerability recorded in the top 10 of OWASP is Insecure Direct Object Reference Vulnerability (IDOR Vulnerability)"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@hacksec42"/>
+    <meta name="twitter:creator" content="@hacksec42"/>
+  
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="https://blog.hacksec.in">Hacksec</a>
+  <div class="menu-main">
+    <ul>
+        
+        
+            <li class="menu-item-about">
+                <a href="/pages/about/">About</a>
+            </li>
+        
+            <li class="menu-item-posts">
+                <a href="/posts/">Posts</a>
+            </li>
+        
+    </ul>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>IDOR Vulnerabilities<span class="dot">.</span></h1>
+      
+      <img src="/images/idor/banner.jpeg" alt="IDOR Vulnerabilities"/>
+      
+    </div>
+    <div class="content">
+      <h1 id="idor--vulnerabilities">IDOR  Vulnerabilities</h1>
+<p>Perhaps the most significant Vulnerability recorded in the top 10 of OWASP is Insecure Direct Object Reference Vulnerability (IDOR Vulnerability). In this article, we will examine IDOR Vulnerability. Before pushing forward, let us first talk about Authentication.
+Authentication means checking a person&rsquo;s identity and permitting that person to get too explicit requests assuming the client is authenticated (confirmed).Yet, if a client isn&rsquo;t validated and can have the option to see documents, for example, incorrectly open records as the Hackers/Attackers do?, it is called Broken Authentication.This article will focus on how an attacker utilizes Broken Authentication Vulnerabilities that might prompt IDOR.</p>
+<h2 id="what-is-an-idor-vulnerability">What is an IDOR Vulnerability?</h2>
+<p>In a web application, at whatever point a client generates, sends or receives a request from a server, there are some HTTP parameters, for example, &ldquo;id&rdquo;, &ldquo;uid&rdquo;, &ldquo;pid&rdquo; and so forth that have a few unique qualities which the client has been appointed. An attacker see such parameter values in cookies, headers, or wifi Packet catches. Through this, an attacker could alter these qualities, leading to IDOR.</p>
+<h4 id="a-portion-of-the-examples-that-untrusted-the-data-information-which-can-be-manipulated-utilizing-idor">A portion of the examples that untrusted the data information which can be manipulated utilizing IDOR:</h4>
+<ul>
+<li><a href="https://hacksec.in/myaccount/uid=1">https://hacksec.in/myaccount/uid=1</a></li>
+<li><a href="https://hacksec.in/myaccount/uid=2">https://hacksec.in/myaccount/uid=2</a></li>
+<li><a href="https://hacksec.in/myaccount/uid=3">https://hacksec.in/myaccount/uid=3</a></li>
+<li><a href="https://hacksec.in/myaccount/uid=4">https://hacksec.in/myaccount/uid=4</a></li>
+</ul>
+<p>As you see that  uid the URL to vulnerable and can be tampered by an attacker to break the authentication.</p>
+<h3 id="idor-attack-utilizing-guessable-ids">IDOR attack utilizing guessable IDs</h3>
+<p>The most basic IDOR situation happens when the application references objects utilizing simple to figure IDs.For example, they can be total numbers and contain predictable words like the client&rsquo;s email or a folder name. Sometimes, they can be ineffectively encoded. For example, a base64 encoded steady Integer or a profile picture name hash reference. Assume that an application allows you to get to your information on the following endpoint:</p>
+<p>GET /api/users/1</p>
+<p>You should substitute your ID 1, with another guessed value in this basic situation.</p>
+<h3 id="idor-utilizing-idor-with-guids">IDOR utilizing IDOR with GUIDs</h3>
+<p>Sometimes, the application utilizes. IDs are complicated or even difficult to figure. For this situation, it will probably be a Globally Unique Identifier (GUID). You can likewise track down it under the name of Universally Unique Identifier (UUID).To progress forward with the example we gave before; the endpoint may resemble the accompanying:</p>
+<p>GET /api/users/b0413c-6b52-410-98c-b7194e6</p>
+<p>For this situation, you can perform more enumeration on the application. In other words, attempt to find however many elements as you can. You will probably observe endpoints that return a rundown of items; everyone referred to utilizing a freely accessible GUID. For instance, the client public profile may return its GUID.</p>
+<p>If UUIDs are not openly accessible, you can in any case test for the IDOR vulnerability. Although the effect may be lower, I&rsquo;ve seen many occasions where the client has acknowledged the issue as valid. In addition, if there is a CSRF issue or a CORS misconfiguration, you can exfiltrate UUIDs and manufacture your malicious requests easily.</p>
+<h3 id="idor-in-rest-applications">IDOR in REST applications</h3>
+<p>In most present-day applications, you will manage REST APIs, which follow a basic naming show. I will clarify central issues about REST APIs, which would assist you with seeing how to test for IDOR. You can get more familiar with the REST convention. However, I will clarify what you want for a successful IDOR exploit.</p>
+<p>This doesn&rsquo;t mean that you won&rsquo;t be insecure direct object reference vulnerabilities on our Website. When you see a component working with an article reference, consistently have a go at testing for IDOR.</p>
+<h4 id="rest-http-methods">REST HTTP methods</h4>
+<p>You can likewise call them HTTP action words. These characterize the activity to execute on the API. As a general rule, the <code>GET</code> strategy permits you to understand information, the <code>POST</code> will either make or update an asset, the <code>PUT</code> and <code>PATCH</code> action words update information and <code>DELETE</code> will erase your referred to the resource(s).</p>
+<h4 id="rest-convention">REST convention</h4>
+<p>REST applications follow a naming show, making it simple to reveal hidden IDOR vulnerabilities.</p>
+<p>For effortlessness, suppose an application oversees clients utilizing gradual Integers. Through your standard identification, you enumeration this endpoint, which returns your profile information:</p>
+<p>GET /api/profile</p>
+<p>Assuming it is a RESTful API, you can test numerous things!</p>
+<p>Firstly, attempt to annex an ID to the endpoint. You may coincidentally find the administrator or the owner utilizing little whole numbers.</p>
+<p>GET /api/profile/0</p>
+<p>Then, at that point, you can test the update of a client.</p>
+<p>PUT /api/profile/0
+Host: hacksec.in
+Content-Type: application/json</p>
+<p>{&ldquo;email&rdquo;: &ldquo;<a href="mailto:attacker@gmail.com">attacker@gmail.com</a>&rdquo;}</p>
+<p>You can likewise test perusing every one of the profiles</p>
+<p>GET /api/profiles</p>
+<p>Obviously, things are not so basic, in actuality. However, the philosophy of testing for IDOR vulnerabilities actually applies.</p>
+<h2 id="idor-attack-examples">IDOR attack examples</h2>
+<p>Let&rsquo;s start with this simple IDOR Vulnerability PoC to show you that it is so natural to track down this Vulnerability in nature. For this situation, all the hacker needed to do was to loop through the request numbers, which are incremental integers. This prompted revealing subjective clients' structure data. Notice how the endpoint follows the /USERS/2222222</p>
+<p><img src="https://i.postimg.cc/FHPcPkPG/111.png" alt="enter image description here"></p>
+<p>Here I am just creating an account, visiting the profile, intercepting the request, and then changing the user id. Here, we got an information discloser through IDOR.</p>
+<p><img src="https://i.postimg.cc/XYcxngV8/222.png" alt="enter image description here"></p>
+<h3 id="how-to-test-for-idor-vulnerability-idor-methodology-and-tools">How to test for IDOR Vulnerability? IDOR methodology and tools</h3>
+<p>Insecure direct object reference vulnerabilities are not challenging to track down. However, some of them might go under your testing radar if your tests are superficial. Besides, you will get many duplicates if you are a bug bounty hunter.</p>
+<p>Here is an approach you can follow to amplify your possibility of finding hidden IDOR vulnerabilities:-</p>
+<ul>
+<li>
+<p>Register two accounts for every role the application supports. This will assist you with testing sidelong access control measures and privilege escalation</p>
+</li>
+<li>
+<p>Find however many features as you can, ideally with the role with the highest privilege. Assuming the application gives paid enrollment, attempt to get test records or buy it.</p>
+</li>
+<li>
+<p>Gather all the endpoints found and attempt to track down a naming pattern. Then, at that point, surmise new endpoint names based on how you discovered them.</p>
+</li>
+</ul>
+<p>Test for every one of the endpoints against every one of the jobs you&rsquo;ve enrolled in before. If the application is minor and the roles don&rsquo;t go beyond two, you can manually do that. In the opposite case, you&rsquo;ll require an instrument to help you. In Burp Suite, you can utilize AuthMatrix, Auto-Repeater or Authorize plugins.</p>
+<h3 id="thanks-for-reading">Thanks for reading</h3>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+    <span class="social-icon social-icon-twitter">
+      <a href="https://twitter.com/hacksec42" title="twitter" target="_blank" rel="noopener">
+        <img
+          src="/images/social/twitter.svg"
+          width="24"
+          height="24"
+          alt="twitter"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-github">
+      <a href="https://github.com/hacksec-in" title="github" target="_blank" rel="noopener">
+        <img
+          src="/images/social/github.svg"
+          width="24"
+          height="24"
+          alt="github"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+    <span class="social-icon social-icon-linkedin">
+      <a href="https://www.linkedin.com/in/rishi-roy-a986381a6/" title="linkedin" target="_blank" rel="noopener">
+        <img
+          src="/images/social/linkedin.svg"
+          width="24"
+          height="24"
+          alt="linkedin"
+          style="background-color: white"
+        />
+      </a>
+    </span>
+    
+  </div>
+  
+</div>
+
+  </div>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/bundle.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js"></script>
+  
+
+  
+  
+
+  
+  
+  
+    
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204818072-3"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-204818072-3');
+      </script>
+    
+  
+
+
+</body>
+</html>

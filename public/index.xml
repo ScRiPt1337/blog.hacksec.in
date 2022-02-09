@@ -6,7 +6,16 @@
     <description>Recent content in hack computer systems like black hat on Hacksec</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IDOR Vulnerabilities</title>
+      <link>https://blog.hacksec.in/posts/idor/</link>
+      <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/idor/</guid>
+      <description>IDOR Vulnerabilities Perhaps the most significant Vulnerability recorded in the top 10 of OWASP is Insecure Direct Object Reference Vulnerability (IDOR Vulnerability). In this article, we will examine IDOR Vulnerability. Before pushing forward, let us first talk about Authentication. Authentication means checking a person&amp;rsquo;s identity and permitting that person to get too explicit requests assuming the client is authenticated (confirmed).Yet, if a client isn&amp;rsquo;t validated and can have the option to see documents, for example, incorrectly open records as the Hackers/Attackers do?</description>
+    </item>
+    
     <item>
       <title>CSRF Vulnerability</title>
       <link>https://blog.hacksec.in/posts/csrf/</link>
