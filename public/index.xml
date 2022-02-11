@@ -70,8 +70,8 @@ The fundamental motivation behind this attack is to take the other client&amp;rs
       <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.hacksec.in/posts/sqli/</guid>
-      <description>What is an SQL injection attack SQL Injection assaults (or SQLi) adjust SQL inquiries, infusing malignant code by utilizing weaknesses.
-Effective SQLi assaults permit aggressors to change data set data, access delicate information, execute administrator assignments on the data set, and recuperate documents from the framework. At times aggressors can give orders to the basic information base working framework.
+      <description>What is an SQL injection attack SQL Injection attack (or SQLi) adjust SQL query, injection malicious code by utilizing vulnerability.
+Effective SQLi attack permit attackers to change data set data, access delicate information, execute administrator assignments on the data set, and recuperate documents from the framework. At times attacker can give orders to the basic information base working framework.
 How do SQL injection attacks work? Most applications permit their clients to include information somehow, and web applications are the same.</description>
     </item>
     
