@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.hacksec.in/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Server-side request forgery (SSRF)</title>
+      <link>https://blog.hacksec.in/posts/ssrf/</link>
+      <pubDate>Wed, 23 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.hacksec.in/posts/ssrf/</guid>
+      <description>Server-side request forgery (SSRF) Web applications have become perhaps the main resources for organizations of all sizes. What&amp;rsquo;s more, they have also turned into a target because of this. Web applications are getting more complicated and more extraordinary in scope. This increases the attack for a hacker. Hackers are growing more capable consistently, and they utilize various tools and methods to hack web applications. Here, we&amp;rsquo;ll focus on one attack that has been rising in popularity: server-side request forgery (SSRF) attacks.</description>
+    </item>
+    
+    <item>
       <title>IDOR Vulnerability</title>
       <link>https://blog.hacksec.in/posts/idor/</link>
       <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
@@ -43,7 +52,7 @@ The fundamental motivation behind this attack is to take the other client&amp;rs
       <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.hacksec.in/posts/blind_sql/</guid>
-      <description>SQL Injection Part 3 Blind SQL Injection SQL Injection (Blind), visually impaired SQL injection, the distinction from a general injection is that the overall injection attacker can see the execution aftereffect of the injection articulation on the page. At the same time, as a rule, the assailant can&amp;rsquo;t get it from the showed page during the blind injection. Even if the injection proclamation is executed, the execution result is obscure, so the trouble of visually impaired injection is more serious than a typical injection.</description>
+      <description>SQL Injection Part 3 Blind SQL Injection SQL Injection (Blind), visually impaired SQL injection, the distinction from a general injection is that the overall injection attacker can see the execution aftereffect of the injection articulation on the page. At the same time, as a rule, the attacker can’t get it from the showed page during the blind injection. Even if the injection proclamation is executed, the execution result is obscure, so the trouble of visually impaired injection is more serious than a typical injection.</description>
     </item>
     
     <item>

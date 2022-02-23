@@ -2,11 +2,11 @@
 title: IDOR Vulnerability
 date: 2022-02-09
 description: "Perhaps the most significant Vulnerability recorded in the top 10 of OWASP is Insecure Direct Object Reference Vulnerability (IDOR Vulnerability)"
-image: images/idor/banner.jpeg
+image: images/ssrf/banner.jpeg
 alt: IDOR Vulnerability
 ---
 
-# IDOR  Vulnerability
+## IDOR  Vulnerability
 
 Perhaps the most significant Vulnerability recorded in the top 10 of OWASP is Insecure Direct Object Reference Vulnerability (IDOR Vulnerability). In this article, we will examine IDOR Vulnerability. Before pushing forward, let us first talk about Authentication. 
 Authentication means checking a person's identity and permitting that person to get too explicit requests assuming the client is authenticated (confirmed).Yet, if a client isn't validated and can have the option to see documents, for example, incorrectly open records as the Hackers/Attackers do?, it is called Broken Authentication.This article will focus on how an attacker utilizes Broken Authentication Vulnerabilities that might prompt IDOR.

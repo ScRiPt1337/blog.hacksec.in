@@ -3,7 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.hacksec.in/</loc>
-    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.hacksec.in/posts/ssrf/</loc>
+    <lastmod>2022-02-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.hacksec.in/posts/idor/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
