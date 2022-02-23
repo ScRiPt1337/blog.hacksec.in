@@ -2,7 +2,7 @@
 title: IDOR Vulnerability
 date: 2022-02-09
 description: "Perhaps the most significant Vulnerability recorded in the top 10 of OWASP is Insecure Direct Object Reference Vulnerability (IDOR Vulnerability)"
-image: images/ssrf/banner.jpeg
+image: images/idor/banner.jpeg
 alt: IDOR Vulnerability
 ---
 

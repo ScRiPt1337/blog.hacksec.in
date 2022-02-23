@@ -2,7 +2,7 @@
 title: Server-side request forgery (SSRF)
 date: 2022-02-23
 description: "SSRF is a class of vulnerability that allows you to make requests from a backend server to internal or external systems."
-image: images/sqli/banner.png
+image: images/ssrf/banner.png
 alt: Server-side request forgery (SSRF)
 ---
 
